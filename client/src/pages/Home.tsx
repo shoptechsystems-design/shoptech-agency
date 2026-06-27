@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowRight, CheckCircle, Code2, Zap, Shield, Users, TrendingUp, Smartphone, Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ChevronUp } from "lucide-react";
+import { ArrowRight, CheckCircle, Code2, Zap, Shield, Users, TrendingUp, Smartphone, Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ChevronUp, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -117,12 +117,15 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section-py bg-gray-50">
+      <section id="services" className="section-py bg-gradient-to-b from-white via-blue-50 to-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">Our Services</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive digital solutions tailored to your business needs
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">WHAT WE OFFER</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-navy-900 mb-6">Our Services</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium">
+              Comprehensive digital solutions tailored to your business needs. From web design to digital marketing, we've got you covered.
             </p>
           </div>
 
@@ -132,51 +135,58 @@ export default function Home() {
                 icon: Code2,
                 title: "Website Design & Development",
                 description: "Custom business websites, corporate sites, landing pages, and responsive design solutions tailored to your brand.",
-                features: ["Business Websites", "Corporate Sites", "Landing Pages", "Custom Solutions", "Responsive Design"]
+                features: ["Business Websites", "Corporate Sites", "Landing Pages", "Custom Solutions", "Responsive Design"],
+                gradient: "from-blue-500 to-blue-600"
               },
               {
                 icon: Zap,
                 title: "Website Management & Maintenance",
                 description: "Keep your website running smoothly with regular updates, security monitoring, and performance optimization.",
-                features: ["Regular Updates", "Security Backups", "Performance Monitoring", "Security Enhancements", "Speed Optimization"]
+                features: ["Regular Updates", "Security Backups", "Performance Monitoring", "Security Enhancements", "Speed Optimization"],
+                gradient: "from-purple-500 to-purple-600"
               },
               {
                 icon: BarChart3,
                 title: "POS System Solutions",
                 description: "Streamline your business operations with our comprehensive point-of-sale systems.",
-                features: ["Billing System", "Inventory Management", "Sales Tracking", "Reports & Analytics", "Customer Management"]
+                features: ["Billing System", "Inventory Management", "Sales Tracking", "Reports & Analytics", "Customer Management"],
+                gradient: "from-indigo-500 to-indigo-600"
               },
               {
                 icon: Search,
                 title: "SEO Services",
                 description: "Boost your online visibility and drive organic traffic with our comprehensive SEO strategies.",
-                features: ["Technical SEO", "On-page SEO", "Keyword Research", "Local SEO", "Speed Optimization"]
+                features: ["Technical SEO", "On-page SEO", "Keyword Research", "Local SEO", "Speed Optimization"],
+                gradient: "from-blue-500 to-cyan-600"
               },
               {
                 icon: Share2,
                 title: "Social Media Marketing",
                 description: "Build your brand presence and engage your audience across all major social platforms.",
-                features: ["Facebook Marketing", "Instagram Marketing", "Brand Awareness", "Lead Generation", "Paid Campaigns"]
+                features: ["Facebook Marketing", "Instagram Marketing", "Brand Awareness", "Lead Generation", "Paid Campaigns"],
+                gradient: "from-pink-500 to-rose-600"
               },
               {
                 icon: Smartphone,
                 title: "Digital Business Solutions",
                 description: "Innovative technology solutions to transform your business operations and customer experience.",
-                features: ["Custom Development", "API Integration", "Cloud Solutions", "Automation", "Consulting"]
+                features: ["Custom Development", "API Integration", "Cloud Solutions", "Automation", "Consulting"],
+                gradient: "from-emerald-500 to-teal-600"
               }
             ].map((service, i) => {
               const Icon = service.icon;
               return (
-                <div key={i} className="card-premium hover-lift group">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
-                    <Icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
+                <div key={i} className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-300">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                  <div className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <ul className="space-y-2">
+                  <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-blue-600 transition-colors">{service.title}</h3>
+                  <p className="text-gray-600 mb-5 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-3">
                     {service.features.map((feature, j) => (
-                      <li key={j} className="text-sm text-gray-600 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                      <li key={j} className="text-sm text-gray-700 flex items-center gap-2">
+                        <div className={`w-2 h-2 bg-gradient-to-r ${service.gradient} rounded-full`}></div>
                         {feature}
                       </li>
                     ))}
@@ -189,30 +199,34 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="section-py bg-white">
+      <section id="process" className="section-py bg-gradient-to-r from-navy-900 via-blue-800 to-blue-600 text-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">Our Process</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A proven methodology to deliver exceptional results
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold">OUR WORKFLOW</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">Our Process</h2>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto font-medium">
+              A proven methodology to deliver exceptional results, from consultation to ongoing support
             </p>
           </div>
 
           <div className="grid md:grid-cols-7 gap-4 items-center">
             {[
-              { step: "1", title: "Consultation", icon: "💬" },
-              { step: "2", title: "Planning", icon: "📋" },
-              { step: "3", title: "Design", icon: "🎨" },
-              { step: "4", title: "Development", icon: "💻" },
-              { step: "5", title: "Testing", icon: "✓" },
-              { step: "6", title: "Launch", icon: "🚀" },
-              { step: "7", title: "Support", icon: "🤝" }
+              { step: "1", title: "Consultation", icon: "💬", desc: "Understand your needs" },
+              { step: "2", title: "Planning", icon: "📋", desc: "Strategic roadmap" },
+              { step: "3", title: "Design", icon: "🎨", desc: "Creative vision" },
+              { step: "4", title: "Development", icon: "💻", desc: "Expert execution" },
+              { step: "5", title: "Testing", icon: "✓", desc: "Quality assurance" },
+              { step: "6", title: "Launch", icon: "🚀", desc: "Go live" },
+              { step: "7", title: "Support", icon: "🤝", desc: "Ongoing care" }
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-3 hover-lift">
+              <div key={i} className="flex flex-col items-center group">
+                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-white/40 transition-all duration-300 group-hover:scale-110 border border-white/30">
                   {item.icon}
                 </div>
-                <p className="text-sm font-medium text-center text-gray-700">{item.title}</p>
+                <p className="text-sm font-bold text-center text-white mb-1">{item.title}</p>
+                <p className="text-xs text-blue-100 text-center">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -220,32 +234,36 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="section-py bg-gray-50">
+      <section id="portfolio" className="section-py bg-gradient-to-b from-gray-50 to-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">Our Portfolio</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Showcase of our successful projects across various industries
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">SHOWCASE</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-navy-900 mb-6">Our Portfolio</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium">
+              Successful projects across diverse industries showcasing our expertise and creativity
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { category: "Business Website", title: "Tech Startup Portal", image: "Business Website" },
-              { category: "E-commerce Store", title: "Fashion Retail Platform", image: "E-commerce Store" },
-              { category: "Restaurant Website", title: "Fine Dining Showcase", image: "Restaurant Website" },
-              { category: "Corporate Website", title: "Enterprise Solutions", image: "Corporate Website" },
-              { category: "POS Dashboard", title: "Retail Management System", image: "POS Dashboard" },
-              { category: "Business Website", title: "Professional Services", image: "Business Website" }
+              { category: "Business Website", title: "Tech Startup Portal", color: "from-blue-400 to-blue-600", icon: "🌐" },
+              { category: "E-commerce Store", title: "Fashion Retail Platform", color: "from-pink-400 to-rose-600", icon: "🛍️" },
+              { category: "Restaurant Website", title: "Fine Dining Showcase", color: "from-orange-400 to-red-600", icon: "🍽️" },
+              { category: "Corporate Website", title: "Enterprise Solutions", color: "from-indigo-400 to-indigo-600", icon: "🏢" },
+              { category: "POS Dashboard", title: "Retail Management System", color: "from-green-400 to-emerald-600", icon: "📊" },
+              { category: "Business Website", title: "Professional Services", color: "from-purple-400 to-purple-600", icon: "💼" }
             ].map((project, i) => (
               <div key={i} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center hover-lift">
-                  <div className="text-center text-white">
-                    <div className="text-4xl mb-2">🎨</div>
-                    <p className="text-lg font-semibold">{project.image}</p>
+                <div className={`relative overflow-hidden rounded-xl mb-4 h-72 bg-gradient-to-br ${project.color} flex items-center justify-center transition-all duration-300 hover:shadow-2xl`}>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                  <div className="text-center text-white relative z-10">
+                    <div className="text-6xl mb-4 group-hover:scale-125 transition-transform duration-300">{project.icon}</div>
+                    <p className="text-xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.title}</p>
                   </div>
                 </div>
-                <p className="text-sm text-blue-600 font-medium mb-1">{project.category}</p>
+                <p className="text-sm text-blue-600 font-bold mb-2 uppercase tracking-wide">{project.category}</p>
                 <h3 className="text-lg font-bold text-navy-900 group-hover:text-blue-600 transition-colors">{project.title}</h3>
               </div>
             ))}
@@ -254,32 +272,36 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section-py bg-white">
+      <section id="testimonials" className="section-py bg-gradient-to-b from-white to-blue-50">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">Client Testimonials</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              What our satisfied clients have to say about working with ShopTech
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">SOCIAL PROOF</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-navy-900 mb-6">Client Testimonials</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium">
+              Real success stories from businesses we've transformed
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Sarah Johnson", role: "CEO, Tech Innovations", text: "ShopTech transformed our online presence completely. Their team is professional, responsive, and delivers exceptional results." },
-              { name: "Michael Chen", role: "Owner, Local Retail Store", text: "The POS system implementation was seamless. Our operations are now more efficient, and we've seen a significant increase in sales." },
-              { name: "Emily Rodriguez", role: "Marketing Director", text: "Their SEO services have been game-changing for our business. We're now ranking on the first page for all our target keywords." },
-              { name: "David Thompson", role: "Founder, E-commerce Startup", text: "Working with ShopTech was the best decision for our business. They understood our vision and executed it perfectly." },
-              { name: "Jessica Lee", role: "Restaurant Owner", text: "The website they built for us is stunning and user-friendly. We've received so many compliments from our customers." },
-              { name: "Robert Martinez", role: "Corporate Manager", text: "Professional, reliable, and results-driven. ShopTech is our go-to partner for all digital solutions." }
+              { name: "Sarah Johnson", role: "CEO, Tech Innovations", text: "ShopTech transformed our online presence completely. Their team is professional, responsive, and delivers exceptional results.", rating: 5 },
+              { name: "Michael Chen", role: "Owner, Local Retail Store", text: "The POS system implementation was seamless. Our operations are now more efficient, and we've seen a significant increase in sales.", rating: 5 },
+              { name: "Emily Rodriguez", role: "Marketing Director", text: "Their SEO services have been game-changing for our business. We're now ranking on the first page for all our target keywords.", rating: 5 },
+              { name: "David Thompson", role: "Founder, E-commerce Startup", text: "Working with ShopTech was the best decision for our business. They understood our vision and executed it perfectly.", rating: 5 },
+              { name: "Jessica Lee", role: "Restaurant Owner", text: "The website they built for us is stunning and user-friendly. We've received so many compliments from our customers.", rating: 5 },
+              { name: "Robert Martinez", role: "Corporate Manager", text: "Professional, reliable, and results-driven. ShopTech is our go-to partner for all digital solutions.", rating: 5 }
             ].map((testimonial, i) => (
-              <div key={i} className="card-premium hover-lift">
+              <div key={i} className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-600 to-purple-600 group-hover:w-2 transition-all duration-300"></div>
                 <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <span key={j} className="text-yellow-400">★</span>
+                  {[...Array(testimonial.rating)].map((_, j) => (
+                    <span key={j} className="text-yellow-400 text-lg">★</span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                <div className="border-t pt-4">
+                <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+                <div className="border-t border-gray-200 pt-4">
                   <p className="font-bold text-navy-900">{testimonial.name}</p>
                   <p className="text-sm text-gray-600">{testimonial.role}</p>
                 </div>
@@ -290,11 +312,14 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="section-py bg-gray-50">
+      <section id="faq" className="section-py bg-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">QUESTIONS</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-navy-900 mb-6">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium">
               Find answers to common questions about our services
             </p>
           </div>
@@ -310,10 +335,10 @@ export default function Home() {
                 { q: "What is your pricing model?", a: "We offer flexible pricing based on your specific needs. We provide customized quotes after understanding your requirements during the consultation." }
               ].map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-lg font-semibold text-navy-900 hover:text-blue-600">
+                  <AccordionTrigger className="text-lg font-semibold text-navy-900 hover:text-blue-600 py-4">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-700">
+                  <AccordionContent className="text-gray-700 pb-4">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -324,95 +349,126 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-py bg-gradient-to-br from-navy-900 to-blue-600 text-white">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-lg text-blue-100 mb-8">
-                Ready to transform your digital presence? Contact us today for a free consultation.
+      <section id="contact" className="section-py bg-gradient-to-br from-navy-900 via-blue-800 to-blue-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mb-48"></div>
+        </div>
+        <div className="container relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div className="animate-slide-in-left">
+              <div className="inline-block mb-4">
+                <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold">LET'S CONNECT</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h2>
+              <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+                Ready to transform your digital presence? Contact us today for a free consultation. Our team is ready to help you achieve your business goals.
               </p>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 flex-shrink-0 mt-1" />
+              <div className="space-y-8">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                    <Mail className="w-6 h-6" />
+                  </div>
                   <div>
-                    <p className="font-semibold mb-1">Email</p>
-                    <a href="mailto:shoptechsystems@gmail.com" className="text-blue-100 hover:text-white transition-colors">
+                    <p className="font-semibold mb-1 text-lg">Email</p>
+                    <a href="mailto:shoptechsystems@gmail.com" className="text-blue-100 hover:text-white transition-colors text-lg">
                       shoptechsystems@gmail.com
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                    <Phone className="w-6 h-6" />
+                  </div>
                   <div>
-                    <p className="font-semibold mb-1">Phone</p>
-                    <p className="text-blue-100">Available 24/7</p>
+                    <p className="font-semibold mb-1 text-lg">Phone</p>
+                    <p className="text-blue-100 text-lg">Available 24/7 for your inquiries</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                    <MapPin className="w-6 h-6" />
+                  </div>
                   <div>
-                    <p className="font-semibold mb-1">Service Area</p>
-                    <p className="text-blue-100">Serving businesses worldwide</p>
+                    <p className="font-semibold mb-1 text-lg">Service Area</p>
+                    <p className="text-blue-100 text-lg">Serving businesses worldwide</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex gap-4 mt-8">
-                <a href="#" className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+              <div className="flex gap-4 mt-12">
+                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <Instagram className="w-5 h-5" />
                 </a>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-8">
-              <form className="space-y-4">
-                <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                <input type="tel" placeholder="Your Phone" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                <select className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50">
-                  <option value="">Select a Service</option>
-                  <option value="web">Website Design & Development</option>
-                  <option value="maintenance">Website Management</option>
-                  <option value="pos">POS System</option>
-                  <option value="seo">SEO Services</option>
-                  <option value="social">Social Media Marketing</option>
-                  <option value="other">Other</option>
-                </select>
-                <textarea placeholder="Your Message" rows={4} className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
-                <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-semibold py-3">
-                  Send Message
-                </Button>
-              </form>
+            <div className="animate-slide-in-right">
+              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-2xl">
+                <h3 className="text-2xl font-bold mb-8">Send us a Message</h3>
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Your Name</label>
+                    <input type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Your Email</label>
+                    <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Your Phone</label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Select a Service</label>
+                    <select className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300">
+                      <option value="" className="text-gray-900">Select a Service</option>
+                      <option value="web" className="text-gray-900">Website Design & Development</option>
+                      <option value="maintenance" className="text-gray-900">Website Management</option>
+                      <option value="pos" className="text-gray-900">POS System</option>
+                      <option value="seo" className="text-gray-900">SEO Services</option>
+                      <option value="social" className="text-gray-900">Social Media Marketing</option>
+                      <option value="other" className="text-gray-900">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Your Message</label>
+                    <textarea placeholder="Tell us about your project..." rows={4} className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300 resize-none"></textarea>
+                  </div>
+                  <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 text-lg transition-all duration-300 hover:scale-105">
+                    Send Message
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-16">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img src="/manus-storage/shoptech-logo_8c3ddd6b.png" alt="ShopTech Logo" className="h-6 w-6" />
                 <span className="text-lg font-bold">ShopTech</span>
               </div>
-              <p className="text-gray-400">Empowering businesses with smart digital solutions.</p>
+              <p className="text-gray-400 leading-relaxed">Empowering businesses with smart digital solutions. Your trusted partner for digital transformation.</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-bold mb-6 text-lg">Quick Links</h4>
+              <ul className="space-y-3 text-gray-400">
                 <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
@@ -420,8 +476,8 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-bold mb-6 text-lg">Services</h4>
+              <ul className="space-y-3 text-gray-400">
                 <li><a href="#services" className="hover:text-white transition-colors">Web Design</a></li>
                 <li><a href="#services" className="hover:text-white transition-colors">SEO</a></li>
                 <li><a href="#services" className="hover:text-white transition-colors">Social Media</a></li>
@@ -429,10 +485,11 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-bold mb-6 text-lg">Contact</h4>
+              <ul className="space-y-3 text-gray-400">
                 <li><a href="mailto:shoptechsystems@gmail.com" className="hover:text-white transition-colors">shoptechsystems@gmail.com</a></li>
                 <li>Available 24/7</li>
+                <li className="text-sm">Serving businesses worldwide</li>
               </ul>
             </div>
           </div>
