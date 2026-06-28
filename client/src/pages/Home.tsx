@@ -95,22 +95,31 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-navy-900 to-blue-600 rounded-lg p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">Why Choose ShopTech?</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                "Experienced Team of Digital Experts",
-                "Affordable Pricing for All Business Sizes",
-                "Fast Delivery Without Compromising Quality",
-                "Modern, Scalable Solutions",
-                "Secure & Reliable Systems",
-                "Ongoing Support & Maintenance"
-              ].map((feature, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
-                  <span className="text-lg">{feature}</span>
-                </div>
-              ))}
+          <div className="relative overflow-hidden rounded-2xl p-12 text-white bg-gradient-to-br from-blue-600 via-blue-700 to-navy-900 shadow-2xl">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mb-48"></div>
+            </div>
+            <div className="relative z-10">
+              <div className="inline-block mb-6 bg-white/20 px-4 py-2 rounded-full">
+                <span className="text-sm font-semibold text-white">WHY CHOOSE US</span>
+              </div>
+              <h3 className="text-4xl font-bold mb-10">Why Choose ShopTech?</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                {[
+                  { icon: "🚀", feature: "Experienced Team of Digital Experts" },
+                  { icon: "💰", feature: "Affordable Pricing for All Business Sizes" },
+                  { icon: "⚡", feature: "Fast Delivery Without Compromising Quality" },
+                  { icon: "🔧", feature: "Modern, Scalable Solutions" },
+                  { icon: "🔒", feature: "Secure & Reliable Systems" },
+                  { icon: "🤝", feature: "Ongoing Support & Maintenance" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 group">
+                    <div className="text-3xl flex-shrink-0 group-hover:scale-125 transition-transform duration-300">{item.icon}</div>
+                    <span className="text-lg font-medium leading-relaxed group-hover:text-blue-100 transition-colors">{item.feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -414,24 +423,25 @@ export default function Home() {
             </div>
 
             <div className="animate-slide-in-right">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-2xl">
-                <h3 className="text-2xl font-bold mb-8">Send us a Message</h3>
+              <div className="bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-2xl rounded-2xl p-10 border border-white/40 shadow-2xl hover:border-white/60 transition-all duration-300">
+                <h3 className="text-3xl font-bold mb-2 text-white">Send us a Message</h3>
+                <p className="text-blue-100 mb-8 text-sm">We'll get back to you within 24 hours</p>
                 <form className="space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Your Name</label>
-                    <input type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                    <label className="block text-sm font-semibold mb-2 text-white">Your Name</label>
+                    <input type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 border border-white/40 transition-all duration-300 hover:bg-white/25 focus:bg-white/30" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Your Email</label>
-                    <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                    <label className="block text-sm font-semibold mb-2 text-white">Your Email</label>
+                    <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 border border-white/40 transition-all duration-300 hover:bg-white/25 focus:bg-white/30" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Your Phone</label>
-                    <input type="tel" placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300" />
+                    <label className="block text-sm font-semibold mb-2 text-white">Your Phone</label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 border border-white/40 transition-all duration-300 hover:bg-white/25 focus:bg-white/30" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Select a Service</label>
-                    <select className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300">
+                    <label className="block text-sm font-semibold mb-2 text-white">Select a Service</label>
+                    <select className="w-full px-4 py-3 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/80 border border-white/40 transition-all duration-300 hover:bg-white/25 focus:bg-white/30">
                       <option value="" className="text-gray-900">Select a Service</option>
                       <option value="web" className="text-gray-900">Website Design & Development</option>
                       <option value="maintenance" className="text-gray-900">Website Management</option>
@@ -442,10 +452,10 @@ export default function Home() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Your Message</label>
-                    <textarea placeholder="Tell us about your project..." rows={4} className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 transition-all duration-300 resize-none"></textarea>
+                    <label className="block text-sm font-semibold mb-2 text-white">Your Message</label>
+                    <textarea placeholder="Tell us about your project..." rows={4} className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 border border-white/40 transition-all duration-300 hover:bg-white/25 focus:bg-white/30 resize-none"></textarea>
                   </div>
-                  <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 text-lg transition-all duration-300 hover:scale-105">
+                  <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 text-lg transition-all duration-300 hover:scale-105 shadow-lg">
                     Send Message
                   </Button>
                 </form>
