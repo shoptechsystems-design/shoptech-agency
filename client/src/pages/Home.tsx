@@ -374,58 +374,58 @@ export default function Home() {
                 Ready to transform your digital presence? Contact us today for a free consultation. Our team is ready to help you achieve your business goals.
               </p>
 
-              <div className="space-y-8">
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                    <Mail className="w-6 h-6" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 group p-6 rounded-xl bg-white/15 border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                  <div className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 rounded-lg flex items-center justify-center group-hover:from-white/60 group-hover:to-white/40 transition-all duration-300 flex-shrink-0">
+                    <Mail className="w-7 h-7" />
                   </div>
                   <div>
-                    <p className="font-semibold mb-1 text-lg">Email</p>
-                    <a href="mailto:shoptechsystems@gmail.com" className="text-blue-100 hover:text-white transition-colors text-lg">
+                    <p className="font-bold mb-2 text-lg text-white">Email</p>
+                    <a href="mailto:shoptechsystems@gmail.com" className="text-blue-100 hover:text-white transition-colors text-base font-medium">
                       shoptechsystems@gmail.com
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                    <Phone className="w-6 h-6" />
+                <div className="flex items-start gap-4 group p-6 rounded-xl bg-white/15 border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                  <div className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 rounded-lg flex items-center justify-center group-hover:from-white/60 group-hover:to-white/40 transition-all duration-300 flex-shrink-0">
+                    <Phone className="w-7 h-7" />
                   </div>
                   <div>
-                    <p className="font-semibold mb-1 text-lg">Phone</p>
-                    <p className="text-blue-100 text-lg">Available 24/7 for your inquiries</p>
+                    <p className="font-bold mb-2 text-lg text-white">Phone</p>
+                    <p className="text-blue-100 text-base font-medium">Available 24/7 for your inquiries</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                    <MapPin className="w-6 h-6" />
+                <div className="flex items-start gap-4 group p-6 rounded-xl bg-white/15 border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                  <div className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 rounded-lg flex items-center justify-center group-hover:from-white/60 group-hover:to-white/40 transition-all duration-300 flex-shrink-0">
+                    <MapPin className="w-7 h-7" />
                   </div>
                   <div>
-                    <p className="font-semibold mb-1 text-lg">Service Area</p>
-                    <p className="text-blue-100 text-lg">Serving businesses worldwide</p>
+                    <p className="font-bold mb-2 text-lg text-white">Service Area</p>
+                    <p className="text-blue-100 text-base font-medium">Serving businesses worldwide</p>
                   </div>
                 </div>
               </div>
 
               <div className="flex gap-4 mt-12">
-                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <Facebook className="w-5 h-5" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 hover:from-white/60 hover:to-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 border border-white/30 hover:border-white/50 shadow-lg">
+                  <Facebook className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <Twitter className="w-5 h-5" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 hover:from-white/60 hover:to-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 border border-white/30 hover:border-white/50 shadow-lg">
+                  <Twitter className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <Linkedin className="w-5 h-5" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 hover:from-white/60 hover:to-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 border border-white/30 hover:border-white/50 shadow-lg">
+                  <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <Instagram className="w-5 h-5" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-br from-white/40 to-white/20 hover:from-white/60 hover:to-white/40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 border border-white/30 hover:border-white/50 shadow-lg">
+                  <Instagram className="w-6 h-6" />
                 </a>
               </div>
             </div>
 
             <div className="animate-slide-in-right">
-              <div className="bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-2xl rounded-2xl p-10 border border-white/40 shadow-2xl hover:border-white/60 transition-all duration-300">
-                <h3 className="text-3xl font-bold mb-2 text-white">Send us a Message</h3>
-                <p className="text-blue-100 mb-8 text-sm">We'll get back to you within 24 hours</p>
+              <div className="bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-2xl rounded-2xl p-12 border-2 border-white/50 shadow-2xl hover:border-white/70 transition-all duration-300">
+                <h3 className="text-4xl font-bold mb-3 text-white">Send us a Message</h3>
+                <p className="text-blue-100 mb-10 text-base font-medium">We'll get back to you within 24 hours</p>
                 <form className="space-y-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-white">Your Name</label>
