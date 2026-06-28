@@ -231,11 +231,11 @@ export default function Home() {
               { step: "7", title: "Support", icon: "🤝", desc: "Ongoing care" }
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center group">
-                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-white/40 transition-all duration-300 group-hover:scale-110 border border-white/30">
+                <div className="w-24 h-24 bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-4xl mb-4 group-hover:from-white/60 group-hover:to-white/40 transition-all duration-300 group-hover:scale-125 border-2 border-white/50 shadow-xl group-hover:shadow-2xl">
                   {item.icon}
                 </div>
-                <p className="text-sm font-bold text-center text-white mb-1">{item.title}</p>
-                <p className="text-xs text-blue-100 text-center">{item.desc}</p>
+                <p className="text-sm font-bold text-center text-white mb-2 group-hover:text-blue-100 transition-colors">{item.title}</p>
+                <p className="text-xs text-blue-100 text-center leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -366,11 +366,11 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div className="animate-slide-in-left">
-              <div className="inline-block mb-4">
-                <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold">LET'S CONNECT</span>
+              <div className="inline-block mb-6 bg-white/20 px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
+                <span className="text-sm font-semibold text-white">LET'S CONNECT</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Get In Touch</h2>
+              <p className="text-xl text-blue-100 mb-10 leading-relaxed font-medium">
                 Ready to transform your digital presence? Contact us today for a free consultation. Our team is ready to help you achieve your business goals.
               </p>
 
