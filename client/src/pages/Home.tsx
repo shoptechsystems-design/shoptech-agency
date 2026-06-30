@@ -369,7 +369,7 @@ export default function Home() {
               <div className="inline-block mb-6 bg-white/20 px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
                 <span className="text-sm font-semibold text-white">LET'S CONNECT</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Get In Touch</h2>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">Get In Touch</h2>
               <p className="text-xl text-blue-100 mb-10 leading-relaxed font-medium">
                 Ready to transform your digital presence? Contact us today for a free consultation. Our team is ready to help you achieve your business goals.
               </p>
