@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "DispatchFlow",
+    "category": "Dispatch Software",
+    "description": "A dispatch and routing platform that matches businesses with the best software for their fleet, delivery, and field service needs.",
+    "image": "https://image.thum.io/get/fullpage/https://dispatchflow.shoptechsystems.online/",
+    "link": "https://dispatchflow.shoptechsystems.online/",
+    "technologies": ["React", "Routing", "Fleet Management"],
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Lux Barber Shop",
+    "category": "Barbershop Website",
+    "description": "A premium barbershop website for bookings, services, pricing, and brand presentation.",
+    "image": "https://image.thum.io/get/fullpage/https://luxbarbershop-yisfzkbk.manus.space/",
+    "link": "https://luxbarbershop-yisfzkbk.manus.space/",
+    "technologies": ["React", "Booking", "Salon"],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Premium Wash",
+    "category": "Car Wash Website",
+    "description": "A polished car wash website for service listings, online booking, and brand trust.",
+    "image": "https://image.thum.io/get/fullpage/https://premiumwash-6maznp4x.manus.space/",
+    "link": "https://premiumwash-6maznp4x.manus.space/",
+    "technologies": ["React", "Booking", "Auto Care"],
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Luxe Hair",
+    "category": "Salon Website",
+    "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
+    "image": "https://image.thum.io/get/fullpage/https://luxehair-alwt7vc6.manus.space/",
+    "link": "https://luxehair-alwt7vc6.manus.space/",
+    "technologies": ["React", "Booking", "Beauty"],
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "OmniPOS",
+    "category": "POS + Mobile App",
+    "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
+    "image": "https://image.thum.io/get/fullpage/https://omnipos-hjcb6uyk.manus.space/",
+    "link": "https://omnipos-hjcb6uyk.manus.space/",
+    "technologies": ["React", "Mobile App", "POS"],
+    "featured": true
+  },
+  {
+    "id": 6,
+    "title": "FoodPoint",
+    "category": "Restaurant / Food Ordering",
+    "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
+    "image": "https://image.thum.io/get/fullpage/https://foodpoint-gf79swsg.manus.space/",
+    "link": "https://foodpoint-gf79swsg.manus.space/",
+    "technologies": ["React", "Ordering", "Restaurant"],
+    "featured": true
+  },
+  {
+    "id": 7,
+    "title": "CallAgentHub",
+    "category": "AI Calling Platform",
+    "description": "A call agent platform for managing automated calling workflows, lead handling, and live voice operations.",
+    "image": "https://image.thum.io/get/fullpage/https://callagenthub-nqokzdgy.manus.space/",
+    "link": "https://callagenthub-nqokzdgy.manus.space/",
+    "technologies": ["React", "Voice AI", "Automation"],
+    "featured": true
+  },
+  {
+    "id": 8,
+    "title": "NexaCRM",
+    "category": "CRM / Sales Platform",
+    "description": "A modern CRM platform for managing leads, customer relationships, and sales workflows.",
+    "image": "https://image.thum.io/get/fullpage/https://nexacrm-kyrryaxf.manus.space/",
+    "link": "https://nexacrm-kyrryaxf.manus.space/",
+    "technologies": ["React", "CRM", "Sales"],
+    "featured": true
+  }
+]

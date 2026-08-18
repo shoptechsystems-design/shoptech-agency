@@ -7,6 +7,7 @@ import {
   Globe, ShoppingBag, UtensilsCrossed, Building2, LineChart, Briefcase, Clock, BadgeCheck, Gauge,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import projects from "../data/projects.json";
 
 /* ---------- Small building blocks ---------- */
 
@@ -425,36 +426,40 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { category: "Business Website", title: "Tech Startup Portal", icon: Globe, color: "from-blue-500 to-indigo-600" },
-              { category: "E-commerce Store", title: "Fashion Retail Platform", icon: ShoppingBag, color: "from-rose-500 to-pink-600" },
-              { category: "Restaurant Website", title: "Fine Dining Showcase", icon: UtensilsCrossed, color: "from-orange-500 to-red-600" },
-              { category: "Corporate Website", title: "Enterprise Solutions", icon: Building2, color: "from-indigo-500 to-violet-600" },
-              { category: "POS Dashboard", title: "Retail Management System", icon: LineChart, color: "from-emerald-500 to-teal-600" },
-              { category: "Business Website", title: "Professional Services", icon: Briefcase, color: "from-sky-500 to-blue-600" },
-            ].map((project) => {
-              const Icon = project.icon;
-              return (
-                <div
-                  key={project.title}
-                  className="group cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className={`relative flex h-52 items-center justify-center bg-gradient-to-br ${project.color}`}>
-                    <div className="bg-grid absolute inset-0 opacity-20" />
-                    <Icon className="h-16 w-16 text-white/90 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">{project.category}</p>
-                    <h3 className="mt-1.5 text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600">
-                      {project.title}
-                    </h3>
+            {projects.map((project) => (
+              <a
+                key={project.id}
+                href={project.link || "#"}
+                target={project.link ? "_blank" : undefined}
+                rel={project.link ? "noopener noreferrer" : undefined}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="relative h-48 overflow-hidden bg-slate-200">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">{project.category}</p>
+                  <h3 className="mt-1.5 text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-slate-600">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
+              </a>
+            ))}
           </div>
         </div>
       </section>
