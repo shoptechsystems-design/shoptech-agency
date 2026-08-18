@@ -78,5 +78,15 @@
     "link": "https://nexacrm-kyrryaxf.manus.space/",
     "technologies": ["React", "CRM", "Sales"],
     "featured": true
+  },
+  {
+    "id": 9,
+    "title": "Money Map",
+    "category": "Landing Page",
+    "description": "A conversion-focused landing page for presenting a finance product and capturing qualified leads.",
+    "image": "https://image.thum.io/get/fullpage/https://money-map-landing.vercel.app/",
+    "link": "https://money-map-landing.vercel.app/",
+    "technologies": ["Landing Page", "Finance", "Conversion"],
+    "featured": true
   }
 ]
