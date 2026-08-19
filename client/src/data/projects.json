@@ -98,5 +98,15 @@
     "link": "https://rentacar-souksudf.manus.space/",
     "technologies": ["Rental", "Vehicles", "Reservations"],
     "featured": true
+  },
+  {
+    "id": 11,
+    "title": "Striving 4 Jannah",
+    "category": "Community Website",
+    "description": "A purpose-driven community website for sharing content, resources, and faith-focused engagement.",
+    "image": "https://image.thum.io/get/fullpage/https://striving-for-jannah.lovable.app/",
+    "link": "https://striving-for-jannah.lovable.app/",
+    "technologies": ["Community", "Content", "Engagement"],
+    "featured": true
   }
 ]
