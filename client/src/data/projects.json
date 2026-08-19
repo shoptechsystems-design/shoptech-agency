@@ -108,5 +108,15 @@
     "link": "https://striving-for-jannah.lovable.app/",
     "technologies": ["Community", "Content", "Engagement"],
     "featured": true
+  },
+  {
+    "id": 12,
+    "title": "Lumiere Spa",
+    "category": "Spa Website",
+    "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
+    "image": "https://image.thum.io/get/fullpage/https://lumierespa-q3fzzqy6.manus.space/",
+    "link": "https://lumierespa-q3fzzqy6.manus.space/",
+    "technologies": ["Wellness", "Booking", "Luxury"],
+    "featured": true
   }
 ]
