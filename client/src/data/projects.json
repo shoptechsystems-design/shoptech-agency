@@ -88,5 +88,15 @@
     "link": "https://money-map-landing.vercel.app/",
     "technologies": ["Landing Page", "Finance", "Conversion"],
     "featured": true
+  },
+  {
+    "id": 10,
+    "title": "RentAcar",
+    "category": "Car Rental Website",
+    "description": "A car rental website for browsing vehicles, checking availability, and reserving a ride online.",
+    "image": "https://image.thum.io/get/fullpage/https://rentacar-souksudf.manus.space/",
+    "link": "https://rentacar-souksudf.manus.space/",
+    "technologies": ["Rental", "Vehicles", "Reservations"],
+    "featured": true
   }
 ]
