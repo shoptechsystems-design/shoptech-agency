@@ -118,5 +118,15 @@
     "link": "https://lumierespa-q3fzzqy6.manus.space/",
     "technologies": ["Wellness", "Booking", "Luxury"],
     "featured": true
+  },
+  {
+    "id": 13,
+    "title": "PDF Editor",
+    "category": "Document Editing Tool",
+    "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
+    "image": "https://image.thum.io/get/fullpage/https://pdfeditor-gowkpq4q.manus.space/",
+    "link": "https://pdfeditor-gowkpq4q.manus.space/",
+    "technologies": ["Documents", "Editing", "Workflow"],
+    "featured": true
   }
 ]
