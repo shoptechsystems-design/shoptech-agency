@@ -128,5 +128,15 @@
     "link": "https://pdfeditor-gowkpq4q.manus.space/",
     "technologies": ["Documents", "Editing", "Workflow"],
     "featured": true
+  },
+  {
+    "id": 14,
+    "title": "ClassiMarket",
+    "category": "Marketplace Website",
+    "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
+    "image": "https://image.thum.io/get/fullpage/https://classimarket-qpgfp8tr.manus.space/",
+    "link": "https://classimarket-qpgfp8tr.manus.space/",
+    "technologies": ["Marketplace", "Listings", "Commerce"],
+    "featured": true
   }
 ]
