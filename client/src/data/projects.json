@@ -120,6 +120,16 @@
     "featured": true
   },
   {
+    "id": 13,
+    "title": "InvoiceSTD",
+    "category": "Invoicing Platform",
+    "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
+    "image": "https://image.thum.io/get/fullpage/https://invoicestd-chk9yekr.manus.space/",
+    "link": "https://invoicestd-chk9yekr.manus.space/",
+    "technologies": ["Invoices", "Billing", "Workflow"],
+    "featured": true
+  },
+  {
     "id": 14,
     "title": "ClassiMarket",
     "category": "Marketplace Website",
