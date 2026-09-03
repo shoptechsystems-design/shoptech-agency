@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   ArrowRight, ArrowUpRight, Check, Code2, Zap, Shield, Users, TrendingUp, Smartphone,
-  Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram,
+  Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Linkedin, Instagram,
   ChevronUp, Sparkles, MessageSquare, ClipboardList, Palette, Rocket, Wrench, Menu, X, Star,
   Globe, ShoppingBag, UtensilsCrossed, Building2, LineChart, Briefcase, Clock, BadgeCheck, Gauge,
 } from "lucide-react";
@@ -593,11 +593,18 @@ export default function Home() {
               </div>
 
               <div className="mt-8 flex gap-3">
-                {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+                {[
+                  { Icon: Facebook, href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/" },
+                  { Icon: Instagram, href: "https://www.instagram.com/shoptechsystems/" },
+                  { Icon: Linkedin, href: "https://www.linkedin.com/company/shoptech-systems/" },
+                ].map(({ Icon, href }) => (
                   <a
-                    key={i}
-                    href="#"
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
+                    aria-label={href}
                   >
                     <Icon className="h-5 w-5" />
                   </a>
@@ -658,8 +665,19 @@ export default function Home() {
                 Empowering businesses with smart digital solutions. Your trusted partner for digital transformation.
               </p>
               <div className="mt-6 flex gap-3">
-                {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                  <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                {[
+                  { Icon: Facebook, href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/" },
+                  { Icon: Instagram, href: "https://www.instagram.com/shoptechsystems/" },
+                  { Icon: Linkedin, href: "https://www.linkedin.com/company/shoptech-systems/" },
+                ].map(({ Icon, href }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+                    aria-label={href}
+                  >
                     <Icon className="h-4 w-4" />
                   </a>
                 ))}
