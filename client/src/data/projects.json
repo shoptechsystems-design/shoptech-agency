@@ -148,5 +148,15 @@
     "link": "https://pdfeditor-gowkpq4q.manus.space/",
     "technologies": ["Documents", "Editing", "Workflow"],
     "featured": true
+  },
+  {
+    "id": 16,
+    "title": "PharmaFlow",
+    "category": "Pharmacy Management Platform",
+    "description": "A pharmacy management platform for organizing medicines, inventory, prescriptions, and daily shop operations.",
+    "image": "https://image.thum.io/get/fullpage/https://pharmaflow-emaxcwfn.manus.space/",
+    "link": "https://pharmaflow-emaxcwfn.manus.space/",
+    "technologies": ["Pharmacy", "Inventory", "Prescriptions"],
+    "featured": true
   }
 ]
