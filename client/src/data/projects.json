@@ -158,5 +158,15 @@
     "link": "https://pharmaflow-emaxcwfn.manus.space/",
     "technologies": ["Pharmacy", "Inventory", "Prescriptions"],
     "featured": true
+  },
+  {
+    "id": 17,
+    "title": "SafaShop",
+    "category": "E-commerce Website",
+    "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
+    "image": "https://image.thum.io/get/fullpage/https://safashop-5ykemcjq.manus.space/",
+    "link": "https://safashop-5ykemcjq.manus.space/",
+    "technologies": ["E-commerce", "Products", "Shopping"],
+    "featured": true
   }
 ]
