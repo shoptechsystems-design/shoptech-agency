@@ -168,5 +168,15 @@
     "link": "https://safashop-5ykemcjq.manus.space/",
     "technologies": ["E-commerce", "Products", "Shopping"],
     "featured": true
+  },
+  {
+    "id": 18,
+    "title": "Janaab Store",
+    "category": "E-commerce Website",
+    "description": "A polished online store designed to showcase products, guide customers through browsing, and support a smooth shopping experience.",
+    "image": "https://image.thum.io/get/fullpage/http://janaab.store/",
+    "link": "http://janaab.store/",
+    "technologies": ["E-commerce", "Products", "Shopping"],
+    "featured": true
   }
 ]
