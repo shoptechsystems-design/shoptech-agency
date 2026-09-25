@@ -188,6 +188,15 @@
     "link": "https://schoolerp-hgjlp7ss.manus.space/?code=LvrawnFpqRs4qnBfGKvz6j",
     "technologies": ["School ERP", "Admissions", "Student Management"],
     "featured": true
+  },
+  {
+    "id": 20,
+    "title": "Dispatch 5 Services",
+    "category": "Freight Dispatching / Logistics",
+    "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
+    "image": "/dispatch5.png",
+    "link": "https://dispatch5-sx3pnxtg.manus.space/",
+    "technologies": ["Freight Dispatch", "Logistics", "Carrier Support"],
+    "featured": true
   }
 ]
-
