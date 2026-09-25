@@ -4,7 +4,7 @@ import {
   ArrowRight, ArrowUpRight, Check, Code2, Zap, Shield, Users, TrendingUp, Smartphone,
   Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Linkedin, Instagram,
   ChevronUp, Sparkles, MessageSquare, ClipboardList, Palette, Rocket, Wrench, Menu, X, Star,
-  Globe, ShoppingBag, UtensilsCrossed, Building2, LineChart, Briefcase, Clock, BadgeCheck, Gauge,
+  LineChart, Clock, BadgeCheck, Gauge,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import projects from "../data/projects.json";
