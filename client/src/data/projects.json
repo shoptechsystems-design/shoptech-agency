@@ -4,9 +4,13 @@
     "title": "DispatchFlow",
     "category": "Dispatch Software",
     "description": "A dispatch and routing platform that matches businesses with the best software for their fleet, delivery, and field service needs.",
-    "image": "https://image.thum.io/get/fullpage/https://dispatchflow.shoptechsystems.online/",
+    "image": "/projects/dispatchflow.png",
     "link": "https://dispatchflow.shoptechsystems.online/",
-    "technologies": ["Routing", "Fleet Management", "Dispatch"],
+    "technologies": [
+      "Routing",
+      "Fleet Management",
+      "Dispatch"
+    ],
     "featured": true
   },
   {
@@ -14,9 +18,13 @@
     "title": "Lux Barber Shop",
     "category": "Barbershop Website",
     "description": "A premium barbershop website for bookings, services, pricing, and brand presentation.",
-    "image": "https://image.thum.io/get/fullpage/https://luxbarbershop-yisfzkbk.manus.space/",
+    "image": "/projects/luxbarbershop.png",
     "link": "https://luxbarbershop-yisfzkbk.manus.space/",
-    "technologies": ["Booking", "Salon", "Appointments"],
+    "technologies": [
+      "Booking",
+      "Salon",
+      "Appointments"
+    ],
     "featured": true
   },
   {
@@ -24,9 +32,13 @@
     "title": "Premium Wash",
     "category": "Car Wash Website",
     "description": "A polished car wash website for service listings, online booking, and brand trust.",
-    "image": "https://image.thum.io/get/fullpage/https://premiumwash-6maznp4x.manus.space/",
+    "image": "/projects/premiumwash.png",
     "link": "https://premiumwash-6maznp4x.manus.space/",
-    "technologies": ["Booking", "Auto Care", "Service Listings"],
+    "technologies": [
+      "Booking",
+      "Auto Care",
+      "Service Listings"
+    ],
     "featured": true
   },
   {
@@ -34,9 +46,13 @@
     "title": "Luxe Hair",
     "category": "Salon Website",
     "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
-    "image": "https://image.thum.io/get/fullpage/https://luxehair-alwt7vc6.manus.space/",
+    "image": "/projects/luxehair.png",
     "link": "https://luxehair-alwt7vc6.manus.space/",
-    "technologies": ["Booking", "Beauty", "Appointments"],
+    "technologies": [
+      "Booking",
+      "Beauty",
+      "Appointments"
+    ],
     "featured": true
   },
   {
@@ -44,9 +60,13 @@
     "title": "OmniPOS",
     "category": "POS + Mobile App",
     "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
-    "image": "https://image.thum.io/get/fullpage/https://omnipos-hjcb6uyk.manus.space/",
+    "image": "/projects/omnipos.png",
     "link": "https://omnipos-hjcb6uyk.manus.space/",
-    "technologies": ["Mobile App", "POS", "Retail"],
+    "technologies": [
+      "Mobile App",
+      "POS",
+      "Retail"
+    ],
     "featured": true
   },
   {
@@ -54,9 +74,13 @@
     "title": "FoodPoint",
     "category": "Restaurant / Food Ordering",
     "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
-    "image": "https://image.thum.io/get/fullpage/https://foodpoint-gf79swsg.manus.space/",
+    "image": "/projects/foodpoint.png",
     "link": "https://foodpoint-gf79swsg.manus.space/",
-    "technologies": ["Ordering", "Restaurant", "Menu"],
+    "technologies": [
+      "Ordering",
+      "Restaurant",
+      "Menu"
+    ],
     "featured": true
   },
   {
@@ -64,9 +88,13 @@
     "title": "CallAgentHub",
     "category": "AI Calling Platform",
     "description": "A call agent platform for managing automated calling workflows, lead handling, and live voice operations.",
-    "image": "https://image.thum.io/get/fullpage/https://callagenthub-nqokzdgy.manus.space/",
+    "image": "/projects/callagenthub.png",
     "link": "https://callagenthub-nqokzdgy.manus.space/",
-    "technologies": ["Voice AI", "Automation", "Lead Handling"],
+    "technologies": [
+      "Voice AI",
+      "Automation",
+      "Lead Handling"
+    ],
     "featured": true
   },
   {
@@ -74,9 +102,13 @@
     "title": "NexaCRM",
     "category": "CRM / Sales Platform",
     "description": "A modern CRM platform for managing leads, customer relationships, and sales workflows.",
-    "image": "https://image.thum.io/get/fullpage/https://nexacrm-kyrryaxf.manus.space/",
+    "image": "/projects/nexacrm.png",
     "link": "https://nexacrm-kyrryaxf.manus.space/",
-    "technologies": ["CRM", "Sales", "Lead Management"],
+    "technologies": [
+      "CRM",
+      "Sales",
+      "Lead Management"
+    ],
     "featured": true
   },
   {
@@ -84,9 +116,13 @@
     "title": "Money Map",
     "category": "Landing Page",
     "description": "A conversion-focused landing page for presenting a finance product and capturing qualified leads.",
-    "image": "https://image.thum.io/get/fullpage/https://money-map-landing.vercel.app/",
+    "image": "/projects/moneymap.png",
     "link": "https://money-map-landing.vercel.app/",
-    "technologies": ["Landing Page", "Finance", "Conversion"],
+    "technologies": [
+      "Landing Page",
+      "Finance",
+      "Conversion"
+    ],
     "featured": true
   },
   {
@@ -94,9 +130,13 @@
     "title": "RentAcar",
     "category": "Car Rental Website",
     "description": "A car rental website for browsing vehicles, checking availability, and reserving a ride online.",
-    "image": "https://image.thum.io/get/fullpage/https://rentacar-souksudf.manus.space/",
+    "image": "/projects/rentacar.png",
     "link": "https://rentacar-souksudf.manus.space/",
-    "technologies": ["Rental", "Vehicles", "Reservations"],
+    "technologies": [
+      "Rental",
+      "Vehicles",
+      "Reservations"
+    ],
     "featured": true
   },
   {
@@ -104,9 +144,13 @@
     "title": "Striving 4 Jannah",
     "category": "Community Website",
     "description": "A purpose-driven community website for sharing content, resources, and faith-focused engagement.",
-    "image": "https://image.thum.io/get/fullpage/https://striving-for-jannah.lovable.app/",
+    "image": "/projects/striving4jannah.png",
     "link": "https://striving-for-jannah.lovable.app/",
-    "technologies": ["Community", "Content", "Engagement"],
+    "technologies": [
+      "Community",
+      "Content",
+      "Engagement"
+    ],
     "featured": true
   },
   {
@@ -114,9 +158,13 @@
     "title": "Lumiere Spa",
     "category": "Spa Website",
     "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
-    "image": "https://image.thum.io/get/fullpage/https://lumierespa-q3fzzqy6.manus.space/",
+    "image": "/projects/lumierespa.png",
     "link": "https://lumierespa-q3fzzqy6.manus.space/",
-    "technologies": ["Wellness", "Booking", "Luxury"],
+    "technologies": [
+      "Wellness",
+      "Booking",
+      "Luxury"
+    ],
     "featured": true
   },
   {
@@ -124,9 +172,13 @@
     "title": "InvoiceSTD",
     "category": "Invoicing Platform",
     "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
-    "image": "https://image.thum.io/get/fullpage/https://invoicestd-chk9yekr.manus.space/",
+    "image": "/projects/invoicestd.png",
     "link": "https://invoicestd-chk9yekr.manus.space/",
-    "technologies": ["Invoices", "Billing", "Workflow"],
+    "technologies": [
+      "Invoices",
+      "Billing",
+      "Workflow"
+    ],
     "featured": true
   },
   {
@@ -134,9 +186,13 @@
     "title": "ClassiMarket",
     "category": "Marketplace Website",
     "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
-    "image": "https://image.thum.io/get/fullpage/https://classimarket-qpgfp8tr.manus.space/",
+    "image": "/projects/classimarket.png",
     "link": "https://classimarket-qpgfp8tr.manus.space/",
-    "technologies": ["Marketplace", "Listings", "Commerce"],
+    "technologies": [
+      "Marketplace",
+      "Listings",
+      "Commerce"
+    ],
     "featured": true
   },
   {
@@ -144,9 +200,13 @@
     "title": "PDF Editor",
     "category": "Document Editing Tool",
     "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
-    "image": "https://image.thum.io/get/fullpage/https://pdfeditor-gowkpq4q.manus.space/",
+    "image": "/projects/pdfeditor.png",
     "link": "https://pdfeditor-gowkpq4q.manus.space/",
-    "technologies": ["Documents", "Editing", "Workflow"],
+    "technologies": [
+      "Documents",
+      "Editing",
+      "Workflow"
+    ],
     "featured": true
   },
   {
@@ -154,9 +214,13 @@
     "title": "PharmaFlow",
     "category": "Pharmacy Management Platform",
     "description": "A pharmacy management platform for organizing medicines, inventory, prescriptions, and daily shop operations.",
-    "image": "https://image.thum.io/get/fullpage/https://pharmaflow-emaxcwfn.manus.space/",
+    "image": "/projects/pharmaflow.png",
     "link": "https://pharmaflow-emaxcwfn.manus.space/",
-    "technologies": ["Pharmacy", "Inventory", "Prescriptions"],
+    "technologies": [
+      "Pharmacy",
+      "Inventory",
+      "Prescriptions"
+    ],
     "featured": true
   },
   {
@@ -164,9 +228,13 @@
     "title": "SafaShop",
     "category": "E-commerce Website",
     "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
-    "image": "https://image.thum.io/get/fullpage/https://safashop-5ykemcjq.manus.space/",
+    "image": "/projects/safashop.png",
     "link": "https://safashop-5ykemcjq.manus.space/",
-    "technologies": ["E-commerce", "Products", "Shopping"],
+    "technologies": [
+      "E-commerce",
+      "Products",
+      "Shopping"
+    ],
     "featured": true
   },
   {
@@ -174,9 +242,13 @@
     "title": "Janaab Store",
     "category": "E-commerce Website",
     "description": "A polished online store designed to showcase products, guide customers through browsing, and support a smooth shopping experience.",
-    "image": "https://image.thum.io/get/fullpage/http://janaab.store/",
+    "image": "/projects/janaabstore.png",
     "link": "http://janaab.store/",
-    "technologies": ["E-commerce", "Products", "Shopping"],
+    "technologies": [
+      "E-commerce",
+      "Products",
+      "Shopping"
+    ],
     "featured": true
   },
   {
@@ -184,9 +256,13 @@
     "title": "Northstar School ERP",
     "category": "School ERP / Management",
     "description": "A comprehensive school management and ERP platform that unifies student records, admissions, attendance, fees, and campus operations.",
-    "image": "/schoolerp.png",
+    "image": "/projects/schoolerp.png",
     "link": "https://schoolerp-hgjlp7ss.manus.space/?code=LvrawnFpqRs4qnBfGKvz6j",
-    "technologies": ["School ERP", "Admissions", "Student Management"],
+    "technologies": [
+      "School ERP",
+      "Admissions",
+      "Student Management"
+    ],
     "featured": true
   },
   {
@@ -194,9 +270,13 @@
     "title": "Dispatch 5 Services",
     "category": "Freight Dispatching / Logistics",
     "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
-    "image": "/dispatch5.png",
+    "image": "/projects/dispatch5.png",
     "link": "https://dispatch5-sx3pnxtg.manus.space/",
-    "technologies": ["Freight Dispatch", "Logistics", "Carrier Support"],
+    "technologies": [
+      "Freight Dispatch",
+      "Logistics",
+      "Carrier Support"
+    ],
     "featured": true
   }
 ]
