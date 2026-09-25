@@ -178,5 +178,16 @@
     "link": "http://janaab.store/",
     "technologies": ["E-commerce", "Products", "Shopping"],
     "featured": true
+  },
+  {
+    "id": 19,
+    "title": "Northstar School ERP",
+    "category": "School ERP / Management",
+    "description": "A comprehensive school management and ERP platform that unifies student records, admissions, attendance, fees, and campus operations.",
+    "image": "/schoolerp.png",
+    "link": "https://schoolerp-hgjlp7ss.manus.space/?code=LvrawnFpqRs4qnBfGKvz6j",
+    "technologies": ["School ERP", "Admissions", "Student Management"],
+    "featured": true
   }
 ]
+
