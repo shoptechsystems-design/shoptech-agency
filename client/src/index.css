@@ -239,10 +239,37 @@
   }
 
   .section-py {
-    @apply py-20 md:py-28 lg:py-36;
+    @apply py-14 sm:py-20 md:py-28 lg:py-36;
   }
 
   .eyebrow {
     @apply inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-blue-400 backdrop-blur-md;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Mobile Performance & Smooth Scrolling */
+  @media (max-width: 768px) {
+    .glass-panel {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .glass-card {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .glow-orb-blue,
+    .glow-orb-purple,
+    .glow-orb-cyan {
+      opacity: 0.35 !important;
+    }
   }
 }

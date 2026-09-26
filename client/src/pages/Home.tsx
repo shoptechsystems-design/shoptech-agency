@@ -220,7 +220,7 @@ export default function Home() {
             <div className="lg:col-span-7">
               <Eyebrow>Next-Gen Software & Digital Systems</Eyebrow>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="mt-6 text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl sm:leading-[1.08] lg:text-6xl xl:text-7xl">
                 Engineering <br className="hidden sm:block" />
                 <span className="text-gradient-tech">technology</span> that <br className="hidden sm:block" />
                 <span className="text-gradient-cyan">powers modern business</span>.
@@ -331,9 +331,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating 3D Badge 1: Top Right */}
+                {/* Floating 3D Badge 1: Top Right (visible sm+) */}
                 <div
-                  className="animate-float-slow absolute -top-8 -right-6 rounded-2xl border border-cyan-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  className="animate-float-slow absolute -top-8 -right-4 lg:-right-6 hidden sm:flex rounded-2xl border border-cyan-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
                   style={{ transform: "translateZ(60px)" }}
                 >
                   <div className="flex items-center gap-3">
@@ -347,9 +347,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating 3D Badge 2: Bottom Left */}
+                {/* Floating 3D Badge 2: Bottom Left (visible sm+) */}
                 <div
-                  className="animate-float-reverse absolute -bottom-6 -left-6 rounded-2xl border border-purple-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  className="animate-float-reverse absolute -bottom-6 -left-4 lg:-left-6 hidden sm:flex rounded-2xl border border-purple-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
                   style={{ transform: "translateZ(70px)" }}
                 >
                   <div className="flex items-center gap-3">
@@ -382,17 +382,17 @@ export default function Home() {
           </div>
 
           {/* Filter Bar & Search */}
-          <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
+          <div className="mt-10 sm:mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            {/* Category Filter Pills (horizontal scroll on mobile with no scrollbar) */}
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0 sm:flex-wrap">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                  className={`flex-shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer min-h-[36px] ${
                     activeCategory === cat
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]"
-                      : "border border-white/10 bg-slate-900/60 text-slate-400 hover:border-white/20 hover:text-white hover:bg-white/5"
+                      : "border border-white/10 bg-slate-900/60 text-slate-400 hover:border-white/20 hover:text-white hover:bg-white/5 active:bg-white/10"
                   }`}
                 >
                   {cat}
@@ -401,19 +401,19 @@ export default function Home() {
             </div>
 
             {/* Live Search Input */}
-            <div className="relative min-w-[260px] md:w-72">
+            <div className="relative w-full md:w-72">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <input
                 type="text"
                 placeholder="Search platforms, tech..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-full border border-white/10 bg-slate-900/80 py-2 pl-9 pr-4 text-xs font-medium text-white placeholder-slate-500 outline-none backdrop-blur-md transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="w-full rounded-full border border-white/10 bg-slate-900/80 py-2.5 pl-9 pr-4 text-sm sm:text-xs font-medium text-white placeholder-slate-500 outline-none backdrop-blur-md transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs p-1"
                 >
                   ✕
                 </button>
@@ -802,7 +802,7 @@ export default function Home() {
                           required
                           type="text"
                           placeholder="Alex Morgan"
-                          className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                       <div>
@@ -811,12 +811,12 @@ export default function Home() {
                           required
                           type="email"
                           placeholder="alex@company.com"
-                          className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-300">Project Type</label>
-                        <select className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <select className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                           <option>Custom Web Application</option>
                           <option>ERP / Enterprise Management</option>
                           <option>Logistics & Dispatch Software</option>
@@ -827,7 +827,7 @@ export default function Home() {
                       </div>
                       <button
                         type="submit"
-                        className="btn-tech-glow mt-4 w-full rounded-xl py-3 text-xs font-bold text-white tracking-wide cursor-pointer"
+                        className="btn-tech-glow mt-4 min-h-[44px] w-full rounded-xl py-3 text-xs sm:text-sm font-bold text-white tracking-wide cursor-pointer active:scale-[0.99]"
                       >
                         Request Free Consultation
                       </button>
