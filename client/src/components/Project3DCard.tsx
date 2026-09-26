@@ -24,6 +24,7 @@ export function Project3DCard({ project }: Project3DCardProps) {
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isFinePointer, setIsFinePointer] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Check if device supports fine pointer (mouse/trackpad vs touch)
   useEffect(() => {
@@ -81,6 +82,9 @@ export function Project3DCard({ project }: Project3DCardProps) {
     setGlarePos(prev => ({ ...prev, opacity: 0 }));
   };
 
+  const webpSrc = project.image.endsWith('.webp') ? project.image : project.image.replace(/\.png$/, '.webp');
+  const pngFallback = project.image.replace(/\.webp$/, '.png');
+
   return (
     <div
       ref={cardRef}
@@ -122,26 +126,43 @@ export function Project3DCard({ project }: Project3DCardProps) {
         {/* Ambient border glow gradient on hover */}
         <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-blue-500/20 via-transparent to-purple-500/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Image Frame with 3D Pop */}
+        {/* Image Frame with 3D Pop & Skeleton Shimmer */}
         <div
-          className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950/80 transition-transform duration-300"
+          className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950 transition-transform duration-300"
           style={{ transform: isFinePointer ? "translateZ(18px)" : undefined }}
         >
-          <img
-            src={project.image}
-            alt={project.title}
-            width={400}
-            height={208}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "/projects/dispatchflow.png";
-            }}
-          />
+          {/* Skeleton Shimmer while loading */}
+          <div
+            className={`absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-900/90 transition-opacity duration-500 ${
+              imageLoaded ? "opacity-0 pointer-events-none" : "opacity-100 animate-pulse"
+            }`}
+          >
+            <div className="h-6 w-6 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin" />
+            <span className="mt-2 font-mono text-[9px] uppercase tracking-widest text-slate-500">ShopTech Node</span>
+          </div>
+
+          <picture className="block h-full w-full">
+            <source srcSet={webpSrc} type="image/webp" />
+            <img
+              src={pngFallback}
+              alt={project.title}
+              width={400}
+              height={208}
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImageLoaded(true)}
+              className={`h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110 ${
+                imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = "/projects/dispatchflow.png";
+                setImageLoaded(true);
+              }}
+            />
+          </picture>
 
           {/* Vignette & bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-85 pointer-events-none" />
 
           {/* Floating Category Pill */}
           <div className="absolute left-3.5 top-3.5 sm:left-4 sm:top-4 z-20">

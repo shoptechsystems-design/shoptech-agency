@@ -83,6 +83,11 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(9);
+
+  useEffect(() => {
+    setVisibleCount(9);
+  }, [activeCategory, searchQuery]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -137,6 +142,10 @@ export default function Home() {
       return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
+
+  const displayedProjects = useMemo(() => {
+    return filteredProjects.slice(0, visibleCount);
+  }, [filteredProjects, visibleCount]);
 
   return (
     <div className="relative min-h-screen bg-[#060913] text-slate-200 selection:bg-blue-600/30 selection:text-white antialiased overflow-x-hidden">
@@ -467,10 +476,29 @@ export default function Home() {
 
           {/* 3D Tilt Project Cards Grid */}
           <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project) => (
+            {displayedProjects.map((project) => (
               <Project3DCard key={project.id} project={project} />
             ))}
           </div>
+
+          {/* Progressive Loading Action */}
+          {filteredProjects.length > visibleCount && (
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() => setVisibleCount((prev) => Math.min(prev + 6, filteredProjects.length))}
+                className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-xl cursor-pointer active:scale-95"
+              >
+                <span>Load More Platforms ({filteredProjects.length - visibleCount} remaining)</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setVisibleCount(filteredProjects.length)}
+                className="text-xs font-medium text-slate-400 hover:text-white underline underline-offset-4 cursor-pointer py-2"
+              >
+                Show All {filteredProjects.length} Platforms
+              </button>
+            </div>
+          )}
 
           {filteredProjects.length === 0 && (
             <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-12 text-center backdrop-blur-xl">

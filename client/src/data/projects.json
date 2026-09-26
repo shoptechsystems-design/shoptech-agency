@@ -4,7 +4,7 @@
     "title": "DispatchFlow",
     "category": "Dispatch Software",
     "description": "A dispatch and routing platform that matches businesses with the best software for their fleet, delivery, and field service needs.",
-    "image": "/projects/dispatchflow.png",
+    "image": "/projects/dispatchflow.webp",
     "link": "https://dispatchflow.shoptechsystems.online/",
     "technologies": [
       "Routing",
@@ -18,7 +18,7 @@
     "title": "Lux Barber Shop",
     "category": "Barbershop Website",
     "description": "A premium barbershop website for bookings, services, pricing, and brand presentation.",
-    "image": "/projects/luxbarbershop.png",
+    "image": "/projects/luxbarbershop.webp",
     "link": "https://luxbarbershop-yisfzkbk.manus.space/",
     "technologies": [
       "Booking",
@@ -32,7 +32,7 @@
     "title": "Premium Wash",
     "category": "Car Wash Website",
     "description": "A polished car wash website for service listings, online booking, and brand trust.",
-    "image": "/projects/premiumwash.png",
+    "image": "/projects/premiumwash.webp",
     "link": "https://premiumwash-6maznp4x.manus.space/",
     "technologies": [
       "Booking",
@@ -46,7 +46,7 @@
     "title": "Luxe Hair",
     "category": "Salon Website",
     "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
-    "image": "/projects/luxehair.png",
+    "image": "/projects/luxehair.webp",
     "link": "https://luxehair-alwt7vc6.manus.space/",
     "technologies": [
       "Booking",
@@ -60,7 +60,7 @@
     "title": "OmniPOS",
     "category": "POS + Mobile App",
     "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
-    "image": "/projects/omnipos.png",
+    "image": "/projects/omnipos.webp",
     "link": "https://omnipos-hjcb6uyk.manus.space/",
     "technologies": [
       "Mobile App",
@@ -74,7 +74,7 @@
     "title": "FoodPoint",
     "category": "Restaurant / Food Ordering",
     "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
-    "image": "/projects/foodpoint.png",
+    "image": "/projects/foodpoint.webp",
     "link": "https://foodpoint-gf79swsg.manus.space/",
     "technologies": [
       "Ordering",
@@ -88,7 +88,7 @@
     "title": "CallAgentHub",
     "category": "AI Calling Platform",
     "description": "A call agent platform for managing automated calling workflows, lead handling, and live voice operations.",
-    "image": "/projects/callagenthub.png",
+    "image": "/projects/callagenthub.webp",
     "link": "https://callagenthub-nqokzdgy.manus.space/",
     "technologies": [
       "Voice AI",
@@ -102,7 +102,7 @@
     "title": "NexaCRM",
     "category": "CRM / Sales Platform",
     "description": "A modern CRM platform for managing leads, customer relationships, and sales workflows.",
-    "image": "/projects/nexacrm.png",
+    "image": "/projects/nexacrm.webp",
     "link": "https://nexacrm-kyrryaxf.manus.space/",
     "technologies": [
       "CRM",
@@ -116,7 +116,7 @@
     "title": "Money Map",
     "category": "Landing Page",
     "description": "A conversion-focused landing page for presenting a finance product and capturing qualified leads.",
-    "image": "/projects/moneymap.png",
+    "image": "/projects/moneymap.webp",
     "link": "https://money-map-landing.vercel.app/",
     "technologies": [
       "Landing Page",
@@ -130,7 +130,7 @@
     "title": "RentAcar",
     "category": "Car Rental Website",
     "description": "A car rental website for browsing vehicles, checking availability, and reserving a ride online.",
-    "image": "/projects/rentacar.png",
+    "image": "/projects/rentacar.webp",
     "link": "https://rentacar-souksudf.manus.space/",
     "technologies": [
       "Rental",
@@ -144,7 +144,7 @@
     "title": "Striving 4 Jannah",
     "category": "Community Website",
     "description": "A purpose-driven community website for sharing content, resources, and faith-focused engagement.",
-    "image": "/projects/striving4jannah.png",
+    "image": "/projects/striving4jannah.webp",
     "link": "https://striving-for-jannah.lovable.app/",
     "technologies": [
       "Community",
@@ -158,7 +158,7 @@
     "title": "Lumiere Spa",
     "category": "Spa Website",
     "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
-    "image": "/projects/lumierespa.png",
+    "image": "/projects/lumierespa.webp",
     "link": "https://lumierespa-q3fzzqy6.manus.space/",
     "technologies": [
       "Wellness",
@@ -172,7 +172,7 @@
     "title": "InvoiceSTD",
     "category": "Invoicing Platform",
     "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
-    "image": "/projects/invoicestd.png",
+    "image": "/projects/invoicestd.webp",
     "link": "https://invoicestd-chk9yekr.manus.space/",
     "technologies": [
       "Invoices",
@@ -186,7 +186,7 @@
     "title": "ClassiMarket",
     "category": "Marketplace Website",
     "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
-    "image": "/projects/classimarket.png",
+    "image": "/projects/classimarket.webp",
     "link": "https://classimarket-qpgfp8tr.manus.space/",
     "technologies": [
       "Marketplace",
@@ -200,7 +200,7 @@
     "title": "PDF Editor",
     "category": "Document Editing Tool",
     "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
-    "image": "/projects/pdfeditor.png",
+    "image": "/projects/pdfeditor.webp",
     "link": "https://pdfeditor-gowkpq4q.manus.space/",
     "technologies": [
       "Documents",
@@ -214,7 +214,7 @@
     "title": "PharmaFlow",
     "category": "Pharmacy Management Platform",
     "description": "A pharmacy management platform for organizing medicines, inventory, prescriptions, and daily shop operations.",
-    "image": "/projects/pharmaflow.png",
+    "image": "/projects/pharmaflow.webp",
     "link": "https://pharmaflow-emaxcwfn.manus.space/",
     "technologies": [
       "Pharmacy",
@@ -228,7 +228,7 @@
     "title": "SafaShop",
     "category": "E-commerce Website",
     "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
-    "image": "/projects/safashop.png",
+    "image": "/projects/safashop.webp",
     "link": "https://safashop-5ykemcjq.manus.space/",
     "technologies": [
       "E-commerce",
@@ -242,7 +242,7 @@
     "title": "Janaab Store",
     "category": "E-commerce Website",
     "description": "A polished online store designed to showcase products, guide customers through browsing, and support a smooth shopping experience.",
-    "image": "/projects/janaabstore.png",
+    "image": "/projects/janaabstore.webp",
     "link": "http://janaab.store/",
     "technologies": [
       "E-commerce",
@@ -256,7 +256,7 @@
     "title": "Northstar School ERP",
     "category": "School ERP / Management",
     "description": "A comprehensive school management and ERP platform that unifies student records, admissions, attendance, fees, and campus operations.",
-    "image": "/projects/schoolerp.png",
+    "image": "/projects/schoolerp.webp",
     "link": "https://schoolerp-hgjlp7ss.manus.space/?code=LvrawnFpqRs4qnBfGKvz6j",
     "technologies": [
       "School ERP",
@@ -270,7 +270,7 @@
     "title": "Dispatch 5 Services",
     "category": "Freight Dispatching / Logistics",
     "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
-    "image": "/projects/dispatch5.png",
+    "image": "/projects/dispatch5.webp",
     "link": "https://dispatch5-sx3pnxtg.manus.space/",
     "technologies": [
       "Freight Dispatch",
@@ -284,7 +284,7 @@
     "title": "BloodBridge Pakistan",
     "category": "Healthcare / Community Platform",
     "description": "A privacy-first blood donation and donor matching platform connecting patients with verified, willing donors across Pakistan.",
-    "image": "/projects/bloodbridge.png",
+    "image": "/projects/bloodbridge.webp",
     "link": "https://bloodbridge-gwlavune.manus.space/",
     "technologies": [
       "Healthcare",
