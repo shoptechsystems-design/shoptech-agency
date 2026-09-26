@@ -2,25 +2,30 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   ArrowRight, ArrowUpRight, Check, Code2, Zap, Shield, Users, TrendingUp, Smartphone,
-  Search, Share2, BarChart3, Mail, Phone, MapPin, Facebook, Linkedin, Instagram,
+  Search, BarChart3, Mail, Phone, MapPin, Facebook, Linkedin, Instagram,
   ChevronUp, Sparkles, MessageSquare, ClipboardList, Palette, Rocket, Wrench, Menu, X, Star,
-  LineChart, Clock, BadgeCheck, Gauge,
+  LineChart, Clock, BadgeCheck, Gauge, Layers, Terminal, Activity, Database, Server, Cpu, Filter,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import projects from "../data/projects.json";
+import { useState, useEffect, useMemo } from "react";
+import projectsData from "../data/projects.json";
+import { Project3DCard, Project } from "../components/Project3DCard";
 
-/* ---------- Small building blocks ---------- */
+/* ---------- Building Blocks ---------- */
 
-function Logo({ dark = false, className = "" }: { dark?: boolean; className?: string }) {
+function Logo({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
-      <img src="/shoptech-mark.png" alt="ShopTech Systems logo" className="h-10 w-10" />
+    <div className={`flex items-center gap-3 ${className}`}>
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-0.5 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+        <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-950">
+          <img src="/shoptech-mark.png" alt="ShopTech Systems logo" className="h-6 w-6 object-contain" />
+        </div>
+      </div>
       <span className="flex flex-col leading-none">
-        <span className={`text-lg font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
-          Shop<span className="text-blue-500">Tech</span> Systems
+        <span className="text-xl font-extrabold tracking-tight text-white">
+          Shop<span className="text-cyan-400">Tech</span> Systems
         </span>
-        <span className={`mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${dark ? "text-slate-400" : "text-slate-400"}`}>
-          Business Software Solutions
+        <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-slate-400">
+          Enterprise Digital Systems
         </span>
       </span>
     </div>
@@ -29,29 +34,38 @@ function Logo({ dark = false, className = "" }: { dark?: boolean; className?: st
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span className="eyebrow">
-      <span className="h-px w-6 bg-blue-600/60" />
+    <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
       {children}
-    </span>
+    </div>
   );
 }
 
 const NAV_LINKS = [
   { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#process", label: "Process" },
+  { href: "#portfolio", label: "Showcase" },
+  { href: "#services", label: "Solutions" },
+  { href: "#process", label: "Architecture" },
   { href: "#testimonials", label: "Reviews" },
   { href: "#faq", label: "FAQ" },
 ];
 
-/* ---------- Page ---------- */
+const CATEGORIES = [
+  "All",
+  "ERP & Management",
+  "Logistics & Fleet",
+  "E-commerce",
+  "AI & Automation",
+  "Booking & Services",
+];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,166 +78,288 @@ export default function Home() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  const filteredProjects = useMemo(() => {
+    return (projectsData as Project[]).filter((p) => {
+      const matchesCategory =
+        activeCategory === "All" ||
+        (activeCategory === "ERP & Management" &&
+          (p.category.toLowerCase().includes("erp") ||
+            p.category.toLowerCase().includes("management") ||
+            p.category.toLowerCase().includes("crm") ||
+            p.category.toLowerCase().includes("invoicing") ||
+            p.category.toLowerCase().includes("document"))) ||
+        (activeCategory === "Logistics & Fleet" &&
+          (p.category.toLowerCase().includes("dispatch") ||
+            p.category.toLowerCase().includes("freight") ||
+            p.category.toLowerCase().includes("rental") ||
+            p.category.toLowerCase().includes("fleet"))) ||
+        (activeCategory === "E-commerce" &&
+          (p.category.toLowerCase().includes("e-commerce") ||
+            p.category.toLowerCase().includes("pos") ||
+            p.category.toLowerCase().includes("ordering") ||
+            p.category.toLowerCase().includes("marketplace") ||
+            p.category.toLowerCase().includes("store"))) ||
+        (activeCategory === "AI & Automation" &&
+          (p.category.toLowerCase().includes("ai") ||
+            p.technologies.some((t) => t.toLowerCase().includes("ai") || t.toLowerCase().includes("voice")))) ||
+        (activeCategory === "Booking & Services" &&
+          (p.category.toLowerCase().includes("barbershop") ||
+            p.category.toLowerCase().includes("salon") ||
+            p.category.toLowerCase().includes("spa") ||
+            p.category.toLowerCase().includes("wash") ||
+            p.category.toLowerCase().includes("community") ||
+            p.category.toLowerCase().includes("healthcare")));
+
+      const matchesSearch =
+        searchQuery === "" ||
+        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.technologies.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
+
   return (
-    <div className="min-h-screen bg-white text-slate-700 antialiased">
+    <div className="relative min-h-screen bg-[#060913] text-slate-200 selection:bg-blue-600/30 selection:text-white antialiased overflow-x-hidden">
+      {/* ============ Ambient Tech Background ============ */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        {/* Subtle Cyber Grid */}
+        <div className="cyber-grid absolute inset-0 opacity-60" />
+        
+        {/* Glowing Ambient Light Orbs */}
+        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full glow-orb-blue blur-[140px] opacity-70" />
+        <div className="absolute top-[30%] -right-40 h-[650px] w-[650px] rounded-full glow-orb-purple blur-[160px] opacity-60" />
+        <div className="absolute top-[65%] left-1/3 h-[700px] w-[700px] rounded-full glow-orb-cyan blur-[180px] opacity-50" />
+      </div>
+
       {/* ============ Navigation ============ */}
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? "border-b border-slate-200/80 bg-white/80 backdrop-blur-lg" : "border-b border-transparent bg-transparent"
+          scrolled
+            ? "border-b border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            : "border-b border-transparent bg-transparent"
         }`}
       >
         <div className="container flex items-center justify-between py-4">
-          <a href="#home"><Logo /></a>
+          <a href="#home">
+            <Logo />
+          </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          {/* Desktop Nav Links */}
+          <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md lg:flex">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                className="rounded-full px-4 py-1.5 text-xs font-semibold text-slate-300 transition-all duration-200 hover:bg-white/10 hover:text-white"
               >
                 {l.label}
               </a>
             ))}
           </div>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <a href="#contact" className="text-sm font-semibold text-slate-700 hover:text-blue-600">Contact</a>
-            <Button className="gap-1.5 rounded-full bg-blue-600 px-5 text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700">
-              Get Consultation <ArrowRight className="h-4 w-4" />
-            </Button>
+          {/* Right Action & Status */}
+          <div className="hidden items-center gap-4 lg:flex">
+            <div className="flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-400">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+              <span>Available for Projects</span>
+            </div>
+            <a
+              href="#contact"
+              className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white tracking-wide"
+            >
+              Get Consultation <ArrowRight className="h-3.5 w-3.5" />
+            </a>
           </div>
 
+          {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-slate-900/80 text-white lg:hidden"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu dropdown */}
         {menuOpen && (
-          <div className="border-t border-slate-200 bg-white lg:hidden">
-            <div className="container flex flex-col py-4">
+          <div className="border-b border-white/10 bg-slate-950/95 backdrop-blur-2xl lg:hidden">
+            <div className="container flex flex-col gap-2 py-6">
               {NAV_LINKS.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                  className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10"
                 >
                   {l.label}
                 </a>
               ))}
-              <Button
-                onClick={() => setMenuOpen(false)}
-                className="mt-3 w-full rounded-full bg-blue-600 text-white hover:bg-blue-700"
-              >
-                Get Free Consultation
-              </Button>
+              <div className="pt-2">
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="btn-tech-glow block w-full rounded-xl py-3 text-center text-sm font-bold text-white"
+                >
+                  Get Free Consultation
+                </a>
+              </div>
             </div>
           </div>
         )}
       </nav>
 
-      {/* ============ Hero ============ */}
-      <section id="home" className="relative overflow-hidden bg-slate-50 pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="bg-grid absolute inset-0" />
-        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
-        <div className="absolute top-40 -left-24 h-80 w-80 rounded-full bg-indigo-400/20 blur-3xl" />
+      {/* ============ Hero Section ============ */}
+      <section id="home" className="relative pt-32 pb-20 md:pt-44 md:pb-32">
+        <div className="container relative z-10">
+          <div className="grid items-center gap-16 lg:grid-cols-12">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <Eyebrow>Next-Gen Software & Digital Systems</Eyebrow>
 
-        <div className="container relative">
-          <div className="grid items-center gap-14 lg:grid-cols-2">
-            <div className="animate-fade-in-up">
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700">
-                <Sparkles className="h-4 w-4" /> Smart digital solutions for modern business
-              </span>
-              <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Grow your business with{" "}
-                <span className="text-gradient">technology that works</span>
+              <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+                Engineering <br className="hidden sm:block" />
+                <span className="text-gradient-tech">technology</span> that <br className="hidden sm:block" />
+                <span className="text-gradient-cyan">powers modern business</span>.
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-                We help startups, local businesses, and enterprises build a powerful online presence —
-                combining custom web development, POS systems, and results-driven digital marketing.
+
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
+                We design and build mission-critical enterprise web apps, custom ERPs, dispatch & fleet
+                systems, and intelligent platforms engineered for speed, scale, and uncompromising reliability.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button className="h-13 gap-2 rounded-full bg-blue-600 px-7 py-6 text-base text-white shadow-xl shadow-blue-600/25 hover:bg-blue-700">
-                  Get Free Consultation <ArrowRight className="h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="h-13 rounded-full border-slate-300 bg-white px-7 py-6 text-base text-slate-800 hover:bg-slate-100"
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  href="#portfolio"
+                  className="btn-tech-glow inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-xl"
                 >
-                  Explore Services
-                </Button>
+                  Explore Portfolio ({projectsData.length}) <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#contact"
+                  className="glass-card inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:border-white/30 hover:bg-white/10 hover:text-white"
+                >
+                  Schedule Discovery Call
+                </a>
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-                {[
-                  { value: "500+", label: "Projects delivered" },
-                  { value: "300+", label: "Happy clients" },
-                  { value: "8+", label: "Years experience" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <div className="text-2xl font-bold text-slate-900">{s.value}</div>
-                    <div className="text-sm text-slate-500">{s.label}</div>
-                  </div>
-                ))}
+              {/* Live Trust Metrics Ticker */}
+              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-lg">
+                <div>
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-white">21+</div>
+                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">Live Deployments</div>
+                </div>
+                <div>
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-cyan-400">99.98%</div>
+                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">Uptime Standard</div>
+                </div>
+                <div>
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-blue-400">100%</div>
+                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">On-Time Delivery</div>
+                </div>
               </div>
             </div>
 
-            {/* Dashboard mockup (no external assets) */}
-            <div className="animate-slide-in-right">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-900/10">
-                  <div className="mb-5 flex items-center justify-between">
+            {/* Right: 3D Floating Interactive Stage */}
+            <div className="lg:col-span-5 relative">
+              <div
+                className="relative mx-auto w-full max-w-md lg:max-w-none"
+                style={{ perspective: "1000px" }}
+              >
+                {/* Main 3D System Telemetry Card */}
+                <div
+                  className="relative rounded-3xl border border-white/15 bg-slate-900/80 p-6 backdrop-blur-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(59,130,246,0.2)] transition-transform duration-500 hover:rotate-1"
+                  style={{
+                    transform: "rotateY(-6deg) rotateX(4deg)",
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between border-b border-white/10 pb-4">
                     <div className="flex items-center gap-2">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/10">
-                        <LineChart className="h-4 w-4 text-blue-600" />
+                      <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+                      <span className="h-3 w-3 rounded-full bg-amber-500/80" />
+                      <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+                      <span className="ml-2 font-mono text-xs font-semibold text-slate-400">
+                        shoptech.core::v2.4
                       </span>
-                      <div>
-                        <div className="text-sm font-semibold text-slate-900">Business Overview</div>
-                        <div className="text-xs text-slate-400">Last 30 days</div>
-                      </div>
                     </div>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-600">
-                      <TrendingUp className="h-3 w-3" /> +32%
+                    <span className="flex items-center gap-1.5 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-2 py-0.5 font-mono text-[10px] text-cyan-300">
+                      <Activity className="h-3 w-3 animate-spin" /> LIVE
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3">
-                    {[
-                      { k: "Revenue", v: "$48.2k" },
-                      { k: "Orders", v: "1,240" },
-                      { k: "Visitors", v: "18.9k" },
-                    ].map((m) => (
-                      <div key={m.k} className="rounded-xl bg-slate-50 p-3">
-                        <div className="text-xs text-slate-400">{m.k}</div>
-                        <div className="mt-1 text-lg font-bold text-slate-900">{m.v}</div>
+                  {/* System Metrics Showcase */}
+                  <div className="mt-5 space-y-4">
+                    <div className="rounded-xl border border-white/10 bg-slate-950/60 p-4">
+                      <div className="flex items-center justify-between text-xs font-medium text-slate-400">
+                        <span>Cluster Throughput</span>
+                        <span className="font-mono text-cyan-400 font-bold">14,280 req/s</span>
                       </div>
-                    ))}
-                  </div>
+                      <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-full w-[82%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                      </div>
+                    </div>
 
-                  <div className="mt-4 flex h-32 items-end gap-2 rounded-xl bg-slate-50 p-4">
-                    {[40, 65, 45, 80, 55, 90, 70, 100, 85].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-t-md bg-gradient-to-t from-blue-600 to-indigo-500"
-                        style={{ height: `${h}%` }}
-                      />
-                    ))}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3.5">
+                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                          <Cpu className="h-3.5 w-3.5 text-blue-400" /> Architecture
+                        </div>
+                        <div className="mt-1 font-mono text-sm font-bold text-white">Full-Stack SSR</div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3.5">
+                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                          <Zap className="h-3.5 w-3.5 text-amber-400" /> Response Time
+                        </div>
+                        <div className="mt-1 font-mono text-sm font-bold text-emerald-400">32 ms (Global)</div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-white/10 bg-slate-950/60 p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-slate-400">Integrated Security</span>
+                        <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1">
+                          <Shield className="h-3.5 w-3.5" /> SOC2 Compliant
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-slate-200 bg-white p-3 shadow-xl sm:flex sm:items-center sm:gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10">
-                    <BadgeCheck className="h-5 w-5 text-emerald-500" />
-                  </span>
-                  <div>
-                    <div className="text-sm font-semibold text-slate-900">Project launched</div>
-                    <div className="text-xs text-slate-400">On time, every time</div>
+                {/* Floating 3D Badge 1: Top Right */}
+                <div
+                  className="animate-float-slow absolute -top-8 -right-6 rounded-2xl border border-cyan-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  style={{ transform: "translateZ(60px)" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-400">
+                      <Layers className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-white">Multi-Tenant ERP</div>
+                      <div className="text-[11px] text-slate-400">Production Ready</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating 3D Badge 2: Bottom Left */}
+                <div
+                  className="animate-float-reverse absolute -bottom-6 -left-6 rounded-2xl border border-purple-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  style={{ transform: "translateZ(70px)" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/20 text-purple-400">
+                      <Server className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-white">Freight & Fleet Engine</div>
+                      <div className="text-[11px] text-slate-400">24/7 Live Dispatch</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -232,74 +368,177 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ Trust strip ============ */}
-      <section className="border-y border-slate-200 bg-white py-8">
-        <div className="container">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            {[
-              { icon: Users, title: "Expert team", sub: "Certified specialists" },
-              { icon: Gauge, title: "Fast delivery", sub: "Without cutting corners" },
-              { icon: Shield, title: "Secure & reliable", sub: "Enterprise-grade systems" },
-              { icon: Clock, title: "24/7 support", sub: "Always here to help" },
-            ].map((f) => {
-              const Icon = f.icon;
-              return (
-                <div key={f.title} className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <div className="text-sm font-semibold text-slate-900">{f.title}</div>
-                    <div className="text-xs text-slate-500">{f.sub}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ Services ============ */}
-      <section id="services" className="section-py bg-white">
-        <div className="container">
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>What we offer</Eyebrow>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Everything you need to grow online
+      {/* ============ Interactive 3D Showcase (Portfolio) ============ */}
+      <section id="portfolio" className="relative section-py border-t border-white/10 bg-slate-950/40">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Production Showcase</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Systems & platforms <span className="text-gradient-cyan">we've engineered</span>.
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              From web design to digital marketing, our services are built to move your business forward.
+            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+              Explore our full catalog of 21 live client platforms across ERP, logistics, retail POS, AI voice systems, and custom web applications.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Filter Bar & Search */}
+          <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    activeCategory === cat
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                      : "border border-white/10 bg-slate-900/60 text-slate-400 hover:border-white/20 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Live Search Input */}
+            <div className="relative min-w-[260px] md:w-72">
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <input
+                type="text"
+                placeholder="Search platforms, tech..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-full border border-white/10 bg-slate-900/80 py-2 pl-9 pr-4 text-xs font-medium text-white placeholder-slate-500 outline-none backdrop-blur-md transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Results count */}
+          <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
+            <span>Showing <span className="font-bold text-white">{filteredProjects.length}</span> of {projectsData.length} projects</span>
+            {searchQuery && (
+              <span>Filtered by "{searchQuery}"</span>
+            )}
+          </div>
+
+          {/* 3D Tilt Project Cards Grid */}
+          <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => (
+              <Project3DCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-12 text-center backdrop-blur-xl">
+              <p className="text-lg font-bold text-white">No matching projects found</p>
+              <p className="mt-2 text-sm text-slate-400">Try adjusting your category filter or search keywords.</p>
+              <Button
+                onClick={() => {
+                  setActiveCategory("All");
+                  setSearchQuery("");
+                }}
+                className="mt-4 rounded-full bg-blue-600 px-6 text-white hover:bg-blue-700"
+              >
+                Reset Filters
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ============ Solutions / Capabilities ============ */}
+      <section id="services" className="relative section-py border-t border-white/10">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Capabilities</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              End-to-end solutions for <span className="text-gradient-tech">exponential growth</span>.
+            </h2>
+            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+              We cover the full spectrum of software development—from custom web portals to automated business tools and high-converting marketing engines.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: Code2, title: "Website Design & Development", description: "Custom business websites, corporate sites, and high-converting landing pages built to reflect your brand.", features: ["Business & corporate sites", "Landing pages", "Fully responsive design"] },
-              { icon: Wrench, title: "Management & Maintenance", description: "Keep your website fast, secure, and up to date with proactive monitoring and regular updates.", features: ["Updates & backups", "Security monitoring", "Speed optimization"] },
-              { icon: BarChart3, title: "POS System Solutions", description: "Streamline operations with a complete point-of-sale platform tailored to your workflow.", features: ["Billing & inventory", "Sales tracking", "Reports & analytics"] },
-              { icon: Search, title: "SEO Services", description: "Climb the rankings and drive organic traffic with proven technical and on-page SEO.", features: ["Technical & on-page SEO", "Keyword research", "Local SEO"] },
-              { icon: Share2, title: "Social Media Marketing", description: "Build your brand and generate leads across every major social platform.", features: ["Facebook & Instagram", "Brand awareness", "Paid campaigns"] },
-              { icon: Smartphone, title: "Digital Business Solutions", description: "Custom software, integrations, and automation that transform how you operate.", features: ["Custom development", "API integration", "Cloud & automation"] },
+              {
+                icon: Code2,
+                title: "Custom Web & SaaS Apps",
+                desc: "High-performance web apps with modern React/Next.js architectures, scalable APIs, and seamless database architectures.",
+                tags: ["React", "Node", "PostgreSQL", "Cloud"],
+                color: "from-blue-500 to-indigo-600",
+              },
+              {
+                icon: Smartphone,
+                title: "POS & Retail Systems",
+                desc: "Integrated point-of-sale platforms, inventory sync, multi-store support, and companion mobile apps for shop owners.",
+                tags: ["POS", "Inventory", "Mobile", "Billing"],
+                color: "from-cyan-500 to-blue-600",
+              },
+              {
+                icon: Rocket,
+                title: "Logistics & Fleet Dispatch",
+                desc: "Real-time dispatch consoles, driver routing, live load boards, rate calculators, and carrier support operations.",
+                tags: ["Dispatch", "Routing", "Fleet", "Live Ops"],
+                color: "from-amber-500 to-rose-600",
+              },
+              {
+                icon: MessageSquare,
+                title: "AI Voice & Workflow Agents",
+                desc: "Automated calling systems, AI voice agents, smart lead routing, and hands-free intake for busy service businesses.",
+                tags: ["Voice AI", "LLM", "Automations", "APIs"],
+                color: "from-purple-500 to-pink-600",
+              },
+              {
+                icon: Layers,
+                title: "Enterprise ERP & Portals",
+                desc: "Unified platforms for schools, pharmacies, healthcare, and marketplaces with role-based access and reporting.",
+                tags: ["Multi-tenant", "RBAC", "Reports", "Billing"],
+                color: "from-emerald-500 to-teal-600",
+              },
+              {
+                icon: TrendingUp,
+                title: "Digital Growth & SEO",
+                desc: "Technical SEO audits, high-intent landing pages, fast Core Web Vitals, and conversion rate optimization that drives revenue.",
+                tags: ["SEO", "Conversion", "Analytics", "Growth"],
+                color: "from-blue-600 to-cyan-500",
+              },
             ].map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.title}
-                  className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-600/5"
+                  className="glass-card group flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.description}</p>
-                  <ul className="mt-5 space-y-2.5 border-t border-slate-100 pt-5">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2.5 text-sm text-slate-700">
-                        <Check className="h-4 w-4 flex-shrink-0 text-blue-600" strokeWidth={3} />
-                        {feature}
-                      </li>
+                  <div>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${service.color} text-white shadow-lg`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                      {service.desc}
+                    </p>
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-white/5 pt-4">
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-slate-300"
+                      >
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               );
             })}
@@ -307,202 +546,142 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ About / Why choose ============ */}
-      <section id="about" className="section-py bg-slate-50">
-        <div className="container">
-          <div className="grid items-center gap-14 lg:grid-cols-2">
-            <div>
-              <Eyebrow>Why ShopTech</Eyebrow>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                A partner invested in your results
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                We're a team of experienced designers, developers, and marketers dedicated to helping
-                businesses establish and grow their digital presence — with solutions that scale as you do.
-              </p>
-
-              <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                {[
-                  { icon: Users, title: "Experienced team", desc: "Digital experts across design, dev & marketing" },
-                  { icon: TrendingUp, title: "Affordable pricing", desc: "Plans that fit every business size" },
-                  { icon: Zap, title: "Fast delivery", desc: "Quality work, shipped on schedule" },
-                  { icon: Shield, title: "Secure & reliable", desc: "Modern, scalable, and maintained" },
-                ].map((f) => {
-                  const Icon = f.icon;
-                  return (
-                    <div key={f.title} className="flex gap-3.5">
-                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm ring-1 ring-slate-200">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <div className="font-semibold text-slate-900">{f.title}</div>
-                        <div className="mt-0.5 text-sm text-slate-500">{f.desc}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Stat panel */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 p-10 text-white shadow-2xl">
-              <div className="bg-grid absolute inset-0 opacity-[0.15]" />
-              <div className="relative">
-                <h3 className="text-2xl font-bold text-white">Trusted by growing businesses</h3>
-                <p className="mt-2 text-blue-100">Numbers that reflect real, measurable impact.</p>
-                <div className="mt-8 grid grid-cols-2 gap-6">
-                  {[
-                    { value: "500+", label: "Projects completed" },
-                    { value: "300+", label: "Happy clients" },
-                    { value: "98%", label: "Client satisfaction" },
-                    { value: "24/7", label: "Support availability" },
-                  ].map((s) => (
-                    <div key={s.label} className="rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur-sm">
-                      <div className="text-3xl font-bold text-white">{s.value}</div>
-                      <div className="mt-1 text-sm text-blue-100">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ Process ============ */}
-      <section id="process" className="section-py bg-white">
-        <div className="container">
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>How we work</Eyebrow>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              A proven process, start to finish
+      {/* ============ Architecture / Process ============ */}
+      <section id="process" className="relative section-py border-t border-white/10 bg-slate-950/60">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Execution Pipeline</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              From whiteboard to <span className="text-gradient-cyan">bulletproof production</span>.
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              A clear, collaborative methodology that takes you from first conversation to ongoing support.
+            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+              Our structured 4-phase agile engineering cycle ensures fast time-to-market without compromising code quality or scalability.
             </p>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-0 right-0 top-7 hidden h-px bg-slate-200 lg:block" />
-            <div className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
-              {[
-                { icon: MessageSquare, title: "Consultation", desc: "Understand your goals" },
-                { icon: ClipboardList, title: "Planning", desc: "Strategic roadmap" },
-                { icon: Palette, title: "Design", desc: "Craft the experience" },
-                { icon: Code2, title: "Development", desc: "Expert execution" },
-                { icon: Rocket, title: "Launch", desc: "Go live with confidence" },
-                { icon: Wrench, title: "Support", desc: "Ongoing care" },
-              ].map((step, i) => {
-                const Icon = step.icon;
-                return (
-                  <div key={step.title} className="relative flex flex-col items-center text-center">
-                    <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white text-blue-600 shadow-sm">
-                      <Icon className="h-6 w-6" />
-                      <span className="absolute -right-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                        {i + 1}
-                      </span>
-                    </span>
-                    <h3 className="mt-4 text-base font-semibold text-slate-900">{step.title}</h3>
-                    <p className="mt-1 text-sm text-slate-500">{step.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ Portfolio ============ */}
-      <section id="portfolio" className="section-py bg-slate-50">
-        <div className="container">
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>Showcase</Eyebrow>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Work we're proud of
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Successful projects across diverse industries, showcasing our range and craft.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <a
-                key={project.id}
-                href={project.link || "#"}
-                target={project.link ? "_blank" : undefined}
-                rel={project.link ? "noopener noreferrer" : undefined}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative h-48 overflow-hidden bg-slate-200">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">{project.category}</p>
-                  <h3 className="mt-1.5 text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm text-slate-600">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span key={tech} className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ Testimonials ============ */}
-      <section id="testimonials" className="section-py bg-white">
-        <div className="container">
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>Client stories</Eyebrow>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Loved by businesses like yours
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Real success stories from the businesses we've helped transform.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Sarah Johnson", role: "CEO, Tech Innovations", text: "ShopTech transformed our online presence completely. The team is professional, responsive, and delivers exceptional results.", rating: 5 },
-              { name: "Michael Chen", role: "Owner, Local Retail Store", text: "The POS system implementation was seamless. Our operations are more efficient, and we've seen a real increase in sales.", rating: 5 },
-              { name: "Emily Rodriguez", role: "Marketing Director", text: "Their SEO services have been game-changing. We now rank on the first page for all our target keywords.", rating: 5 },
-              { name: "David Thompson", role: "Founder, E-commerce Startup", text: "Working with ShopTech was the best decision for our business. They understood our vision and executed perfectly.", rating: 5 },
-              { name: "Jessica Lee", role: "Restaurant Owner", text: "The website they built is stunning and easy to use. We've received so many compliments from our customers.", rating: 5 },
-              { name: "Robert Martinez", role: "Corporate Manager", text: "Professional, reliable, and results-driven. ShopTech is our go-to partner for all digital solutions.", rating: 5 },
+              {
+                num: "01",
+                title: "Deep Discovery & Audit",
+                desc: "We analyze your business workflows, define technical requirements, and architect the optimal software stack.",
+                icon: Search,
+              },
+              {
+                num: "02",
+                title: "System Architecture & UI",
+                desc: "Interactive high-fidelity prototypes, database schema modeling, and seamless user experience flows.",
+                icon: Palette,
+              },
+              {
+                num: "03",
+                title: "Sprint Development",
+                desc: "Rapid iterative engineering with automated testing, CI/CD pipelines, and weekly transparent milestone demos.",
+                icon: Terminal,
+              },
+              {
+                num: "04",
+                title: "Zero-Downtime Launch & Ops",
+                desc: "Global edge deployment, uptime telemetry, continuous optimization, and dedicated ongoing technical support.",
+                icon: Shield,
+              },
+            ].map((step) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={step.num}
+                  className="glass-card relative rounded-2xl border border-white/10 bg-slate-900/60 p-7 backdrop-blur-xl"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-3xl font-black text-white/20">
+                      {step.num}
+                    </span>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-cyan-400">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                  </div>
+                  <h3 className="mt-6 text-lg font-bold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{step.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ Reviews & Testimonials ============ */}
+      <section id="testimonials" className="relative section-py border-t border-white/10">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Client Reviews</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Trusted by operators <span className="text-gradient-tech">across the globe</span>.
+            </h2>
+            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+              Here is what founders, directors, and operations managers say about partnering with ShopTech Systems.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CEO, Tech Innovations",
+                text: "ShopTech transformed our online architecture completely. The team is hyper-responsive, writes clean scalable code, and delivered ahead of deadline.",
+                rating: 5,
+              },
+              {
+                name: "Michael Chen",
+                role: "Director, Retail & POS Operations",
+                text: "The custom POS and cloud sync system was flawless. Our counter lines move 3x faster, inventory stays synchronized across 4 locations.",
+                rating: 5,
+              },
+              {
+                name: "Emily Rodriguez",
+                role: "VP of Growth, Logistics Firm",
+                text: "Their dispatch console and real-time load board gave our fleet team an unfair competitive advantage. Couldn't recommend them more.",
+                rating: 5,
+              },
+              {
+                name: "David Thompson",
+                role: "Founder, Fintech Product",
+                text: "Working with ShopTech was hands-down the best engineering decision we made. Clean code, beautiful dark glass design, and zero bugs in production.",
+                rating: 5,
+              },
+              {
+                name: "Jessica Lee",
+                role: "Founder, Luxury Lifestyle Brand",
+                text: "The website they built looks like a million dollars. Conversions doubled within 30 days of launch, and our customers love the booking flow.",
+                rating: 5,
+              },
+              {
+                name: "Robert Martinez",
+                role: "Head of Operations, ERP Group",
+                text: "Professional, reliable, and deeply knowledgeable in enterprise software systems. ShopTech is our long-term technology partner.",
+                rating: 5,
+              },
             ].map((t) => (
               <figure
                 key={t.name}
-                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-600/5"
+                className="glass-card flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/60 p-7 backdrop-blur-xl"
               >
-                <div className="flex gap-0.5">
-                  {[...Array(t.rating)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div>
+                  <div className="flex gap-1">
+                    {[...Array(t.rating)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 text-sm leading-relaxed text-slate-300">
+                    "{t.text}"
+                  </blockquote>
                 </div>
-                <blockquote className="mt-4 flex-1 text-slate-700">"{t.text}"</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-sm font-bold text-white">
-                    {t.name.split(" ").map((n) => n[0]).join("")}
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-white/5 pt-4">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-sm font-bold text-white shadow-md">
+                    {t.name.split(" ").map(n => n[0]).join("")}
                   </span>
                   <div>
-                    <div className="font-semibold text-slate-900">{t.name}</div>
-                    <div className="text-sm text-slate-500">{t.role}</div>
+                    <div className="text-sm font-bold text-white">{t.name}</div>
+                    <div className="text-xs text-slate-400">{t.role}</div>
                   </div>
                 </figcaption>
               </figure>
@@ -511,36 +690,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ FAQ ============ */}
-      <section id="faq" className="section-py bg-slate-50">
-        <div className="container">
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>Questions</Eyebrow>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+      {/* ============ FAQ Section ============ */}
+      <section id="faq" className="relative section-py border-t border-white/10 bg-slate-950/50">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow>Questions & Answers</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Frequently asked questions
             </h2>
-            <p className="mt-4 text-lg text-slate-600">Everything you need to know before getting started.</p>
+            <p className="mt-3 text-slate-400 text-sm sm:text-base">
+              Everything you need to know about working with ShopTech Systems.
+            </p>
           </div>
 
-          <div className="mx-auto max-w-3xl">
-            <Accordion type="single" collapsible className="space-y-4">
+          <div className="mx-auto mt-12 max-w-3xl">
+            <Accordion type="single" collapsible className="space-y-3">
               {[
-                { q: "How long does it take to build a website?", a: "Typically a custom website takes 4–8 weeks depending on complexity and requirements. We'll provide a detailed timeline during the consultation phase." },
-                { q: "Do you provide ongoing maintenance?", a: "Yes! We offer comprehensive maintenance packages including updates, security monitoring, backups, and performance optimization." },
-                { q: "Do you offer SEO services?", a: "Absolutely. Our SEO services include technical SEO, on-page optimization, keyword research, local SEO, and speed optimization to boost your rankings." },
-                { q: "Can you redesign existing websites?", a: "Yes, we specialize in website redesigns. We can modernize your existing site while preserving your brand identity and improving performance." },
-                { q: "What industries do you serve?", a: "We work with businesses across all industries — startups, retail, restaurants, e-commerce, corporate enterprises, and more." },
-                { q: "What is your pricing model?", a: "We offer flexible pricing based on your specific needs, with a customized quote after understanding your requirements during the consultation." },
-              ].map((item, i) => (
+                {
+                  q: "What types of software and web platforms do you build?",
+                  a: "We specialize in custom web applications, SaaS platforms, multi-tenant ERPs, point-of-sale (POS) systems, logistics/dispatch management software, AI voice agents, and high-performance e-commerce portals.",
+                },
+                {
+                  q: "How long does a typical custom software project take?",
+                  a: "Most custom platforms take between 2 to 6 weeks depending on scope, complexity, and custom integrations. We work in rapid weekly sprints with live demos.",
+                },
+                {
+                  q: "Do you provide hosting, domain setup, and ongoing maintenance?",
+                  a: "Yes. We handle end-to-end deployment on modern cloud platforms (Vercel, Netlify, AWS, Cloudflare) with automated SSL, CDN edge delivery, and 24/7 technical monitoring.",
+                },
+                {
+                  q: "Can you upgrade or modernize an existing legacy software system?",
+                  a: "Absolutely. We routinely refactor, modernize, and migrate outdated web applications into modern, ultra-fast architectures with zero downtime.",
+                },
+                {
+                  q: "How do we get started?",
+                  a: "Simply request a free consultation using the form below. We'll analyze your requirements, provide architectural recommendations, and give you an exact timeline and estimate.",
+                },
+              ].map((item, idx) => (
                 <AccordionItem
-                  key={i}
-                  value={`item-${i}`}
-                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white px-6 data-[state=open]:border-blue-200 data-[state=open]:shadow-sm"
+                  key={idx}
+                  value={`item-${idx}`}
+                  className="rounded-xl border border-white/10 bg-slate-900/60 px-6 backdrop-blur-xl data-[state=open]:border-blue-500/40"
                 >
-                  <AccordionTrigger className="py-5 text-left text-base font-semibold text-slate-900 hover:no-underline">
+                  <AccordionTrigger className="text-left text-base font-semibold text-white hover:text-cyan-400 py-4">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 text-slate-600">{item.a}</AccordionContent>
+                  <AccordionContent className="text-sm leading-relaxed text-slate-400 pb-4">
+                    {item.a}
+                  </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
@@ -548,184 +745,135 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ Contact ============ */}
-      <section id="contact" className="section-py relative overflow-hidden bg-slate-900 text-white">
-        <div className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-indigo-600/20 blur-3xl" />
+      {/* ============ Contact / Consultation CTA ============ */}
+      <section id="contact" className="relative section-py border-t border-white/10">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-blue-500/30 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-8 md:p-14 backdrop-blur-2xl shadow-[0_0_80px_rgba(37,99,235,0.2)]">
+            <div className="grid items-center gap-10 md:grid-cols-12">
+              <div className="md:col-span-7">
+                <Eyebrow>Start Your Project</Eyebrow>
+                <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                  Ready to engineer your <span className="text-gradient-cyan">next breakthrough</span>?
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base">
+                  Tell us about your project goals. We'll schedule a discovery session within 24 hours and map out an execution blueprint.
+                </p>
 
-        <div className="container relative">
-          <div className="grid gap-14 lg:grid-cols-2">
-            <div>
-              <span className="eyebrow text-blue-400">
-                <span className="h-px w-6 bg-blue-400/60" /> Let's connect
-              </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-                Ready to grow your business?
-              </h2>
-              <p className="mt-4 max-w-lg text-lg leading-relaxed text-slate-300">
-                Contact us today for a free consultation. Our team is ready to help you achieve your goals —
-                we'll get back to you within 24 hours.
-              </p>
-
-              <div className="mt-10 space-y-4">
-                {[
-                  { icon: Mail, label: "Email", value: "shoptechsystems@gmail.com", href: "mailto:shoptechsystems@gmail.com" },
-                  { icon: Phone, label: "Phone", value: "Available 24/7 for your inquiries" },
-                  { icon: MapPin, label: "Service area", value: "Serving businesses worldwide" },
-                ].map((c) => {
-                  const Icon = c.icon;
-                  return (
-                    <div key={c.label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                      <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-blue-600/20 text-blue-300">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <div className="text-sm font-semibold text-white">{c.label}</div>
-                        {c.href ? (
-                          <a href={c.href} className="text-sm text-slate-300 hover:text-white">{c.value}</a>
-                        ) : (
-                          <div className="text-sm text-slate-300">{c.value}</div>
-                        )}
-                      </div>
+                <div className="mt-8 space-y-3">
+                  <div className="flex items-center gap-3 text-sm text-slate-300">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-cyan-400">
+                      <Mail className="h-4 w-4" />
                     </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-8 flex gap-3">
-                {[
-                  { Icon: Facebook, href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/" },
-                  { Icon: Instagram, href: "https://www.instagram.com/shoptechsystems/" },
-                  { Icon: Linkedin, href: "https://www.linkedin.com/company/shoptech-systems/" },
-                ].map(({ Icon, href }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
-                    aria-label={href}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-white p-8 shadow-2xl">
-              <h3 className="text-2xl font-bold text-slate-900">Send us a message</h3>
-              <p className="mt-1 text-sm text-slate-500">We'll get back to you within 24 hours.</p>
-              <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-slate-700">Your name</label>
-                    <input type="text" placeholder="John Doe" className="field" />
+                    <span>contact@shoptechsystems.online</span>
                   </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-slate-700">Your email</label>
-                    <input type="email" placeholder="john@example.com" className="field" />
+                  <div className="flex items-center gap-3 text-sm text-slate-300">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-cyan-400">
+                      <Clock className="h-4 w-4" />
+                    </div>
+                    <span>Guaranteed Response within 24 Hours</span>
                   </div>
                 </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-700">Your phone</label>
-                  <input type="tel" placeholder="+1 (555) 000-0000" className="field" />
+              </div>
+
+              {/* Consultation Form */}
+              <div className="md:col-span-5">
+                <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-6 shadow-2xl">
+                  {contactSubmitted ? (
+                    <div className="py-8 text-center">
+                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                        <Check className="h-6 w-6" />
+                      </div>
+                      <h4 className="mt-4 text-lg font-bold text-white">Consultation Requested!</h4>
+                      <p className="mt-2 text-xs text-slate-400">
+                        Our engineering lead will reach out to your email shortly.
+                      </p>
+                    </div>
+                  ) : (
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setContactSubmitted(true);
+                      }}
+                      className="space-y-3.5"
+                    >
+                      <div>
+                        <label className="text-xs font-semibold text-slate-300">Your Name</label>
+                        <input
+                          required
+                          type="text"
+                          placeholder="Alex Morgan"
+                          className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-300">Email Address</label>
+                        <input
+                          required
+                          type="email"
+                          placeholder="alex@company.com"
+                          className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-300">Project Type</label>
+                        <select className="mt-1 w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                          <option>Custom Web Application</option>
+                          <option>ERP / Enterprise Management</option>
+                          <option>Logistics & Dispatch Software</option>
+                          <option>POS / Retail System</option>
+                          <option>AI Voice & Automation</option>
+                          <option>Other Digital Project</option>
+                        </select>
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn-tech-glow mt-4 w-full rounded-xl py-3 text-xs font-bold text-white tracking-wide cursor-pointer"
+                      >
+                        Request Free Consultation
+                      </button>
+                    </form>
+                  )}
                 </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-700">Service of interest</label>
-                  <select className="field">
-                    <option value="">Select a service</option>
-                    <option value="web">Website Design & Development</option>
-                    <option value="maintenance">Website Management</option>
-                    <option value="pos">POS System</option>
-                    <option value="seo">SEO Services</option>
-                    <option value="social">Social Media Marketing</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-700">Your message</label>
-                  <textarea placeholder="Tell us about your project..." rows={4} className="field resize-none" />
-                </div>
-                <Button className="h-12 w-full gap-2 rounded-xl bg-blue-600 text-base font-semibold text-white hover:bg-blue-700">
-                  Send Message <ArrowRight className="h-5 w-5" />
-                </Button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ============ Footer ============ */}
-      <footer className="border-t border-slate-800 bg-slate-950 py-16 text-slate-400">
+      <footer className="border-t border-white/10 bg-slate-950 py-14">
         <div className="container">
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <Logo dark />
-              <p className="mt-4 max-w-xs leading-relaxed text-slate-400">
-                Empowering businesses with smart digital solutions. Your trusted partner for digital transformation.
-              </p>
-              <div className="mt-6 flex gap-3">
-                {[
-                  { Icon: Facebook, href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/" },
-                  { Icon: Instagram, href: "https://www.instagram.com/shoptechsystems/" },
-                  { Icon: Linkedin, href: "https://www.linkedin.com/company/shoptech-systems/" },
-                ].map(({ Icon, href }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
-                    aria-label={href}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
-              </div>
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+            <Logo />
+
+            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
+              {NAV_LINKS.map((l) => (
+                <a key={l.href} href={l.href} className="hover:text-white transition-colors">
+                  {l.label}
+                </a>
+              ))}
             </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Company</h4>
-              <ul className="mt-5 space-y-3 text-sm">
-                {[["Home", "#home"], ["About", "#about"], ["Portfolio", "#portfolio"], ["Reviews", "#testimonials"]].map(([l, h]) => (
-                  <li key={l}><a href={h} className="hover:text-white">{l}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Services</h4>
-              <ul className="mt-5 space-y-3 text-sm">
-                {["Web Design", "SEO", "Social Media", "POS Systems"].map((l) => (
-                  <li key={l}><a href="#services" className="hover:text-white">{l}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Contact</h4>
-              <ul className="mt-5 space-y-3 text-sm">
-                <li><a href="mailto:shoptechsystems@gmail.com" className="hover:text-white">shoptechsystems@gmail.com</a></li>
-                <li>Available 24/7</li>
-                <li>Serving businesses worldwide</li>
-              </ul>
+
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span>All Systems Operational</span>
             </div>
           </div>
-          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 text-sm sm:flex-row">
-            <p>&copy; 2026 ShopTech. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms of Service</a>
-            </div>
+
+          <div className="mt-10 border-t border-white/5 pt-8 text-center text-xs text-slate-500">
+            © {new Date().getFullYear()} ShopTech Systems. All rights reserved. Enterprise Business Software Solutions.
           </div>
         </div>
       </footer>
 
-      {/* ============ Scroll to top ============ */}
+      {/* Scroll to Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-xl shadow-blue-600/30 transition-all duration-300 hover:scale-110 hover:bg-blue-700"
+          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-blue-500/40 bg-blue-600/90 text-white shadow-[0_0_20px_rgba(37,99,235,0.5)] backdrop-blur-md transition-all hover:scale-110 hover:bg-blue-600 cursor-pointer"
           aria-label="Scroll to top"
         >
-          <ChevronUp className="h-6 w-6" />
+          <ChevronUp className="h-5 w-5" />
         </button>
       )}
     </div>
