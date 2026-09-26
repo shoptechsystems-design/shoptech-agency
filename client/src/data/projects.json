@@ -278,5 +278,20 @@
       "Carrier Support"
     ],
     "featured": true
+  },
+  {
+    "id": 21,
+    "title": "BloodBridge Pakistan",
+    "category": "Healthcare / Community Platform",
+    "description": "A privacy-first blood donation and donor matching platform connecting patients with verified, willing donors across Pakistan.",
+    "image": "/projects/bloodbridge.png",
+    "link": "https://bloodbridge-gwlavune.manus.space/",
+    "technologies": [
+      "Healthcare",
+      "Community",
+      "Donor Matching"
+    ],
+    "featured": true
   }
 ]
+
