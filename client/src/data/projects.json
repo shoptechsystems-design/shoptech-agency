@@ -292,6 +292,34 @@
       "Donor Matching"
     ],
     "featured": true
+  },
+  {
+    "id": 22,
+    "title": "Lil Man Big Van & Flooring For All",
+    "category": "Freight / Flooring Services",
+    "description": "A dual-brand website for a Winston-Salem, NC business offering box truck and Sprinter van freight alongside residential and commercial flooring installation, with freight quote and estimate requests.",
+    "image": "/projects/lilmanbigvan.webp",
+    "link": "https://flooringforallusa.com/",
+    "technologies": [
+      "Freight Quotes",
+      "Flooring",
+      "Lead Capture"
+    ],
+    "featured": true
+  },
+  {
+    "id": 23,
+    "title": "GripForge",
+    "category": "Tyre Shop Website",
+    "description": "A premium tyre shop website with an interactive 3D tyre showcase for browsing car tyres and exploring replacement, wheel alignment, and balancing services.",
+    "image": "/projects/gripforge.webp",
+    "link": "https://gripforge-n4qgnqtf.manus.space/",
+    "technologies": [
+      "Automotive",
+      "3D Showcase",
+      "Services"
+    ],
+    "featured": true
   }
 ]
 
