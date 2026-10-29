@@ -256,6 +256,19 @@
     scrollbar-width: none;  /* Firefox */
   }
 
+  /* Performance & Rendering Optimizations */
+  .project-card-contain {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 420px;
+    contain: layout style paint;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
   /* Mobile Performance & Smooth Scrolling */
   @media (max-width: 768px) {
     .glass-panel {

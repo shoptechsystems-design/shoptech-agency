@@ -82,25 +82,60 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [visibleCount, setVisibleCount] = useState(9);
 
+  // Debounce search input by 120ms to keep typing silky smooth with 0 dropped frames
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
   useEffect(() => {
     setVisibleCount(9);
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, debouncedSearchQuery]);
+
+  // Preload top featured project images during browser idle time so portfolio appears instantly
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const topImages = [
+        "/projects/dispatchflow.webp",
+        "/projects/luxbarbershop.webp",
+        "/projects/premiumwash.webp",
+        "/projects/luxehair.webp",
+        "/projects/omnipos.webp",
+        "/projects/foodpoint.webp",
+      ];
+      const preload = () => {
+        topImages.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+      };
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(preload);
+      } else {
+        setTimeout(preload, 120);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       setShowScrollTop(window.scrollY > 400);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const filteredProjects = useMemo(() => {
+    const query = debouncedSearchQuery.trim().toLowerCase();
     return (projectsData as Project[]).filter((p) => {
       const matchesCategory =
         activeCategory === "All" ||
@@ -133,15 +168,15 @@ export default function Home() {
             p.category.toLowerCase().includes("healthcare")));
 
       const matchesSearch =
-        searchQuery === "" ||
-        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.technologies.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+        query === "" ||
+        p.title.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query) ||
+        p.technologies.some((t) => t.toLowerCase().includes(query));
 
       return matchesCategory && matchesSearch;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, debouncedSearchQuery]);
 
   const displayedProjects = useMemo(() => {
     return filteredProjects.slice(0, visibleCount);
@@ -149,8 +184,11 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#060913] text-slate-200 selection:bg-blue-600/30 selection:text-white antialiased overflow-x-hidden">
-      {/* ============ Ambient Tech Background ============ */}
-      <div className="pointer-events-none fixed inset-0 z-0">
+      {/* ============ Ambient Tech Background (GPU Compositor Layer) ============ */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{ transform: "translateZ(0)", willChange: "transform" }}
+      >
         {/* Subtle Cyber Grid */}
         <div className="cyber-grid absolute inset-0 opacity-60" />
         
@@ -468,16 +506,29 @@ export default function Home() {
 
           {/* Results count */}
           <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
-            <span>Showing <span className="font-bold text-white">{filteredProjects.length}</span> of {projectsData.length} projects</span>
+            <span>
+              Showing{" "}
+              <span className="font-bold text-white">
+                {displayedProjects.length}
+              </span>{" "}
+              of{" "}
+              <span className="font-bold text-white">
+                {filteredProjects.length}
+              </span>{" "}
+              {filteredProjects.length === 1 ? "platform" : "platforms"}
+              {filteredProjects.length < projectsData.length && (
+                <span className="text-slate-500"> (filtered from {projectsData.length})</span>
+              )}
+            </span>
             {searchQuery && (
-              <span>Filtered by "{searchQuery}"</span>
+              <span className="text-cyan-400 font-mono text-[11px]">Filtered by "{searchQuery}"</span>
             )}
           </div>
 
           {/* 3D Tilt Project Cards Grid */}
           <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {displayedProjects.map((project) => (
-              <Project3DCard key={project.id} project={project} />
+            {displayedProjects.map((project, index) => (
+              <Project3DCard key={project.id} project={project} priority={index < 6} />
             ))}
           </div>
 
@@ -493,7 +544,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setVisibleCount(filteredProjects.length)}
-                className="text-xs font-medium text-slate-400 hover:text-white underline underline-offset-4 cursor-pointer py-2"
+                className="text-xs font-semibold text-slate-400 hover:text-white underline underline-offset-4 cursor-pointer py-2 transition-colors"
               >
                 Show All {filteredProjects.length} Platforms
               </button>
