@@ -3,8 +3,26 @@
   "framework": "vite",
   "buildCommand": "vite build",
   "outputDirectory": "dist/public",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "rewrites": [
+    {
+      "source": "/((?!ads\\.txt|robots\\.txt|projects/|assets/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
+    {
+      "source": "/ads.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
     {
       "source": "/projects/(.*)",
       "headers": [
