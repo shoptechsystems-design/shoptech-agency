@@ -1004,13 +1004,17 @@ export default function Home() {
                       </div>
                       <h4 className="mt-4 text-lg font-bold text-white">Consultation Requested!</h4>
                       <p className="mt-2 text-xs text-slate-400">
-                        Our engineering lead will reach out to your email shortly.
+                        Your request is ready in WhatsApp. Tap Send there and we will reply within 24 hours.
                       </p>
                     </div>
                   ) : (
                     <form
                       onSubmit={(e) => {
                         e.preventDefault();
+                        // No backend: hand the request to WhatsApp so it actually reaches us
+                        const f = new FormData(e.currentTarget);
+                        const text = `Hello ShopTech Systems, I would like a free consultation.\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nProject type: ${f.get("project")}`;
+                        window.open(`https://wa.me/923164091654?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
                         setContactSubmitted(true);
                       }}
                       className="space-y-3.5"
@@ -1020,6 +1024,7 @@ export default function Home() {
                         <input
                           required
                           type="text"
+                          name="name"
                           placeholder="Alex Morgan"
                           className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                         />
@@ -1029,13 +1034,14 @@ export default function Home() {
                         <input
                           required
                           type="email"
+                          name="email"
                           placeholder="alex@company.com"
                           className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-300">Project Type</label>
-                        <select className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <select name="project" className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                           <option>Custom Web Application</option>
                           <option>ERP / Enterprise Management</option>
                           <option>Logistics & Dispatch Software</option>
@@ -1112,6 +1118,13 @@ export default function Home() {
 
           <div className="mt-10 border-t border-white/5 pt-8 text-center text-xs text-slate-500">
             © {new Date().getFullYear()} ShopTech Systems. All rights reserved. Enterprise Business Software Solutions.
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+              <a href="/blog" className="hover:text-white transition-colors">Blog</a>
+              <a href="/about" className="hover:text-white transition-colors">About</a>
+              <a href="/contact" className="hover:text-white transition-colors">Contact</a>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
