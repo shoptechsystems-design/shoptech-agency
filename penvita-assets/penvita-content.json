@@ -1,0 +1,24 @@
+{
+  "name": "Penvita",
+  "tagline": "A resume that lets your work lead.",
+  "description": "Penvita is a resume and CV builder for your phone that syncs with the Penvita website. Write your resume once with a guided editor, choose from 18 templates, and export a PDF that looks exactly as designed. It is free to start, and it suits anyone preparing a professional resume or CV.",
+  "category": "NOT FOUND",
+  "features": [
+    "18 professional templates, including ATS-friendly layouts",
+    "Guided step-by-step editor with automatic saving",
+    "Import an existing resume from a PDF or DOCX file",
+    "Download your resume as a PDF and share it from your phone",
+    "Add a headshot from your camera or photo library, resized automatically",
+    "Customize accent colour, font, spacing, photo shape, ATS mode and A4 or US Letter page size",
+    "Reorder or hide resume sections, with bold, italic and bullet formatting",
+    "One account for the app and the website, so your resumes stay in sync"
+  ],
+  "howItWorks": [
+    { "title": "Create your account", "text": "Sign up with your name, email and password, then start a resume from scratch, from a sample, or by importing a PDF or DOCX." },
+    { "title": "Build and style it", "text": "Follow the guided steps to add your details, pick one of 18 templates, and adjust colours, fonts and layout. Changes save automatically." },
+    { "title": "Download and share", "text": "Preview your resume, export it as a PDF, and send or save it with your phone's share sheet. Finish on the website any time." }
+  ],
+  "packageName": "com.shoptechsystems.penvita",
+  "minAndroidVersion": "Android 7.0+",
+  "supportEmail": "contact@shoptechsystems.online"
+}

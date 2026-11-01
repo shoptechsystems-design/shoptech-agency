@@ -5,14 +5,17 @@ import {
   Search, BarChart3, Mail, Phone, MapPin, Facebook, Linkedin, Instagram, Twitter,
   ChevronUp, Sparkles, MessageSquare, ClipboardList, Palette, Rocket, Wrench, Menu, X, Star,
   LineChart, Clock, BadgeCheck, Gauge, Layers, Terminal, Activity, Database, Server, Cpu, Filter,
+  FileText, Receipt, FileEdit, Wallet, Droplets,
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
+import { Link } from "wouter";
 import projectsData from "../data/projects.json";
+import appsData from "../data/apps.json";
 import { Project3DCard, Project } from "../components/Project3DCard";
 
 /* ---------- Building Blocks ---------- */
 
-function Logo({ className = "" }: { className?: string }) {
+export function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-0.5 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
@@ -33,9 +36,9 @@ function Logo({ className = "" }: { className?: string }) {
 }
 
 const WHATSAPP_NUMBER = "+923164091654";
-const WHATSAPP_LINK = "https://wa.me/923164091654?text=Hello%20ShopTech%20Systems,%20I%20would%20like%20to%20inquire%20about%20a%20project.";
+export const WHATSAPP_LINK = "https://wa.me/923164091654?text=Hello%20ShopTech%20Systems,%20I%20would%20like%20to%20inquire%20about%20a%20project.";
 
-function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
+export function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -49,7 +52,7 @@ function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
+export function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 1 1 2.9-2.9c0-.23-.03-.46-.08-.68V11.4a6.34 6.34 0 1 0 3.53 5.68V9.86a8.22 8.22 0 0 0 4.8 1.54V7.96c-.35 0-.7-.04-1.03-.12Z" />
@@ -57,7 +60,7 @@ function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.15)]">
       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
@@ -66,14 +69,19 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-const NAV_LINKS = [
+export const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#portfolio", label: "Showcase" },
+  { href: "#apps", label: "Apps" },
   { href: "#services", label: "Solutions" },
   { href: "#process", label: "Architecture" },
   { href: "#testimonials", label: "Reviews" },
   { href: "#faq", label: "FAQ" },
 ];
+
+const APP_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  FileText, Receipt, FileEdit, Wallet, Droplets, Smartphone,
+};
 
 const CATEGORIES = [
   "All",
@@ -577,6 +585,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ Our Applications ============ */}
+      <section id="apps" className="relative section-py border-t border-white/10">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Our Applications</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Mobile apps <span className="text-gradient-cyan">by ShopTech Systems</span>.
+            </h2>
+            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+              Our own Android apps, built for everyday productivity.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {appsData.map((app) => {
+              const Icon = APP_ICONS[app.icon] ?? Smartphone;
+              return (
+                <div
+                  key={app.id}
+                  className="glass-card group flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40"
+                >
+                  <div>
+                    {"iconImage" in app && app.iconImage ? (
+                      <img src={app.iconImage} alt={`${app.name} app icon`} className="h-12 w-12 rounded-xl object-cover shadow-lg" />
+                    ) : (
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-white shadow-lg`}>
+                        <Icon className="h-6 w-6" />
+                      </div>
+                    )}
+                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                      {"features" in app ? <Link href={`/apps/${app.id}`}>{app.name}</Link> : app.name}
+                    </h3>
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-cyan-400">
+                      {app.tagline}
+                    </p>
+                    {app.description && (
+                      <p className="mt-3 text-sm leading-relaxed text-slate-400">{app.description}</p>
+                    )}
+                  </div>
+                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/5 pt-4">
+                    {"features" in app && (
+                      <Link href={`/apps/${app.id}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300">
+                        Learn more <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    )}
+                    {app.playUrl ? (
+                      <a
+                        href={app.playUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white"
+                      >
+                        Get it on Google Play <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold text-slate-300">
+                        <Smartphone className="h-3.5 w-3.5" />
+                        Google Play: Coming Soon
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ============ Solutions / Capabilities ============ */}
       <section id="services" className="relative section-py border-t border-white/10">
         <div className="container relative z-10">
@@ -595,8 +671,8 @@ export default function Home() {
               {
                 icon: Code2,
                 title: "Custom Web & SaaS Apps",
-                desc: "High-performance web apps with modern React/Next.js architectures, scalable APIs, and seamless database architectures.",
-                tags: ["React", "Node", "PostgreSQL", "Cloud"],
+                desc: "High-performance web apps with modern architectures, scalable APIs, and reliable data foundations.",
+                tags: ["Web Apps", "SaaS", "APIs", "Cloud"],
                 color: "from-blue-500 to-indigo-600",
               },
               {
@@ -617,7 +693,7 @@ export default function Home() {
                 icon: MessageSquare,
                 title: "AI Voice & Workflow Agents",
                 desc: "Automated calling systems, AI voice agents, smart lead routing, and hands-free intake for busy service businesses.",
-                tags: ["Voice AI", "LLM", "Automations", "APIs"],
+                tags: ["Voice AI", "Automation", "Lead Routing", "Workflows"],
                 color: "from-purple-500 to-pink-600",
               },
               {
@@ -839,7 +915,7 @@ export default function Home() {
                 },
                 {
                   q: "Do you provide hosting, domain setup, and ongoing maintenance?",
-                  a: "Yes. We handle end-to-end deployment on modern cloud platforms (Vercel, Netlify, AWS, Cloudflare) with automated SSL, CDN edge delivery, and 24/7 technical monitoring.",
+                  a: "Yes. We handle end-to-end deployment on modern cloud platforms with automated SSL, CDN edge delivery, and 24/7 technical monitoring.",
                 },
                 {
                   q: "Can you upgrade or modernize an existing legacy software system?",
