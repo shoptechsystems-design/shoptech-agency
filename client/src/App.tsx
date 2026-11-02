@@ -8,12 +8,16 @@ import Home from "./pages/Home";
 import AppDetail from "./pages/AppDetail";
 import { BlogIndex, BlogPost } from "./pages/Blog";
 import { About, Contact, Privacy, Terms } from "./pages/Info";
+import { PenvitaPrivacy, PenvitaTerms, PenvitaDelete } from "./pages/PenvitaLegal";
 
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/apps/penvita/privacy"} component={PenvitaPrivacy} />
+      <Route path={"/apps/penvita/terms"} component={PenvitaTerms} />
+      <Route path={"/apps/penvita/delete-account"} component={PenvitaDelete} />
       <Route path={"/apps/:id"} component={AppDetail} />
       <Route path={"/blog"} component={BlogIndex} />
       <Route path={"/blog/:slug"} component={BlogPost} />

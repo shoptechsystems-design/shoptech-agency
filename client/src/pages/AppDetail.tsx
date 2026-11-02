@@ -284,6 +284,13 @@ export default function AppDetail() {
                 </div>
               ))}
             </div>
+            {app.id === "penvita" && (
+              <div className="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
+                <a href="/apps/penvita/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="/apps/penvita/terms" className="hover:text-white transition-colors">Terms of Use</a>
+                <a href="/apps/penvita/delete-account" className="hover:text-white transition-colors">Delete your account</a>
+              </div>
+            )}
           </div>
         </section>
 

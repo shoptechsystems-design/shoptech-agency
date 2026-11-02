@@ -4,7 +4,7 @@ import { Eyebrow, WHATSAPP_LINK, WhatsAppIcon } from "./Home";
 
 const UPDATED = "November 1, 2026";
 
-function Page({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children: React.ReactNode }) {
+export function Page({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
     <SiteLayout>
       <section className="container">
