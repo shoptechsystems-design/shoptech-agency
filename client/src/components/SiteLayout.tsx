@@ -16,6 +16,10 @@ const siteHref = (hash: string) => `/${hash}`;
 
 /** Sets document title + meta description for a page and restores them on leave. */
 export function usePageMeta(title: string, description: string) {
+  // During build-time prerender there is no window; record meta so the prerender script can inject it.
+  if (typeof window === "undefined") {
+    (globalThis as any).__PAGE_META__ = { title, description };
+  }
   useEffect(() => {
     window.scrollTo(0, 0);
     const prevTitle = document.title;

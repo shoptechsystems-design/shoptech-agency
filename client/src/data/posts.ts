@@ -10,7 +10,9 @@ export type Post = {
   sections: PostSection[];
 };
 
-export const POSTS: Post[] = [
+import { TRENDING_POSTS } from "./posts-trending";
+
+const BASE_POSTS: Post[] = [
   {
     slug: "how-much-does-custom-business-software-cost",
     title: "How Much Does Custom Business Software Cost?",
@@ -399,6 +401,8 @@ export const POSTS: Post[] = [
     ],
   },
 ];
+
+export const POSTS: Post[] = [...TRENDING_POSTS, ...BASE_POSTS];
 
 export const getPost = (slug: string) => POSTS.find((p) => p.slug === slug);
 
