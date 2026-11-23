@@ -30,6 +30,21 @@
     "kind": "live"
   },
   {
+    "id": 23,
+    "title": "American Logistics",
+    "category": "Freight Dispatch Services",
+    "description": "A website for a U.S. freight dispatch company serving owner-operators and trucking carriers, covering load searching, rate negotiation, broker communication and booking, with a contact and quote flow.",
+    "image": "/projects/americanlogistics.webp",
+    "link": "https://americanlogistics.online/",
+    "technologies": [
+      "Dispatch Services",
+      "Lead Capture",
+      "Carrier Support"
+    ],
+    "featured": true,
+    "kind": "live"
+  },
+  {
     "id": 2,
     "title": "Lux Barber Shop",
     "category": "Barbershop Website",
