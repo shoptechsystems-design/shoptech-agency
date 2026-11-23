@@ -3,32 +3,31 @@
 
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>ShopTech Systems — Enterprise Digital Engineering & Software Solutions</title>
-    <meta name="description" content="ShopTech Systems delivers mission-critical enterprise software, real-time logistics dispatch systems, high-concurrency ERPs, and AI automation solutions." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#FFFFFF" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="ShopTech Systems" />
-    <meta property="og:title" content="ShopTech Systems — Enterprise Digital Engineering & Software Solutions" />
-    <meta property="og:description" content="Enterprise software, ERPs, dispatch systems, mobile apps and AI automation built for growing businesses." />
-    <meta property="og:image" content="https://shoptechsystems.online/shoptech-logo.png" />
-    <meta name="twitter:card" content="summary" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href="/shoptech-mark.png" type="image/png" />
-    <link rel="preload" as="image" href="/projects/dispatchflow.webp" type="image/webp" />
-    <!-- Google AdSense -->
-    <meta name="google-adsense-account" content="ca-pub-1792652693299262" />
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1792652693299262"
-      crossorigin="anonymous"></script>
+    <title>ShopTech Systems</title>
+    <!--head-tags-->
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/shoptech-mark.png" />
+
+    <!-- Google AdSense: the account meta tag verifies the site; the ad script itself loads after the page is
+         interactive so it never competes with our own content for bandwidth or the main thread. -->
+    <meta name="google-adsense-account" content="ca-pub-1792652693299262" />
+    <script>
+      (function () {
+        function load() {
+          var s = document.createElement("script");
+          s.async = true;
+          s.crossOrigin = "anonymous";
+          s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1792652693299262";
+          document.head.appendChild(s);
+        }
+        window.addEventListener("load", function () {
+          if ("requestIdleCallback" in window) requestIdleCallback(function () { setTimeout(load, 1500); }, { timeout: 4000 });
+          else setTimeout(load, 3000);
+        });
+      })();
+    </script>
   </head>
 
   <body>

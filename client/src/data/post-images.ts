@@ -1,5 +1,6 @@
-// Cover images are hosted by Unsplash (free to use, hotlinking allowed), so they add nothing to our build size.
-// Only the photo id and alt text are stored here; sizes are requested per use.
+// Cover photos come from Unsplash (free licence). scripts/fetch-blog-images.py downloads each one once and writes
+// optimised, self-hosted copies to public/blog/<slug>-{400,800,1280}.webp (+ -og.jpg for social sharing), so pages
+// never wait on a third-party image server.
 const IMAGES: Record<string, { id: string; alt: string }> = {
   "agentic-ai-for-small-business-what-it-is-and-where-to-start": { id: "1677442136019-21780ecad995", alt: "Blue AI lettering over an abstract network pattern" },
   "vibe-coding-and-ai-coding-assistants-risks-for-business": { id: "1555949963-ff9fe0c870eb", alt: "Colourful source code on a screen" },
@@ -24,10 +25,17 @@ const IMAGES: Record<string, { id: string; alt: string }> = {
 
 export const hasPostImage = (slug: string) => Boolean(IMAGES[slug]);
 
-export function postImage(slug: string, width = 800, ratio = 16 / 9) {
+export function postImage(slug: string) {
   const img = IMAGES[slug];
   if (!img) return null;
-  const h = Math.round(width / ratio);
-  const u = (w: number) => `https://images.unsplash.com/photo-${img.id}?auto=format&fit=crop&q=70&w=${w}&h=${Math.round(w / ratio)}`;
-  return { src: u(width), srcSet: `${u(Math.round(width / 2))} ${Math.round(width / 2)}w, ${u(width)} ${width}w, ${u(width * 2)} ${width * 2}w`, alt: img.alt, width, height: h };
+  return {
+    src: `/blog/${slug}-800.webp`,
+    srcSet: [400, 800, 1280].map((w) => `/blog/${slug}-${w}.webp ${w}w`).join(", "),
+    alt: img.alt,
+    width: 1280,
+    height: 720,
+  };
 }
+
+/** 1200x630 JPEG for Open Graph / Twitter cards (absolute URL). */
+export const postOgImage = (slug: string) => (IMAGES[slug] ? `https://shoptechsystems.online/blog/${slug}-og.jpg` : undefined);

@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -17,12 +17,11 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    manifest: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          "react-vendor": ["react", "react-dom"],
-          "icons": ["lucide-react"],
-        },
+        // Only for the browser build; the prerender (SSR) build must not split chunks.
+        ...(isSsrBuild ? {} : { manualChunks: { "react-vendor": ["react", "react-dom"], icons: ["lucide-react"] } }),
       },
     },
   },
@@ -31,4 +30,4 @@ export default defineConfig({
     strictPort: false,
     host: true,
   },
-});
+}));

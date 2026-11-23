@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "agentic-ai-for-small-business-what-it-is-and-where-to-start",
+    "title": "Agentic AI for Small Business: What It Is and Where to Start",
+    "description": "AI agents do more than answer questions: they carry out multi-step tasks. Here is what that means for a small business, which tasks suit agents, and how to pilot one safely.",
+    "date": "2026-11-11",
+    "category": "AI & Automation",
+    "readMins": 7
+  },
+  {
+    "slug": "vibe-coding-and-ai-coding-assistants-risks-for-business",
+    "title": "Vibe Coding and AI Coding Assistants: Benefits and Risks for Business",
+    "description": "AI tools can now generate working code from plain-English prompts. Learn where this speeds projects up, where it creates hidden risk, and how to use it responsibly.",
+    "date": "2026-11-10",
+    "category": "Software Development",
+    "readMins": 7
+  },
+  {
+    "slug": "small-business-cybersecurity-checklist",
+    "title": "A Practical Cybersecurity Checklist for Small Businesses",
+    "description": "You do not need a large budget to be much harder to attack. This checklist covers the basics: passwords, updates, backups, access control and staff awareness.",
+    "date": "2026-11-09",
+    "category": "Security",
+    "readMins": 8
+  },
+  {
+    "slug": "cloud-costs-for-small-teams-how-to-stop-overspending",
+    "title": "Cloud Costs for Small Teams: How to Stop Overspending",
+    "description": "Cloud bills have a way of growing quietly. Learn the common causes of waste and a simple FinOps routine that keeps hosting costs predictable.",
+    "date": "2026-11-08",
+    "category": "Cloud & DevOps",
+    "readMins": 7
+  },
+  {
+    "slug": "low-code-vs-custom-software-which-is-right-for-you",
+    "title": "Low-Code vs Custom Software: Which Is Right for Your Business?",
+    "description": "Low-code and no-code platforms promise fast, cheap apps. Custom software promises fit and control. Here is how to decide, with a clear comparison and examples.",
+    "date": "2026-11-07",
+    "category": "Software Development",
+    "readMins": 7
+  },
+  {
+    "slug": "api-first-design-connecting-your-business-systems",
+    "title": "API-First Design: How to Connect Your Business Systems",
+    "description": "Most businesses run on several disconnected tools. APIs let them share data automatically. Learn what an API is, why API-first matters, and how to plan integrations.",
+    "date": "2026-11-06",
+    "category": "Software Development",
+    "readMins": 6
+  },
+  {
+    "slug": "data-privacy-for-web-and-mobile-apps-what-to-get-right",
+    "title": "Data Privacy for Web and Mobile Apps: What to Get Right",
+    "description": "Collecting user data brings legal and ethical duties. This guide covers data minimisation, consent, security, privacy policies and account deletion for apps.",
+    "date": "2026-11-05",
+    "category": "Security",
+    "readMins": 7
+  },
+  {
+    "slug": "devops-and-platform-engineering-for-small-teams",
+    "title": "DevOps and Platform Engineering for Small Teams",
+    "description": "You do not need a large team to ship reliably. Learn the practical DevOps habits (version control, CI/CD, monitoring, infrastructure as code) that keep software stable.",
+    "date": "2026-11-04",
+    "category": "Cloud & DevOps",
+    "readMins": 7
+  },
+  {
+    "slug": "passkeys-and-passwordless-login-for-your-app",
+    "title": "Passkeys and Passwordless Login: Should Your App Adopt Them?",
+    "description": "Passwords are the weakest part of most apps. Passkeys offer phishing-resistant, easier sign-in. Here is how they work and how to roll them out.",
+    "date": "2026-11-03",
+    "category": "Security",
+    "readMins": 6
+  },
+  {
+    "slug": "how-much-does-custom-business-software-cost",
+    "title": "How Much Does Custom Business Software Cost?",
+    "description": "What drives the price of custom software, how to scope a project, and how to avoid overspending on features you do not need.",
+    "date": "2026-10-28",
+    "category": "Software Development",
+    "readMins": 5
+  },
+  {
+    "slug": "erp-vs-spreadsheets-when-to-switch",
+    "title": "ERP vs Spreadsheets: When Is It Time to Switch?",
+    "description": "Spreadsheets are great until they are not. Here are the signs your business has outgrown them and what an ERP system actually changes.",
+    "date": "2026-10-26",
+    "category": "ERP & Management",
+    "readMins": 5
+  },
+  {
+    "slug": "how-to-choose-a-software-development-agency",
+    "title": "How to Choose a Software Development Agency",
+    "description": "A practical checklist for evaluating agencies: portfolio, communication, process, ownership of code and post-launch support.",
+    "date": "2026-10-24",
+    "category": "Software Development",
+    "readMins": 5
+  },
+  {
+    "slug": "why-small-businesses-need-a-crm",
+    "title": "Why Small Businesses Need a CRM",
+    "description": "A CRM is not just for big sales teams. Learn how even a small business uses one to win more customers and never lose a lead.",
+    "date": "2026-10-22",
+    "category": "Business Growth",
+    "readMins": 4
+  },
+  {
+    "slug": "shopify-vs-custom-ecommerce",
+    "title": "Shopify vs a Custom E-commerce Store",
+    "description": "Should you launch on Shopify or build a custom store? A balanced look at cost, flexibility, speed and scalability.",
+    "date": "2026-10-20",
+    "category": "E-commerce",
+    "readMins": 5
+  },
+  {
+    "slug": "web-app-vs-mobile-app",
+    "title": "Web App or Mobile App: Which Should You Build First?",
+    "description": "A simple framework for deciding between a web app and a mobile app for your product, based on users, features and budget.",
+    "date": "2026-10-18",
+    "category": "Mobile Apps",
+    "readMins": 4
+  },
+  {
+    "slug": "how-ai-automation-saves-small-business-time",
+    "title": "How AI Automation Saves Small Businesses Time",
+    "description": "Practical, low-risk ways to use AI and automation for support, data entry, reporting and follow-ups without replacing your team.",
+    "date": "2026-10-16",
+    "category": "AI & Automation",
+    "readMins": 5
+  },
+  {
+    "slug": "fleet-dispatch-software-guide",
+    "title": "A Guide to Fleet and Dispatch Software",
+    "description": "What dispatch software does, the features that matter, and how it helps logistics companies cut delays and manage drivers.",
+    "date": "2026-10-14",
+    "category": "Logistics & Fleet",
+    "readMins": 5
+  },
+  {
+    "slug": "school-management-system-features",
+    "title": "Essential Features of a School Management System",
+    "description": "From admissions and attendance to fees and report cards: the features every school ERP should include.",
+    "date": "2026-10-12",
+    "category": "Education Software",
+    "readMins": 4
+  },
+  {
+    "slug": "website-speed-and-seo-basics",
+    "title": "Website Speed and SEO Basics for Business Owners",
+    "description": "Simple, non-technical steps to make your website faster and easier for customers and search engines to find.",
+    "date": "2026-10-10",
+    "category": "Web Performance",
+    "readMins": 5
+  }
+]

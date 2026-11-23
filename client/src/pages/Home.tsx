@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   ArrowRight, ArrowUpRight, Check, Code2, Zap, Shield, Users, TrendingUp, Smartphone,
@@ -14,72 +13,11 @@ import appsData from "../data/apps.json";
 import { Project3DCard, Project } from "../components/Project3DCard";
 import { SiteFooter } from "../components/SiteFooter";
 import { PostCover } from "../components/PostCover";
-import { POSTS } from "../data/posts";
+import { Logo, Eyebrow, NAV_LINKS, WHATSAPP_LINK, WhatsAppIcon } from "../components/brand";
+import { usePageMeta, faqLd, DEFAULT_OG_IMAGE } from "../lib/seo";
+import { POSTS } from "../data/blog";
 
 /* ---------- Building Blocks ---------- */
-
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-700 via-teal-600 to-teal-500 p-0.5 shadow-sm">
-        <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-50">
-          <img src="/shoptech-mark.png" alt="ShopTech Systems logo" className="h-6 w-6 object-contain" />
-        </div>
-      </div>
-      <span className="flex flex-col leading-none">
-        <span className="text-xl font-semibold tracking-tight text-slate-900">
-          Shop<span className="text-teal-700">Tech</span> Systems
-        </span>
-        <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-slate-600">
-          Software Agency
-        </span>
-      </span>
-    </div>
-  );
-}
-
-const WHATSAPP_NUMBER = "+923164091654";
-export const WHATSAPP_LINK = "https://wa.me/923164091654?text=Hello%20ShopTech%20Systems,%20I%20would%20like%20to%20inquire%20about%20a%20project.";
-
-export function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      fill="currentColor"
-      className={className}
-    >
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
-
-export function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 1 1 2.9-2.9c0-.23-.03-.46-.08-.68V11.4a6.34 6.34 0 1 0 3.53 5.68V9.86a8.22 8.22 0 0 0 4.8 1.54V7.96c-.35 0-.7-.04-1.03-.12Z" />
-    </svg>
-  );
-}
-
-export function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <div className={`font-mono text-xs font-semibold uppercase tracking-[0.16em] ${dark ? "text-teal-300" : "text-teal-700"}`}>
-      {children}
-    </div>
-  );
-}
-
-export const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#portfolio", label: "Work" },
-  { href: "#apps", label: "Apps" },
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
-  { href: "#blog", label: "Blog" },
-  { href: "#faq", label: "FAQ" },
-];
 
 const APP_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   FileText, Receipt, FileEdit, Wallet, Droplets, Smartphone,
@@ -94,7 +32,44 @@ const CATEGORIES = [
   "Booking & Services",
 ];
 
+const LCP_FULL = (projectsData as Project[]).find((p) => p.kind === "live")?.image ?? "/projects/dispatchflow.webp";
+const LCP_SMALL = LCP_FULL.replace(/\.webp$/, "-640.webp");
+const LCP_SIZES = "(min-width: 1024px) 560px, calc(100vw - 40px)";
+const smallOf = (src: string) => src.replace(/\.webp$/, "-640.webp");
+
+const FAQS: { q: string; a: string }[] = [
+                {
+                  q: "What types of software and web platforms do you build?",
+                  a: "We specialize in custom web applications, SaaS platforms, multi-tenant ERPs, point-of-sale (POS) systems, logistics/dispatch management software, AI voice agents, and high-performance e-commerce portals.",
+                },
+                {
+                  q: "How long does a typical custom software project take?",
+                  a: "Most custom platforms take between 2 to 6 weeks depending on scope, complexity, and custom integrations. We work in rapid weekly sprints with live demos.",
+                },
+                {
+                  q: "Do you provide hosting, domain setup, and ongoing maintenance?",
+                  a: "Yes. We handle end-to-end deployment on modern cloud platforms with automated SSL, CDN edge delivery, and ongoing monitoring.",
+                },
+                {
+                  q: "Can you upgrade or modernize an existing legacy software system?",
+                  a: "Absolutely. We routinely refactor, modernize, and migrate outdated web applications into modern architectures with minimal downtime.",
+                },
+                {
+                  q: "How do we get started?",
+                  a: "Simply request a free consultation using the form below. We'll analyze your requirements, provide architectural recommendations, and give you an exact timeline and estimate.",
+                },
+              ];
+
 export default function Home() {
+  usePageMeta(
+    "ShopTech Systems | Custom Software & App Development",
+    "We build custom software, web platforms, ERPs, dispatch tools and Android apps for growing businesses. See our live projects and get a free consultation.",
+    {
+      image: DEFAULT_OG_IMAGE,
+      jsonLd: [faqLd(FAQS)],
+      preload: { src: LCP_SMALL, srcSet: `${LCP_SMALL} 640w, ${LCP_FULL} 1200w`, sizes: LCP_SIZES },
+    }
+  );
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -293,6 +268,7 @@ export default function Home() {
         )}
       </nav>
 
+      <main id="main">
       {/* ============ Hero Section ============ */}
       <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container relative z-10">
@@ -354,7 +330,7 @@ export default function Home() {
                       <span className="h-2 w-2 rounded-full bg-slate-300" />
                       <span className="ml-2 truncate text-[11px] text-slate-500">{p.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                     </div>
-                    <img src={p.image} alt={p.title} width={1200} height={630} loading={i === 0 ? "eager" : "lazy"} className="aspect-[1200/630] w-full object-cover object-top" />
+                    <img src={smallOf(p.image)} srcSet={`${smallOf(p.image)} 640w, ${p.image} 1200w`} sizes={i === 0 ? LCP_SIZES : "(min-width: 1024px) 280px, 45vw"} alt={`${p.title} website`} width={640} height={336} loading={i === 0 ? "eager" : "lazy"} decoding={i === 0 ? "sync" : "async"} {...(i === 0 ? { fetchPriority: "high" as const } : {})} className="aspect-[1200/630] w-full object-cover object-top" />
                     <div className="flex items-center justify-between px-4 py-3">
                       <span className="text-sm font-semibold text-slate-900">{p.title}</span>
                       <span className="text-xs text-slate-500">{p.category}</span>
@@ -471,15 +447,16 @@ export default function Home() {
             <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center backdrop-blur-xl">
               <p className="text-lg font-bold text-slate-900">No matching projects found</p>
               <p className="mt-2 text-sm text-slate-600">Try adjusting your category filter or search keywords.</p>
-              <Button
+              <button
+                type="button"
                 onClick={() => {
                   setActiveCategory("All");
                   setSearchQuery("");
                 }}
-                className="mt-4 rounded-full bg-teal-700 px-6 text-white hover:bg-teal-800"
+                className="mt-4 rounded-lg bg-teal-700 px-6 py-2.5 text-sm font-semibold text-white hover:bg-teal-800"
               >
                 Reset Filters
-              </Button>
+              </button>
             </div>
           )}
         </div>
@@ -514,7 +491,7 @@ export default function Home() {
                 <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">{app.description}</p>
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <Link href={`/apps/${app.id}`} className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white">
-                    Learn more <ArrowRight className="h-4 w-4" />
+                    Learn more<span className="sr-only"> about {app.name}</span> <ArrowRight className="h-4 w-4" />
                   </Link>
                   {app.playUrl ? (
                     <a href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">
@@ -529,7 +506,7 @@ export default function Home() {
               </div>
               {"banner" in app && app.banner && (
                 <div className="min-h-[220px] bg-slate-100 lg:col-span-3">
-                  <img src={app.banner as string} alt={`${app.name} app preview`} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={app.banner as string} alt={`${app.name} app preview`} width={1024} height={500} loading="lazy" className="h-full w-full object-cover" />
                 </div>
               )}
             </div>
@@ -715,7 +692,7 @@ export default function Home() {
                   className="relative rounded-xl border border-white/10 bg-white/5 p-7"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-3xl font-semibold text-white/20">
+                    <span aria-hidden="true" className="font-mono text-3xl font-semibold text-slate-500">
                       {step.num}
                     </span>
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-teal-300">
@@ -749,7 +726,7 @@ export default function Home() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {POSTS.slice(0, 3).map((p) => (
               <a key={p.slug} href={`/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg">
-                <PostCover slug={p.slug} width={640} />
+                <PostCover slug={p.slug} />
                 <div className="flex flex-1 flex-col p-5">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-teal-700">{p.category}</span>
                   <h3 className="mt-2 text-lg font-semibold leading-snug text-slate-900 text-balance">{p.title}</h3>
@@ -777,32 +754,11 @@ export default function Home() {
 
           <div className="lg:col-span-8">
             <Accordion type="single" collapsible className="space-y-3">
-              {[
-                {
-                  q: "What types of software and web platforms do you build?",
-                  a: "We specialize in custom web applications, SaaS platforms, multi-tenant ERPs, point-of-sale (POS) systems, logistics/dispatch management software, AI voice agents, and high-performance e-commerce portals.",
-                },
-                {
-                  q: "How long does a typical custom software project take?",
-                  a: "Most custom platforms take between 2 to 6 weeks depending on scope, complexity, and custom integrations. We work in rapid weekly sprints with live demos.",
-                },
-                {
-                  q: "Do you provide hosting, domain setup, and ongoing maintenance?",
-                  a: "Yes. We handle end-to-end deployment on modern cloud platforms with automated SSL, CDN edge delivery, and ongoing monitoring.",
-                },
-                {
-                  q: "Can you upgrade or modernize an existing legacy software system?",
-                  a: "Absolutely. We routinely refactor, modernize, and migrate outdated web applications into modern architectures with minimal downtime.",
-                },
-                {
-                  q: "How do we get started?",
-                  a: "Simply request a free consultation using the form below. We'll analyze your requirements, provide architectural recommendations, and give you an exact timeline and estimate.",
-                },
-              ].map((item, idx) => (
+              {FAQS.map((item, idx) => (
                 <AccordionItem
                   key={idx}
                   value={`item-${idx}`}
-                  className="rounded-xl border border-slate-200 last:border-b bg-white px-6 data-[state=open]:border-teal-600/40"
+                  className="rounded-xl border border-slate-200 bg-white px-6 data-[state=open]:border-teal-600/40"
                 >
                   <AccordionTrigger className="text-left text-base font-semibold text-slate-900 hover:text-teal-700 py-4">
                     {item.q}
@@ -926,6 +882,8 @@ export default function Home() {
         </div>
       </section>
 
+      </main>
+
       {/* ============ Footer ============ */}
       <SiteFooter />
 
@@ -934,8 +892,8 @@ export default function Home() {
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-emerald-600/40 bg-gradient-to-r from-emerald-600 to-green-600 px-4 py-3 text-slate-900 shadow-[0_0_25px_rgba(16,185,129,0.5)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] group cursor-pointer"
-        aria-label="Chat on WhatsApp"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-emerald-700 px-4 py-3 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-emerald-800 group cursor-pointer"
+        aria-label="WhatsApp Us"
       >
         <div className="relative flex h-5 w-5 items-center justify-center">
           <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />

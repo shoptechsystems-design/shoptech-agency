@@ -1,6 +1,6 @@
 import { ArrowRight, Mail } from "lucide-react";
 import SiteLayout, { SUPPORT_EMAIL, usePageMeta } from "@/components/SiteLayout";
-import { Eyebrow, WHATSAPP_LINK, WhatsAppIcon } from "./Home";
+import { Eyebrow, WHATSAPP_LINK, WhatsAppIcon } from "@/components/brand";
 
 const UPDATED = "November 1, 2026";
 
@@ -12,7 +12,7 @@ export function Page({ eyebrow, title, intro, children }: { eyebrow: string; tit
           <Eyebrow>{eyebrow}</Eyebrow>
           <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{title}</h1>
           {intro && <p className="mt-4 text-base text-slate-600 sm:text-lg">{intro}</p>}
-          <div className="mt-10 space-y-5 text-[15px] leading-7 text-slate-700 [&_a]:text-teal-700 [&_a:hover]:text-teal-700 [&_h2]:pt-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6">
+          <div className="mt-10 space-y-5 text-[15px] leading-7 text-slate-700 [&_a:not(.btn-tech-glow)]:text-teal-700 [&_a:not(.btn-tech-glow)]:underline [&_a:not(.btn-tech-glow)]:underline-offset-2 [&_h2]:pt-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6">
             {children}
           </div>
         </div>
@@ -194,7 +194,7 @@ export function About() {
       </p>
 
       <div className="pt-4">
-        <a href="/contact" className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white no-underline">
+        <a href="/contact" className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white! no-underline!">
           Talk to us <ArrowRight className="h-4 w-4" />
         </a>
       </div>

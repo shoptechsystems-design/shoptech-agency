@@ -1,12 +1,38 @@
 [build]
-  command = "vite build && node scripts-prerender.mjs"
+  command = "npm run build:site"
   publish = "dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback so client-side routes resolve to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Every page is prerendered to its own index.html, so there is no catch-all rewrite:
+# unknown URLs get the real 404.html with a 404 status (no soft-404s for search engines).
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hashed build files never change: cache for a year.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Unhashed images: cache for a month, revalidate in the background.
+[[headers]]
+  for = "/projects/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/apps/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/ads.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"

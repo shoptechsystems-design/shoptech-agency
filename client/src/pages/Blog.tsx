@@ -1,15 +1,25 @@
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { use } from "react";
 import { useRoute } from "wouter";
-import SiteLayout, { usePageMeta } from "@/components/SiteLayout";
-import { POSTS, formatDate, getPost } from "@/data/posts";
+import SiteLayout from "@/components/SiteLayout";
+import { usePageMeta, blogPostingLd, breadcrumbLd, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { postImage, postOgImage } from "@/data/post-images";
+import { POSTS, formatDate, getPost, loadPostSections, seoTitle } from "@/data/blog";
 import NotFound from "./NotFound";
-import { Eyebrow } from "./Home";
+import { Eyebrow } from "@/components/brand";
 import { PostCover } from "@/components/PostCover";
 
+const CARD_SIZES = "(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw";
+
 export function BlogIndex() {
+  const firstCover = POSTS[0] ? postImage(POSTS[0].slug) : null;
   usePageMeta(
     "Blog | ShopTech Systems",
-    "Practical guides on custom software, ERP, e-commerce, mobile apps and automation for growing businesses."
+    "Practical guides on custom software, ERP, e-commerce, mobile apps and automation for growing businesses.",
+    {
+      jsonLd: [breadcrumbLd([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])],
+      preload: firstCover ? { src: firstCover.src, srcSet: firstCover.srcSet, sizes: CARD_SIZES } : undefined,
+    }
   );
   return (
     <SiteLayout>
@@ -27,7 +37,7 @@ export function BlogIndex() {
               href={`/blog/${p.slug}`}
               className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg"
             >
-              <PostCover slug={p.slug} width={640} eager={i < 3} />
+              <PostCover slug={p.slug} sizes={CARD_SIZES} eager={i < 3} priority={i === 0} />
               <div className="flex flex-1 flex-col p-5">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-teal-700">{p.category}</span>
                 <h2 className="mt-2 text-lg font-semibold leading-snug text-slate-900 text-balance">{p.title}</h2>
@@ -51,12 +61,31 @@ export function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
   const post = params ? getPost(params.slug) : undefined;
 
+  const HERO_SIZES = "(min-width: 1320px) 1240px, 100vw";
+  const heroImg = post ? postImage(post.slug) : null;
+  const ogImg = post ? postOgImage(post.slug) : undefined;
   usePageMeta(
-    post ? `${post.title} | ShopTech Systems` : "Not found | ShopTech Systems",
-    post ? post.description : ""
+    post ? seoTitle(post) : "Not found | ShopTech Systems",
+    post ? post.description : "",
+    post
+      ? {
+          type: "article",
+          published: post.date,
+          modified: post.date,
+          section: post.category,
+          image: ogImg ?? DEFAULT_OG_IMAGE,
+          imageAlt: heroImg?.alt,
+          preload: heroImg ? { src: heroImg.src, srcSet: heroImg.srcSet, sizes: HERO_SIZES } : undefined,
+          jsonLd: [
+            blogPostingLd({ ...post, image: ogImg }),
+            breadcrumbLd([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }]),
+          ],
+        }
+      : { noindex: true }
   );
 
   if (!post) return <NotFound />;
+  const sections = use(loadPostSections(post.slug));
 
   const related = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
 
@@ -78,15 +107,15 @@ export function BlogPost() {
 
         <PostCover
           slug={post.slug}
-          width={1400}
-          eager
-          sizes="(min-width: 1320px) 1240px, 100vw"
-          className="mt-8 rounded-2xl aspect-[21/9]!"
+          ratio={21 / 9}
+          priority
+          sizes={HERO_SIZES}
+          className="mt-8 rounded-2xl"
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <div className="space-y-5 text-[15px] leading-7 text-slate-700 sm:text-base sm:leading-8 lg:col-span-8">
-            {post.sections.map((s, i) => (
+            {sections.map((s, i) => (
               <section key={i} className="space-y-4">
                 {s.h && <h2 className="pt-4 text-xl font-semibold text-slate-900 sm:text-2xl">{s.h}</h2>}
                 {s.p?.map((t, j) => <p key={j}>{t}</p>)}
@@ -115,7 +144,7 @@ export function BlogPost() {
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <a key={p.slug} href={`/blog/${p.slug}`} className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg">
-                <PostCover slug={p.slug} width={640} />
+                <PostCover slug={p.slug} />
                 <div className="p-5">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-teal-700">{p.category}</span>
                   <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">{p.title}</h3>

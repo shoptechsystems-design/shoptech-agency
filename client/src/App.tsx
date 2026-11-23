@@ -1,15 +1,22 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+import { Suspense, lazy } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import AppDetail from "./pages/AppDetail";
-import { BlogIndex, BlogPost } from "./pages/Blog";
-import { About, Contact, Privacy, Terms } from "./pages/Info";
-import { PenvitaPrivacy, PenvitaTerms, PenvitaDelete } from "./pages/PenvitaLegal";
 
+// Each page is its own chunk, so a visitor only downloads the code for the page they open.
+// Pages are prerendered to HTML at build time, so the content is visible before any of this loads.
+const Home = lazy(() => import("./pages/Home"));
+const AppDetail = lazy(() => import("./pages/AppDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogIndex = lazy(() => import("./pages/Blog").then((m) => ({ default: m.BlogIndex })));
+const BlogPost = lazy(() => import("./pages/Blog").then((m) => ({ default: m.BlogPost })));
+const About = lazy(() => import("./pages/Info").then((m) => ({ default: m.About })));
+const Contact = lazy(() => import("./pages/Info").then((m) => ({ default: m.Contact })));
+const Privacy = lazy(() => import("./pages/Info").then((m) => ({ default: m.Privacy })));
+const Terms = lazy(() => import("./pages/Info").then((m) => ({ default: m.Terms })));
+const PenvitaPrivacy = lazy(() => import("./pages/PenvitaLegal").then((m) => ({ default: m.PenvitaPrivacy })));
+const PenvitaTerms = lazy(() => import("./pages/PenvitaLegal").then((m) => ({ default: m.PenvitaTerms })));
+const PenvitaDelete = lazy(() => import("./pages/PenvitaLegal").then((m) => ({ default: m.PenvitaDelete })));
 
 function Router() {
   return (
@@ -26,28 +33,18 @@ function Router() {
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/terms"} component={Terms} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
+      <ThemeProvider defaultTheme="light">
+        <Suspense fallback={null}>
           <Router />
-        </TooltipProvider>
+        </Suspense>
       </ThemeProvider>
     </ErrorBoundary>
   );

@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { Logo, TikTokIcon, WHATSAPP_LINK, WhatsAppIcon } from "@/pages/Home";
+import { Logo, TikTokIcon, WHATSAPP_LINK, WhatsAppIcon } from "@/components/brand";
 
 const SUPPORT_EMAIL = "contact@shoptechsystems.online";
 
@@ -59,7 +59,7 @@ export function SiteFooter() {
 
           {COLUMNS.map((col) => (
             <div key={col.title} className="md:col-span-2">
-              <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{col.title}</h3>
+              <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{col.title}</h2>
               <ul className="mt-4 space-y-3 text-sm">
                 {col.links.map((l) => (
                   <li key={l.label}>

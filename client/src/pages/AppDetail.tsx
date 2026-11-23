@@ -6,7 +6,8 @@ import {
 } from "lucide-react";
 import appsData from "../data/apps.json";
 import NotFound from "./NotFound";
-import { Logo, Eyebrow, NAV_LINKS, WHATSAPP_LINK, WhatsAppIcon, TikTokIcon } from "./Home";
+import { usePageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import { Logo, Eyebrow, NAV_LINKS, WHATSAPP_LINK, WhatsAppIcon, TikTokIcon } from "@/components/brand";
 
 type AppEntry = {
   id: string;
@@ -35,19 +36,29 @@ export default function AppDetail() {
   const app = (appsData as AppEntry[]).find((a) => a.id === params?.id);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (!app) return;
-    window.scrollTo(0, 0);
-    const prevTitle = document.title;
-    document.title = `${app.name} — ${app.tagline} | ShopTech Systems`;
-    const meta = document.querySelector('meta[name="description"]');
-    const prevDesc = meta?.getAttribute("content") ?? null;
-    meta?.setAttribute("content", app.description);
-    return () => {
-      document.title = prevTitle;
-      if (meta && prevDesc !== null) meta.setAttribute("content", prevDesc);
-    };
-  }, [app]);
+  usePageMeta(
+    app ? (`${app.name} — ${app.tagline} | ShopTech Systems`.length <= 62 ? `${app.name} — ${app.tagline} | ShopTech Systems` : `${app.name} — ${app.tagline}`) : "App not found | ShopTech Systems",
+    app?.description ?? "",
+    app
+      ? {
+          image: app.banner ? `${SITE_URL}${app.banner}` : undefined,
+          jsonLd: [
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: app.name,
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Android",
+              description: app.description,
+              image: app.iconImage ? `${SITE_URL}${app.iconImage}` : undefined,
+              publisher: { "@id": `${SITE_URL}/#organization` },
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            },
+            breadcrumbLd([{ name: "Home", path: "/" }, { name: "Apps", path: "/#apps" }, { name: app.name, path: `/apps/${app.id}` }]),
+          ],
+        }
+      : { noindex: true }
+  );
 
   if (!app || !app.features) return <NotFound />;
 
@@ -156,7 +167,7 @@ export default function AppDetail() {
             <div>
               <div className="flex items-center gap-4">
                 {app.iconImage && (
-                  <img src={app.iconImage} alt={`${app.name} app icon`} className="h-20 w-20 rounded-[22px] shadow-[0_0_40px_rgba(15,118,110,0.35)] ring-1 ring-white/15" />
+                  <img src={app.iconImage} alt={`${app.name} app icon`} width={80} height={80} className="h-20 w-20 rounded-[22px] shadow-[0_0_40px_rgba(15,118,110,0.35)] ring-1 ring-white/15" />
                 )}
                 <Eyebrow>Android App</Eyebrow>
               </div>
@@ -189,6 +200,9 @@ export default function AppDetail() {
                 <img
                   src={app.banner}
                   alt={`${app.name} preview`}
+                  width={1024}
+                  height={500}
+                  fetchPriority="high"
                   className="relative w-full rounded-2xl border border-slate-300 shadow-[0_20px_60px_rgba(15,23,42,0.2)]"
                 />
               </div>
@@ -232,6 +246,8 @@ export default function AppDetail() {
                     key={src}
                     src={src}
                     alt={`${app.name} screenshot ${i + 1}`}
+                    width={225}
+                    height={480}
                     loading="lazy"
                     className="h-[480px] w-auto flex-shrink-0 rounded-2xl border border-slate-200 shadow-xl"
                   />
@@ -252,7 +268,7 @@ export default function AppDetail() {
               <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
                 {app.howItWorks.map((s, i) => (
                   <div key={s.title} className="glass-card relative rounded-2xl border border-slate-200 bg-white p-8 backdrop-blur-xl">
-                    <span className="absolute right-6 top-4 text-5xl font-extrabold text-slate-900/10">0{i + 1}</span>
+                    <span aria-hidden="true" data-n={`0${i + 1}`} className="absolute right-6 top-4 text-5xl font-semibold text-slate-200 before:content-[attr(data-n)]" />
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-700 to-teal-500 text-white shadow-lg">
                       {(() => { const StepIcon = STEP_ICONS[i % STEP_ICONS.length]; return <StepIcon className="h-5 w-5" />; })()}
                     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X, Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Logo, NAV_LINKS, TikTokIcon, WHATSAPP_LINK, WhatsAppIcon } from "@/pages/Home";
+import { Logo, NAV_LINKS, TikTokIcon, WHATSAPP_LINK, WhatsAppIcon } from "@/components/brand";
 
 export const SUPPORT_EMAIL = "contact@shoptechsystems.online";
 
@@ -15,25 +15,7 @@ export const INFO_LINKS = [
 
 const siteHref = (hash: string) => `/${hash}`;
 
-/** Sets document title + meta description for a page and restores them on leave. */
-export function usePageMeta(title: string, description: string) {
-  // During build-time prerender there is no window; record meta so the prerender script can inject it.
-  if (typeof window === "undefined") {
-    (globalThis as any).__PAGE_META__ = { title, description };
-  }
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const prevTitle = document.title;
-    const meta = document.querySelector('meta[name="description"]');
-    const prevDesc = meta?.getAttribute("content") ?? null;
-    document.title = title;
-    meta?.setAttribute("content", description);
-    return () => {
-      document.title = prevTitle;
-      if (meta && prevDesc !== null) meta.setAttribute("content", prevDesc);
-    };
-  }, [title, description]);
-}
+export { usePageMeta } from "@/lib/seo";
 
 /** Shared shell (nav + footer) for the content pages. Mirrors the look of the main site. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {

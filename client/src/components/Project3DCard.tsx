@@ -18,10 +18,6 @@ interface Project3DCardProps {
   priority?: boolean;
 }
 
-// Global cache to track images that have successfully loaded in the session
-// Prevents skeleton flashes or opacity transitions on re-renders, filter switches, or back navigation
-const loadedImagesCache = new Set<string>();
-
 export const Project3DCard = memo(function Project3DCard({
   project,
   priority = false,
@@ -37,8 +33,7 @@ export const Project3DCard = memo(function Project3DCard({
     ? project.image
     : project.image.replace(/\.png$/, ".webp");
 
-  // Synchronously check if this image was already loaded
-  const [imageLoaded, setImageLoaded] = useState(() => loadedImagesCache.has(webpSrc));
+  const small = webpSrc.replace(/\.webp$/, "-640.webp");
   const isFinePointer = useRef(true);
 
   // Check device fine pointer capability once on mount
@@ -54,17 +49,6 @@ export const Project3DCard = memo(function Project3DCard({
     }
   }, []);
 
-  // Handle cached images that might have completed before event listener attached
-  useEffect(() => {
-    if (loadedImagesCache.has(webpSrc)) {
-      setImageLoaded(true);
-      return;
-    }
-    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
-      loadedImagesCache.add(webpSrc);
-      setImageLoaded(true);
-    }
-  }, [webpSrc]);
 
   // Read rect ONCE on mouseenter instead of layout-thrashing on every pixel move
   const handleMouseEnter = () => {
@@ -124,11 +108,6 @@ export const Project3DCard = memo(function Project3DCard({
     }
   };
 
-  const onImageLoad = () => {
-    loadedImagesCache.add(webpSrc);
-    setImageLoaded(true);
-  };
-
   return (
     <div
       ref={cardRef}
@@ -163,36 +142,25 @@ export const Project3DCard = memo(function Project3DCard({
           className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-50"
           style={{ transform: "translateZ(15px)" }}
         >
-          {/* Skeleton Shimmer while loading */}
-          {!imageLoaded && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white animate-pulse">
-              <div className="h-5 w-5 rounded-full border-2 border-teal-600/40 border-t-cyan-400 animate-spin" />
-              <span className="mt-2 font-mono text-[9px] uppercase tracking-widest text-slate-500">ShopTech Node</span>
-            </div>
-          )}
-
           <picture className="block h-full w-full">
-            <source srcSet={webpSrc} type="image/webp" />
             <img
               ref={imgRef}
-              src={webpSrc}
-              alt={project.title}
-              width={600}
-              height={315}
+              src={small}
+              srcSet={`${small} 640w, ${webpSrc} 1200w`}
+              sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+              alt={`${project.title} – ${project.category}`}
+              width={640}
+              height={336}
               loading={priority ? "eager" : "lazy"}
-              // @ts-expect-error fetchPriority supported in modern browsers
-              fetchpriority={priority ? "high" : "auto"}
               decoding="async"
-              onLoad={onImageLoad}
-              className={`h-full w-full object-cover transition-all duration-300 ease-out group-hover:scale-105 group-hover:brightness-110 ${
-                imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              {...(priority ? { fetchPriority: "high" as const } : {})}
+              className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               onError={(e) => {
                 const target = e.currentTarget as HTMLImageElement;
-                if (!target.src.includes("dispatchflow.webp")) {
-                  target.src = "/projects/dispatchflow.webp";
+                if (!target.src.includes("dispatchflow")) {
+                  target.removeAttribute("srcset");
+                  target.src = "/projects/dispatchflow-640.webp";
                 }
-                onImageLoad();
               }}
             />
           </picture>
@@ -206,7 +174,7 @@ export const Project3DCard = memo(function Project3DCard({
               <span className="h-1.5 w-1.5 rounded-full bg-teal-600 animate-pulse" />
               {project.category}
             </span>
-            <span className={`ml-2 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-md ${project.kind === "live" ? "bg-emerald-500 text-white" : "bg-slate-700 text-white"}`}>
+            <span className={`ml-2 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-md ${project.kind === "live" ? "bg-emerald-700 text-white" : "bg-slate-700 text-white"}`}>
               {project.kind === "live" ? "Live" : "Concept"}
             </span>
           </div>

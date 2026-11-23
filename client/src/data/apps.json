@@ -7,8 +7,8 @@
     "icon": "FileText",
     "color": "from-blue-500 to-indigo-600",
     "playUrl": "",
-    "iconImage": "/apps/penvita/icon.png",
-    "banner": "/apps/penvita/banner.png",
+    "iconImage": "/apps/penvita/icon.webp",
+    "banner": "/apps/penvita/banner.webp",
     "features": [
       "18 professional templates, including ATS-friendly layouts",
       "Guided step-by-step editor with automatic saving",
