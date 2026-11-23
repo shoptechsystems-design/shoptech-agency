@@ -8,7 +8,7 @@ const GOVERNING_LAW = "Pakistan";
 const DELETION_DAYS = 30;
 
 const Back = () => (
-  <a href="/apps/penvita" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white">
+  <a href="/apps/penvita" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900">
     <ArrowLeft className="h-4 w-4" /> Back to Penvita
   </a>
 );

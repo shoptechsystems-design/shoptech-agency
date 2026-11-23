@@ -10,9 +10,9 @@ export function Page({ eyebrow, title, intro, children }: { eyebrow: string; tit
       <section className="container">
         <div className="mx-auto max-w-3xl">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">{title}</h1>
-          {intro && <p className="mt-4 text-base text-slate-400 sm:text-lg">{intro}</p>}
-          <div className="mt-10 space-y-5 text-[15px] leading-7 text-slate-300 [&_a]:text-cyan-400 [&_a:hover]:text-cyan-300 [&_h2]:pt-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-white [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6">
+          <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{title}</h1>
+          {intro && <p className="mt-4 text-base text-slate-600 sm:text-lg">{intro}</p>}
+          <div className="mt-10 space-y-5 text-[15px] leading-7 text-slate-700 [&_a]:text-teal-700 [&_a:hover]:text-teal-700 [&_h2]:pt-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6">
             {children}
           </div>
         </div>
@@ -213,21 +213,21 @@ export function Contact() {
       <div className="grid gap-4 sm:grid-cols-2">
         <a
           href={`mailto:${SUPPORT_EMAIL}`}
-          className="glass-card block rounded-2xl border border-white/10 bg-slate-900/50 p-6 no-underline backdrop-blur-xl transition-colors hover:border-blue-400/40"
+          className="glass-card block rounded-2xl border border-slate-200 bg-white p-6 no-underline backdrop-blur-xl transition-colors hover:border-teal-600/40"
         >
-          <Mail className="h-5 w-5 text-cyan-400" />
-          <p className="mt-3 text-sm font-bold text-white">Email</p>
-          <p className="mt-1 break-all text-sm text-slate-400">{SUPPORT_EMAIL}</p>
+          <Mail className="h-5 w-5 text-teal-700" />
+          <p className="mt-3 text-sm font-bold text-slate-900">Email</p>
+          <p className="mt-1 break-all text-sm text-slate-600">{SUPPORT_EMAIL}</p>
         </a>
         <a
           href={WHATSAPP_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-card block rounded-2xl border border-white/10 bg-slate-900/50 p-6 no-underline backdrop-blur-xl transition-colors hover:border-emerald-400/40"
+          className="glass-card block rounded-2xl border border-slate-200 bg-white p-6 no-underline backdrop-blur-xl transition-colors hover:border-emerald-600/40"
         >
-          <WhatsAppIcon className="h-5 w-5 text-emerald-400" />
-          <p className="mt-3 text-sm font-bold text-white">WhatsApp</p>
-          <p className="mt-1 text-sm text-slate-400">+92 316 4091654</p>
+          <WhatsAppIcon className="h-5 w-5 text-emerald-700" />
+          <p className="mt-3 text-sm font-bold text-slate-900">WhatsApp</p>
+          <p className="mt-1 text-sm text-slate-600">+92 316 4091654</p>
         </a>
       </div>
 

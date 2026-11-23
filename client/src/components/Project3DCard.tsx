@@ -10,6 +10,7 @@ export interface Project {
   link: string;
   technologies: string[];
   featured: boolean;
+  kind?: "live" | "concept";
 }
 
 interface Project3DCardProps {
@@ -139,10 +140,10 @@ export const Project3DCard = memo(function Project3DCard({
     >
       <a
         ref={innerCardRef}
-        href={project.link || "#"}
+        href={project.link || undefined}
         target={project.link ? "_blank" : undefined}
         rel={project.link ? "noopener noreferrer" : undefined}
-        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0c1222]/90 transition-transform duration-200 ease-out hover:border-blue-500/50 hover:shadow-[0_20px_50px_rgba(37,99,235,0.22)] active:scale-[0.98]"
+        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-transform duration-200 ease-out hover:border-teal-600/40 hover:shadow-[0_20px_50px_rgba(15,118,110,0.22)] active:scale-[0.98]"
         style={{
           transformStyle: "preserve-3d",
           willChange: "transform",
@@ -155,17 +156,17 @@ export const Project3DCard = memo(function Project3DCard({
         />
 
         {/* Ambient border glow gradient on hover */}
-        <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-blue-500/20 via-transparent to-purple-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-teal-500/10 via-transparent to-teal-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         {/* Image Frame with Skeleton Shimmer */}
         <div
-          className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950"
+          className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-50"
           style={{ transform: "translateZ(15px)" }}
         >
           {/* Skeleton Shimmer while loading */}
           {!imageLoaded && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-900/90 animate-pulse">
-              <div className="h-5 w-5 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin" />
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white animate-pulse">
+              <div className="h-5 w-5 rounded-full border-2 border-teal-600/40 border-t-cyan-400 animate-spin" />
               <span className="mt-2 font-mono text-[9px] uppercase tracking-widest text-slate-500">ShopTech Node</span>
             </div>
           )}
@@ -197,23 +198,26 @@ export const Project3DCard = memo(function Project3DCard({
           </picture>
 
           {/* Vignette & bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c1222] via-[#0c1222]/20 to-transparent opacity-85 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-85 pointer-events-none" />
 
           {/* Floating Category Pill */}
           <div className="absolute left-3.5 top-3.5 sm:left-4 sm:top-4 z-20">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-slate-950/85 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-cyan-400 shadow-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-slate-50 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-teal-700 shadow-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-600 animate-pulse" />
               {project.category}
+            </span>
+            <span className={`ml-2 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-md ${project.kind === "live" ? "bg-emerald-500 text-white" : "bg-slate-700 text-white"}`}>
+              {project.kind === "live" ? "Live" : "Concept"}
             </span>
           </div>
 
           {/* Floating 3D Action Icon */}
-          <div
-            className="absolute right-3.5 top-3.5 sm:right-4 sm:top-4 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/20 bg-slate-900/85 text-white shadow-xl transition-all duration-200 group-hover:scale-110 group-hover:border-blue-400 group-hover:bg-blue-600 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
+          {project.link && <div
+            className="absolute right-3.5 top-3.5 sm:right-4 sm:top-4 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-900 shadow-md transition-all duration-200 group-hover:scale-110 group-hover:border-teal-600/40 group-hover:bg-teal-700 group-hover:text-white"
             style={{ transform: "translateZ(25px)" }}
           >
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </div>
+          </div>}
         </div>
 
         {/* Content Body */}
@@ -222,7 +226,7 @@ export const Project3DCard = memo(function Project3DCard({
           style={{ transform: "translateZ(16px)" }}
         >
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white transition-colors duration-150 group-hover:text-blue-400">
+            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 transition-colors duration-150 group-hover:text-teal-700">
               {project.title}
             </h3>
             <span className="font-mono text-xs text-slate-500 font-semibold">
@@ -230,16 +234,16 @@ export const Project3DCard = memo(function Project3DCard({
             </span>
           </div>
 
-          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors line-clamp-3">
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 group-hover:text-slate-700 transition-colors line-clamp-3">
             {project.description}
           </p>
 
           {/* Technology Badges */}
-          <div className="mt-4 flex flex-wrap gap-1.5 border-t border-white/5 pt-3.5">
+          <div className="mt-4 flex flex-wrap gap-1.5 border-t border-slate-100 pt-3.5">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="inline-flex items-center rounded-md border border-white/10 bg-white/[0.04] px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-medium text-slate-300 transition-colors group-hover:border-blue-500/30 group-hover:bg-blue-500/10 group-hover:text-blue-300"
+                className="inline-flex items-center rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-medium text-slate-700 transition-colors group-hover:border-teal-600/40 group-hover:bg-teal-50 group-hover:text-teal-700"
               >
                 {tech}
               </span>

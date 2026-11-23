@@ -18,16 +18,16 @@ import { Project3DCard, Project } from "../components/Project3DCard";
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-0.5 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-        <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-950">
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-700 via-teal-600 to-teal-500 p-0.5 shadow-[0_0_20px_rgba(15,118,110,0.5)]">
+        <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-50">
           <img src="/shoptech-mark.png" alt="ShopTech Systems logo" className="h-6 w-6 object-contain" />
         </div>
       </div>
       <span className="flex flex-col leading-none">
-        <span className="text-xl font-extrabold tracking-tight text-white">
-          Shop<span className="text-cyan-400">Tech</span> Systems
+        <span className="text-xl font-extrabold tracking-tight text-slate-900">
+          Shop<span className="text-teal-700">Tech</span> Systems
         </span>
-        <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-slate-400">
+        <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-slate-600">
           Enterprise Digital Systems
         </span>
       </span>
@@ -62,8 +62,8 @@ export function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.15)]">
-      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
+    <div className="inline-flex items-center gap-2 rounded-full border border-teal-600/40 bg-teal-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-700 backdrop-blur-md shadow-[0_0_15px_rgba(15,118,110,0.15)]">
+      <span className="h-1.5 w-1.5 rounded-full bg-teal-600 animate-pulse shadow-[0_0_8px_#22d3ee]" />
       {children}
     </div>
   );
@@ -75,7 +75,6 @@ export const NAV_LINKS = [
   { href: "#apps", label: "Apps" },
   { href: "#services", label: "Solutions" },
   { href: "#process", label: "Architecture" },
-  { href: "#testimonials", label: "Reviews" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -199,7 +198,7 @@ export default function Home() {
   }, [filteredProjects, visibleCount]);
 
   return (
-    <div className="relative min-h-screen bg-[#060913] text-slate-200 selection:bg-blue-600/30 selection:text-white antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-white text-slate-800 selection:bg-teal-50 selection:text-slate-900 antialiased overflow-x-hidden">
       {/* ============ Ambient Tech Background (GPU Compositor Layer) ============ */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
@@ -218,7 +217,7 @@ export default function Home() {
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            ? "border-b border-slate-200 bg-white/90 backdrop-blur-xl shadow-sm"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -228,12 +227,12 @@ export default function Home() {
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md lg:flex">
+          <div className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white p-1.5 backdrop-blur-md lg:flex">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-4 py-1.5 text-xs font-semibold text-slate-300 transition-all duration-200 hover:bg-white/10 hover:text-white"
+                className="rounded-full px-4 py-1.5 text-xs font-semibold text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
               >
                 {l.label}
               </a>
@@ -246,7 +245,7 @@ export default function Home() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-semibold text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-600/40 bg-emerald-50 px-3.5 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-50 hover:border-emerald-600/40 transition-all shadow-[0_0_15px_rgba(16,185,129,0.15)]"
               title="Chat with us on WhatsApp"
             >
               <WhatsAppIcon className="h-3.5 w-3.5" />
@@ -263,7 +262,7 @@ export default function Home() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-slate-900/80 text-white lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-900 lg:hidden"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -272,14 +271,14 @@ export default function Home() {
 
         {/* Mobile menu dropdown */}
         {menuOpen && (
-          <div className="border-b border-white/10 bg-slate-950/95 backdrop-blur-2xl lg:hidden">
+          <div className="border-b border-slate-200 bg-slate-50 backdrop-blur-2xl lg:hidden">
             <div className="container flex flex-col gap-2 py-6">
               {NAV_LINKS.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10"
+                  className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-100"
                 >
                   {l.label}
                 </a>
@@ -290,7 +289,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 py-3 text-center text-sm font-bold text-emerald-400 hover:bg-emerald-500/25"
+                  className="flex items-center justify-center gap-2.5 rounded-xl border border-emerald-600/40 bg-emerald-50 py-3 text-center text-sm font-bold text-emerald-700 hover:bg-emerald-50"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   <span>Chat on WhatsApp (+92 316 4091654)</span>
@@ -316,13 +315,13 @@ export default function Home() {
             <div className="lg:col-span-7">
               <Eyebrow>Next-Gen Software & Digital Systems</Eyebrow>
 
-              <h1 className="mt-6 text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl sm:leading-[1.08] lg:text-6xl xl:text-7xl">
+              <h1 className="mt-6 text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-5xl sm:leading-[1.08] lg:text-6xl xl:text-7xl">
                 Engineering <br className="hidden sm:block" />
                 <span className="text-gradient-tech">technology</span> that <br className="hidden sm:block" />
                 <span className="text-gradient-cyan">powers modern business</span>.
               </h1>
 
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 We design and build mission-critical enterprise web apps, custom ERPs, dispatch & fleet
                 systems, and intelligent platforms engineered for speed, scale, and uncompromising reliability.
               </p>
@@ -339,26 +338,22 @@ export default function Home() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-card inline-flex items-center gap-2.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-6 py-3.5 text-sm font-semibold text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/20 transition-all shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+                  className="glass-card inline-flex items-center gap-2.5 rounded-full border border-emerald-600/40 bg-emerald-50 px-6 py-3.5 text-sm font-semibold text-emerald-700 hover:border-emerald-600/40 hover:bg-emerald-50 transition-all shadow-[0_0_20px_rgba(16,185,129,0.15)]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   Chat on WhatsApp
                 </a>
               </div>
 
-              {/* Live Trust Metrics Ticker */}
-              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-lg">
+              {/* Portfolio facts (computed from real data) */}
+              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-slate-200 pt-8 max-w-sm">
                 <div>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-white">21+</div>
-                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">Live Deployments</div>
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-slate-900">{(projectsData as Project[]).filter((p) => p.kind === "live").length}</div>
+                  <div className="mt-1 text-xs font-medium text-slate-600 uppercase tracking-wider">Live client sites</div>
                 </div>
                 <div>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-cyan-400">99.98%</div>
-                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">Uptime Standard</div>
-                </div>
-                <div>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-blue-400">100%</div>
-                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wider">On-Time Delivery</div>
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-teal-700">{(projectsData as Project[]).filter((p) => p.kind !== "live").length}</div>
+                  <div className="mt-1 text-xs font-medium text-slate-600 uppercase tracking-wider">Concept builds</div>
                 </div>
               </div>
             </div>
@@ -371,59 +366,56 @@ export default function Home() {
               >
                 {/* Main 3D System Telemetry Card */}
                 <div
-                  className="relative rounded-3xl border border-white/15 bg-slate-900/80 p-6 backdrop-blur-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(59,130,246,0.2)] transition-transform duration-500 hover:rotate-1"
+                  className="relative rounded-3xl border border-slate-300 bg-white p-6 backdrop-blur-2xl shadow-[0_25px_60px_-20px_rgba(15,23,42,0.25)] transition-transform duration-500 hover:rotate-1"
                   style={{
                     transform: "rotateY(-6deg) rotateX(4deg)",
                     transformStyle: "preserve-3d",
                   }}
                 >
                   {/* Card Header */}
-                  <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                     <div className="flex items-center gap-2">
                       <span className="h-3 w-3 rounded-full bg-rose-500/80" />
                       <span className="h-3 w-3 rounded-full bg-amber-500/80" />
-                      <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
-                      <span className="ml-2 font-mono text-xs font-semibold text-slate-400">
+                      <span className="h-3 w-3 rounded-full bg-emerald-50" />
+                      <span className="ml-2 font-mono text-xs font-semibold text-slate-600">
                         shoptech.core::v2.4
                       </span>
                     </div>
-                    <span className="flex items-center gap-1.5 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-2 py-0.5 font-mono text-[10px] text-cyan-300">
+                    <span className="flex items-center gap-1.5 rounded-md border border-teal-600/40 bg-teal-50 px-2 py-0.5 font-mono text-[10px] text-teal-700">
                       <Activity className="h-3 w-3 animate-spin" /> LIVE
                     </span>
                   </div>
 
                   {/* System Metrics Showcase */}
                   <div className="mt-5 space-y-4">
-                    <div className="rounded-xl border border-white/10 bg-slate-950/60 p-4">
-                      <div className="flex items-center justify-between text-xs font-medium text-slate-400">
-                        <span>Cluster Throughput</span>
-                        <span className="font-mono text-cyan-400 font-bold">14,280 req/s</span>
-                      </div>
-                      <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                        <div className="h-full w-[82%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <div className="flex items-center justify-between text-xs font-medium text-slate-600">
+                        <span>Core stack</span>
+                        <span className="font-mono text-teal-700 font-bold">React + TypeScript</span>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3.5">
-                        <div className="flex items-center gap-2 text-xs text-slate-400">
-                          <Cpu className="h-3.5 w-3.5 text-blue-400" /> Architecture
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+                        <div className="flex items-center gap-2 text-xs text-slate-600">
+                          <Cpu className="h-3.5 w-3.5 text-teal-700" /> Architecture
                         </div>
-                        <div className="mt-1 font-mono text-sm font-bold text-white">Full-Stack SSR</div>
+                        <div className="mt-1 font-mono text-sm font-bold text-slate-900">Full-Stack SSR</div>
                       </div>
-                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3.5">
-                        <div className="flex items-center gap-2 text-xs text-slate-400">
-                          <Zap className="h-3.5 w-3.5 text-amber-400" /> Response Time
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+                        <div className="flex items-center gap-2 text-xs text-slate-600">
+                          <Zap className="h-3.5 w-3.5 text-amber-500" /> Delivery
                         </div>
-                        <div className="mt-1 font-mono text-sm font-bold text-emerald-400">32 ms (Global)</div>
+                        <div className="mt-1 font-mono text-sm font-bold text-emerald-700">Web + Android</div>
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-white/10 bg-slate-950/60 p-4">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-400">Integrated Security</span>
-                        <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1">
-                          <Shield className="h-3.5 w-3.5" /> SOC2 Compliant
+                        <span className="text-xs font-medium text-slate-600">Security basics</span>
+                        <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                          <Shield className="h-3.5 w-3.5" /> HTTPS &amp; hashed passwords
                         </span>
                       </div>
                     </div>
@@ -432,32 +424,32 @@ export default function Home() {
 
                 {/* Floating 3D Badge 1: Top Right (visible sm+) */}
                 <div
-                  className="animate-float-slow absolute -top-8 -right-4 lg:-right-6 hidden sm:flex rounded-2xl border border-cyan-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  className="animate-float-slow absolute -top-8 -right-4 lg:-right-6 hidden sm:flex rounded-2xl border border-teal-600/40 bg-white p-4 backdrop-blur-xl shadow-2xl"
                   style={{ transform: "translateZ(60px)" }}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
                       <Layers className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-white">Multi-Tenant ERP</div>
-                      <div className="text-[11px] text-slate-400">Production Ready</div>
+                      <div className="text-xs font-bold text-slate-900">Multi-Tenant ERP</div>
+                      <div className="text-[11px] text-slate-600">Built to launch</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating 3D Badge 2: Bottom Left (visible sm+) */}
                 <div
-                  className="animate-float-reverse absolute -bottom-6 -left-4 lg:-left-6 hidden sm:flex rounded-2xl border border-purple-500/30 bg-slate-900/90 p-4 backdrop-blur-xl shadow-2xl"
+                  className="animate-float-reverse absolute -bottom-6 -left-4 lg:-left-6 hidden sm:flex rounded-2xl border border-purple-500/30 bg-white p-4 backdrop-blur-xl shadow-2xl"
                   style={{ transform: "translateZ(70px)" }}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/20 text-purple-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/20 text-teal-700">
                       <Server className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-white">Freight & Fleet Engine</div>
-                      <div className="text-[11px] text-slate-400">24/7 Live Dispatch</div>
+                      <div className="text-xs font-bold text-slate-900">Freight & Fleet Engine</div>
+                      <div className="text-[11px] text-slate-600">24/7 Live Dispatch</div>
                     </div>
                   </div>
                 </div>
@@ -468,15 +460,15 @@ export default function Home() {
       </section>
 
       {/* ============ Interactive 3D Showcase (Portfolio) ============ */}
-      <section id="portfolio" className="relative section-py border-t border-white/10 bg-slate-950/40">
+      <section id="portfolio" className="relative section-py border-t border-slate-200 bg-slate-50">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Production Showcase</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Systems & platforms <span className="text-gradient-cyan">we've engineered</span>.
+            <Eyebrow>Selected Work</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Our work, <span className="text-gradient-cyan">live and in concept</span>.
             </h2>
-            <p className="mt-4 text-base text-slate-400 sm:text-lg">
-              Explore our full catalog of 21 live client platforms across ERP, logistics, retail POS, AI voice systems, and custom web applications.
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
+              Live sites we have delivered for clients appear first. The rest are concept builds: working prototypes we created to show what we can build for ERP, logistics, retail, AI voice systems and web apps.
             </p>
           </div>
 
@@ -490,8 +482,8 @@ export default function Home() {
                   onClick={() => setActiveCategory(cat)}
                   className={`flex-shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer min-h-[36px] ${
                     activeCategory === cat
-                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]"
-                      : "border border-white/10 bg-slate-900/60 text-slate-400 hover:border-white/20 hover:text-white hover:bg-white/5 active:bg-white/10"
+                      ? "bg-gradient-to-r from-teal-700 to-teal-600 text-white shadow-[0_0_20px_rgba(15,118,110,0.4)]"
+                      : "border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-100 active:bg-slate-100"
                   }`}
                 >
                   {cat}
@@ -507,12 +499,12 @@ export default function Home() {
                 placeholder="Search platforms, tech..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-full border border-white/10 bg-slate-900/80 py-2.5 pl-9 pr-4 text-sm sm:text-xs font-medium text-white placeholder-slate-500 outline-none backdrop-blur-md transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="w-full rounded-full border border-slate-200 bg-white py-2.5 pl-9 pr-4 text-sm sm:text-xs font-medium text-slate-900 placeholder-slate-500 outline-none backdrop-blur-md transition-all focus:border-teal-600/40 focus:ring-2 focus:ring-teal-600/30"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-900 text-xs p-1"
                 >
                   ✕
                 </button>
@@ -521,14 +513,14 @@ export default function Home() {
           </div>
 
           {/* Results count */}
-          <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
+          <div className="mt-4 flex items-center justify-between text-xs text-slate-600">
             <span>
               Showing{" "}
-              <span className="font-bold text-white">
+              <span className="font-bold text-slate-900">
                 {displayedProjects.length}
               </span>{" "}
               of{" "}
-              <span className="font-bold text-white">
+              <span className="font-bold text-slate-900">
                 {filteredProjects.length}
               </span>{" "}
               {filteredProjects.length === 1 ? "platform" : "platforms"}
@@ -537,7 +529,7 @@ export default function Home() {
               )}
             </span>
             {searchQuery && (
-              <span className="text-cyan-400 font-mono text-[11px]">Filtered by "{searchQuery}"</span>
+              <span className="text-teal-700 font-mono text-[11px]">Filtered by "{searchQuery}"</span>
             )}
           </div>
 
@@ -560,7 +552,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setVisibleCount(filteredProjects.length)}
-                className="text-xs font-semibold text-slate-400 hover:text-white underline underline-offset-4 cursor-pointer py-2 transition-colors"
+                className="text-xs font-semibold text-slate-600 hover:text-slate-900 underline underline-offset-4 cursor-pointer py-2 transition-colors"
               >
                 Show All {filteredProjects.length} Platforms
               </button>
@@ -568,15 +560,15 @@ export default function Home() {
           )}
 
           {filteredProjects.length === 0 && (
-            <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-12 text-center backdrop-blur-xl">
-              <p className="text-lg font-bold text-white">No matching projects found</p>
-              <p className="mt-2 text-sm text-slate-400">Try adjusting your category filter or search keywords.</p>
+            <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center backdrop-blur-xl">
+              <p className="text-lg font-bold text-slate-900">No matching projects found</p>
+              <p className="mt-2 text-sm text-slate-600">Try adjusting your category filter or search keywords.</p>
               <Button
                 onClick={() => {
                   setActiveCategory("All");
                   setSearchQuery("");
                 }}
-                className="mt-4 rounded-full bg-blue-600 px-6 text-white hover:bg-blue-700"
+                className="mt-4 rounded-full bg-teal-700 px-6 text-white hover:bg-teal-800"
               >
                 Reset Filters
               </Button>
@@ -586,14 +578,14 @@ export default function Home() {
       </section>
 
       {/* ============ Our Applications ============ */}
-      <section id="apps" className="relative section-py border-t border-white/10">
+      <section id="apps" className="relative section-py border-t border-slate-200">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Our Applications</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               Mobile apps <span className="text-gradient-cyan">by ShopTech Systems</span>.
             </h2>
-            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
               Our own Android apps, built for everyday productivity.
             </p>
           </div>
@@ -604,29 +596,29 @@ export default function Home() {
               return (
                 <div
                   key={app.id}
-                  className="glass-card group flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40"
+                  className="glass-card group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-600/40"
                 >
                   <div>
                     {"iconImage" in app && app.iconImage ? (
                       <img src={app.iconImage} alt={`${app.name} app icon`} className="h-12 w-12 rounded-xl object-cover shadow-lg" />
                     ) : (
-                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-white shadow-lg`}>
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-slate-900 shadow-lg`}>
                         <Icon className="h-6 w-6" />
                       </div>
                     )}
-                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <h3 className="mt-6 text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
                       {"features" in app ? <Link href={`/apps/${app.id}`}>{app.name}</Link> : app.name}
                     </h3>
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-cyan-400">
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-teal-700">
                       {app.tagline}
                     </p>
                     {app.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-slate-400">{app.description}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{app.description}</p>
                     )}
                   </div>
-                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/5 pt-4">
+                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
                     {"features" in app && (
-                      <Link href={`/apps/${app.id}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300">
+                      <Link href={`/apps/${app.id}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-700">
                         Learn more <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
                     )}
@@ -640,7 +632,7 @@ export default function Home() {
                         Get it on Google Play <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     ) : (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold text-slate-300">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700">
                         <Smartphone className="h-3.5 w-3.5" />
                         Google Play: Coming Soon
                       </span>
@@ -654,14 +646,14 @@ export default function Home() {
       </section>
 
       {/* ============ Solutions / Capabilities ============ */}
-      <section id="services" className="relative section-py border-t border-white/10">
+      <section id="services" className="relative section-py border-t border-slate-200">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Capabilities</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               End-to-end solutions for <span className="text-gradient-tech">exponential growth</span>.
             </h2>
-            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
               We cover the full spectrum of software development—from custom web portals to automated business tools and high-converting marketing engines.
             </p>
           </div>
@@ -673,14 +665,14 @@ export default function Home() {
                 title: "Custom Web & SaaS Apps",
                 desc: "High-performance web apps with modern architectures, scalable APIs, and reliable data foundations.",
                 tags: ["Web Apps", "SaaS", "APIs", "Cloud"],
-                color: "from-blue-500 to-indigo-600",
+                color: "from-teal-700 to-teal-600",
               },
               {
                 icon: Smartphone,
                 title: "POS & Retail Systems",
                 desc: "Integrated point-of-sale platforms, inventory sync, multi-store support, and companion mobile apps for shop owners.",
                 tags: ["POS", "Inventory", "Mobile", "Billing"],
-                color: "from-cyan-500 to-blue-600",
+                color: "from-cyan-500 to-teal-600",
               },
               {
                 icon: Rocket,
@@ -708,31 +700,31 @@ export default function Home() {
                 title: "Digital Growth & SEO",
                 desc: "Technical SEO audits, high-intent landing pages, fast Core Web Vitals, and conversion rate optimization that drives revenue.",
                 tags: ["SEO", "Conversion", "Analytics", "Growth"],
-                color: "from-blue-600 to-cyan-500",
+                color: "from-teal-700 to-teal-500",
               },
             ].map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.title}
-                  className="glass-card group flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40"
+                  className="glass-card group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-600/40"
                 >
                   <div>
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${service.color} text-white shadow-lg`}>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${service.color} text-slate-900 shadow-lg`}>
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <h3 className="mt-6 text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
                       {service.desc}
                     </p>
                   </div>
-                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-white/5 pt-4">
+                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-slate-300"
+                        className="rounded-md border border-slate-200 bg-slate-100 px-2.5 py-1 font-mono text-[11px] text-slate-700"
                       >
                         {tag}
                       </span>
@@ -746,14 +738,14 @@ export default function Home() {
       </section>
 
       {/* ============ Architecture / Process ============ */}
-      <section id="process" className="relative section-py border-t border-white/10 bg-slate-950/60">
+      <section id="process" className="relative section-py border-t border-slate-200 bg-slate-50">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Execution Pipeline</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               From whiteboard to <span className="text-gradient-cyan">bulletproof production</span>.
             </h2>
-            <p className="mt-4 text-base text-slate-400 sm:text-lg">
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
               Our structured 4-phase agile engineering cycle ensures fast time-to-market without compromising code quality or scalability.
             </p>
           </div>
@@ -789,18 +781,18 @@ export default function Home() {
               return (
                 <div
                   key={step.num}
-                  className="glass-card relative rounded-2xl border border-white/10 bg-slate-900/60 p-7 backdrop-blur-xl"
+                  className="glass-card relative rounded-2xl border border-slate-200 bg-white p-7 backdrop-blur-xl"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-3xl font-black text-white/20">
+                    <span className="font-mono text-3xl font-black text-slate-900/10">
                       {step.num}
                     </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-cyan-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-600/40 bg-teal-50 text-teal-700">
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
-                  <h3 className="mt-6 text-lg font-bold text-white">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{step.desc}</p>
+                  <h3 className="mt-6 text-lg font-bold text-slate-900">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.desc}</p>
                 </div>
               );
             })}
@@ -808,96 +800,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ Reviews & Testimonials ============ */}
-      <section id="testimonials" className="relative section-py border-t border-white/10">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Client Reviews</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Trusted by operators <span className="text-gradient-tech">across the globe</span>.
-            </h2>
-            <p className="mt-4 text-base text-slate-400 sm:text-lg">
-              Here is what founders, directors, and operations managers say about partnering with ShopTech Systems.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                name: "Sarah Johnson",
-                role: "CEO, Tech Innovations",
-                text: "ShopTech transformed our online architecture completely. The team is hyper-responsive, writes clean scalable code, and delivered ahead of deadline.",
-                rating: 5,
-              },
-              {
-                name: "Michael Chen",
-                role: "Director, Retail & POS Operations",
-                text: "The custom POS and cloud sync system was flawless. Our counter lines move 3x faster, inventory stays synchronized across 4 locations.",
-                rating: 5,
-              },
-              {
-                name: "Emily Rodriguez",
-                role: "VP of Growth, Logistics Firm",
-                text: "Their dispatch console and real-time load board gave our fleet team an unfair competitive advantage. Couldn't recommend them more.",
-                rating: 5,
-              },
-              {
-                name: "David Thompson",
-                role: "Founder, Fintech Product",
-                text: "Working with ShopTech was hands-down the best engineering decision we made. Clean code, beautiful dark glass design, and zero bugs in production.",
-                rating: 5,
-              },
-              {
-                name: "Jessica Lee",
-                role: "Founder, Luxury Lifestyle Brand",
-                text: "The website they built looks like a million dollars. Conversions doubled within 30 days of launch, and our customers love the booking flow.",
-                rating: 5,
-              },
-              {
-                name: "Robert Martinez",
-                role: "Head of Operations, ERP Group",
-                text: "Professional, reliable, and deeply knowledgeable in enterprise software systems. ShopTech is our long-term technology partner.",
-                rating: 5,
-              },
-            ].map((t) => (
-              <figure
-                key={t.name}
-                className="glass-card flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/60 p-7 backdrop-blur-xl"
-              >
-                <div>
-                  <div className="flex gap-1">
-                    {[...Array(t.rating)].map((_, j) => (
-                      <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 text-sm leading-relaxed text-slate-300">
-                    "{t.text}"
-                  </blockquote>
-                </div>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-white/5 pt-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-sm font-bold text-white shadow-md">
-                    {t.name.split(" ").map(n => n[0]).join("")}
-                  </span>
-                  <div>
-                    <div className="text-sm font-bold text-white">{t.name}</div>
-                    <div className="text-xs text-slate-400">{t.role}</div>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ FAQ Section ============ */}
-      <section id="faq" className="relative section-py border-t border-white/10 bg-slate-950/50">
+      <section id="faq" className="relative section-py border-t border-slate-200 bg-slate-50">
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center">
             <Eyebrow>Questions & Answers</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
               Frequently asked questions
             </h2>
-            <p className="mt-3 text-slate-400 text-sm sm:text-base">
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Everything you need to know about working with ShopTech Systems.
             </p>
           </div>
@@ -929,12 +840,12 @@ export default function Home() {
                 <AccordionItem
                   key={idx}
                   value={`item-${idx}`}
-                  className="rounded-xl border border-white/10 bg-slate-900/60 px-6 backdrop-blur-xl data-[state=open]:border-blue-500/40"
+                  className="rounded-xl border border-slate-200 bg-white px-6 backdrop-blur-xl data-[state=open]:border-teal-600/40"
                 >
-                  <AccordionTrigger className="text-left text-base font-semibold text-white hover:text-cyan-400 py-4">
+                  <AccordionTrigger className="text-left text-base font-semibold text-slate-900 hover:text-teal-700 py-4">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-relaxed text-slate-400 pb-4">
+                  <AccordionContent className="text-sm leading-relaxed text-slate-600 pb-4">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -945,16 +856,16 @@ export default function Home() {
       </section>
 
       {/* ============ Contact / Consultation CTA ============ */}
-      <section id="contact" className="relative section-py border-t border-white/10">
+      <section id="contact" className="relative section-py border-t border-slate-200">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-blue-500/30 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-8 md:p-14 backdrop-blur-2xl shadow-[0_0_80px_rgba(37,99,235,0.2)]">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-teal-600/40 bg-gradient-to-b from-slate-900/90 to-white p-8 md:p-14 backdrop-blur-2xl shadow-[0_0_80px_rgba(15,118,110,0.2)]">
             <div className="grid items-center gap-10 md:grid-cols-12">
               <div className="md:col-span-7">
                 <Eyebrow>Start Your Project</Eyebrow>
-                <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
                   Ready to engineer your <span className="text-gradient-cyan">next breakthrough</span>?
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
                   Tell us about your project goals. We'll schedule a discovery session within 24 hours and map out an execution blueprint.
                 </p>
 
@@ -963,30 +874,30 @@ export default function Home() {
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3.5 text-sm text-slate-300 hover:text-emerald-400 transition-colors group rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+                    className="flex items-center gap-3.5 text-sm text-slate-700 hover:text-emerald-700 transition-colors group rounded-xl border border-emerald-600/40 bg-emerald-50 p-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.1)]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400 group-hover:scale-110 transition-transform shadow-[0_0_12px_rgba(16,185,129,0.3)]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 group-hover:scale-110 transition-transform shadow-[0_0_12px_rgba(16,185,129,0.3)]">
                       <WhatsAppIcon className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="font-bold text-white group-hover:text-emerald-400 flex items-center gap-2">
+                      <div className="font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-2">
                         +92 316 4091654
-                        <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                        <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
                           Instant Response
                         </span>
                       </div>
-                      <div className="text-xs text-slate-400">Click to chat directly on WhatsApp</div>
+                      <div className="text-xs text-slate-600">Click to chat directly on WhatsApp</div>
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-3 text-sm text-slate-300 px-1">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-cyan-400">
+                  <div className="flex items-center gap-3 text-sm text-slate-700 px-1">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
                       <Mail className="h-4 w-4" />
                     </div>
                     <span>contact@shoptechsystems.online</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-slate-300 px-1">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-cyan-400">
+                  <div className="flex items-center gap-3 text-sm text-slate-700 px-1">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
                       <Clock className="h-4 w-4" />
                     </div>
                     <span>Guaranteed Response within 24 Hours</span>
@@ -996,14 +907,14 @@ export default function Home() {
 
               {/* Consultation Form */}
               <div className="md:col-span-5">
-                <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-6 shadow-2xl">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-2xl">
                   {contactSubmitted ? (
                     <div className="py-8 text-center">
-                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
                         <Check className="h-6 w-6" />
                       </div>
-                      <h4 className="mt-4 text-lg font-bold text-white">Consultation Requested!</h4>
-                      <p className="mt-2 text-xs text-slate-400">
+                      <h4 className="mt-4 text-lg font-bold text-slate-900">Consultation Requested!</h4>
+                      <p className="mt-2 text-xs text-slate-600">
                         Your request is ready in WhatsApp. Tap Send there and we will reply within 24 hours.
                       </p>
                     </div>
@@ -1020,28 +931,28 @@ export default function Home() {
                       className="space-y-3.5"
                     >
                       <div>
-                        <label className="text-xs font-semibold text-slate-300">Your Name</label>
+                        <label className="text-xs font-semibold text-slate-700">Your Name</label>
                         <input
                           required
                           type="text"
                           name="name"
                           placeholder="Alex Morgan"
-                          className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 placeholder-slate-500 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30"
                         />
                       </div>
                       <div>
-                        <label className="text-xs font-semibold text-slate-300">Email Address</label>
+                        <label className="text-xs font-semibold text-slate-700">Email Address</label>
                         <input
                           required
                           type="email"
                           name="email"
                           placeholder="alex@company.com"
-                          className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 placeholder-slate-500 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30"
                         />
                       </div>
                       <div>
-                        <label className="text-xs font-semibold text-slate-300">Project Type</label>
-                        <select name="project" className="mt-1 min-h-[44px] w-full rounded-xl border border-white/10 bg-slate-900 px-3.5 py-2.5 text-sm sm:text-xs text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <label className="text-xs font-semibold text-slate-700">Project Type</label>
+                        <select name="project" className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30">
                           <option>Custom Web Application</option>
                           <option>ERP / Enterprise Management</option>
                           <option>Logistics & Dispatch Software</option>
@@ -1066,14 +977,14 @@ export default function Home() {
       </section>
 
       {/* ============ Footer ============ */}
-      <footer className="border-t border-white/10 bg-slate-950 py-14">
+      <footer className="border-t border-slate-200 bg-slate-50 py-14">
         <div className="container">
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
             <Logo />
 
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
               {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="hover:text-white transition-colors">
+                <a key={l.href} href={l.href} className="hover:text-slate-900 transition-colors">
                   {l.label}
                 </a>
               ))}
@@ -1081,7 +992,7 @@ export default function Home() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+                className="flex items-center gap-1.5 text-emerald-700 hover:text-emerald-700 transition-colors font-medium"
               >
                 <WhatsAppIcon className="h-3.5 w-3.5" />
                 <span>+92 316 4091654</span>
@@ -1103,7 +1014,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   aria-label={`ShopTech Systems on ${label}`}
                   title={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-400 transition-colors hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-teal-600/40 hover:bg-teal-50 hover:text-slate-900"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -1111,19 +1022,19 @@ export default function Home() {
             </nav>
 
             <div className="flex items-center gap-2 text-xs text-slate-500">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
               <span>All Systems Operational</span>
             </div>
           </div>
 
-          <div className="mt-10 border-t border-white/5 pt-8 text-center text-xs text-slate-500">
+          <div className="mt-10 border-t border-slate-100 pt-8 text-center text-xs text-slate-500">
             © {new Date().getFullYear()} ShopTech Systems. All rights reserved. Enterprise Business Software Solutions.
             <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-              <a href="/blog" className="hover:text-white transition-colors">Blog</a>
-              <a href="/about" className="hover:text-white transition-colors">About</a>
-              <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="/blog" className="hover:text-slate-900 transition-colors">Blog</a>
+              <a href="/about" className="hover:text-slate-900 transition-colors">About</a>
+              <a href="/contact" className="hover:text-slate-900 transition-colors">Contact</a>
+              <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
@@ -1134,12 +1045,12 @@ export default function Home() {
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-emerald-400/40 bg-gradient-to-r from-emerald-600 to-green-600 px-4 py-3 text-white shadow-[0_0_25px_rgba(16,185,129,0.5)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] group cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-emerald-600/40 bg-gradient-to-r from-emerald-600 to-green-600 px-4 py-3 text-slate-900 shadow-[0_0_25px_rgba(16,185,129,0.5)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] group cursor-pointer"
         aria-label="Chat on WhatsApp"
       >
         <div className="relative flex h-5 w-5 items-center justify-center">
-          <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-emerald-300 animate-ping" />
-          <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-emerald-300" />
+          <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
+          <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-emerald-500" />
           <WhatsAppIcon className="h-5 w-5" />
         </div>
         <span className="text-xs font-bold tracking-wide">WhatsApp Us</span>
@@ -1149,7 +1060,7 @@ export default function Home() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-20 right-6.5 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500/40 bg-slate-900/90 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] backdrop-blur-md transition-all hover:scale-110 hover:bg-blue-600 cursor-pointer"
+          className="fixed bottom-20 right-6.5 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-teal-600/40 bg-white text-teal-700 shadow-md transition-all hover:scale-110 hover:bg-teal-700 hover:text-white cursor-pointer"
           aria-label="Scroll to top"
         >
           <ChevronUp className="h-4 w-4" />

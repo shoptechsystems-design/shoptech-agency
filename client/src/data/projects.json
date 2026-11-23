@@ -11,231 +11,8 @@
       "Fleet Management",
       "Dispatch"
     ],
-    "featured": true
-  },
-  {
-    "id": 2,
-    "title": "Lux Barber Shop",
-    "category": "Barbershop Website",
-    "description": "A premium barbershop website for bookings, services, pricing, and brand presentation.",
-    "image": "/projects/luxbarbershop.webp",
-    "link": "https://luxbarbershop-yisfzkbk.manus.space/",
-    "technologies": [
-      "Booking",
-      "Salon",
-      "Appointments"
-    ],
-    "featured": true
-  },
-  {
-    "id": 3,
-    "title": "Premium Wash",
-    "category": "Car Wash Website",
-    "description": "A polished car wash website for service listings, online booking, and brand trust.",
-    "image": "/projects/premiumwash.webp",
-    "link": "https://premiumwash-6maznp4x.manus.space/",
-    "technologies": [
-      "Booking",
-      "Auto Care",
-      "Service Listings"
-    ],
-    "featured": true
-  },
-  {
-    "id": 4,
-    "title": "Luxe Hair",
-    "category": "Salon Website",
-    "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
-    "image": "/projects/luxehair.webp",
-    "link": "https://luxehair-alwt7vc6.manus.space/",
-    "technologies": [
-      "Booking",
-      "Beauty",
-      "Appointments"
-    ],
-    "featured": true
-  },
-  {
-    "id": 5,
-    "title": "OmniPOS",
-    "category": "POS + Mobile App",
-    "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
-    "image": "/projects/omnipos.webp",
-    "link": "https://omnipos-hjcb6uyk.manus.space/",
-    "technologies": [
-      "Mobile App",
-      "POS",
-      "Retail"
-    ],
-    "featured": true
-  },
-  {
-    "id": 6,
-    "title": "FoodPoint",
-    "category": "Restaurant / Food Ordering",
-    "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
-    "image": "/projects/foodpoint.webp",
-    "link": "https://foodpoint-gf79swsg.manus.space/",
-    "technologies": [
-      "Ordering",
-      "Restaurant",
-      "Menu"
-    ],
-    "featured": true
-  },
-  {
-    "id": 7,
-    "title": "CallAgentHub",
-    "category": "AI Calling Platform",
-    "description": "A call agent platform for managing automated calling workflows, lead handling, and live voice operations.",
-    "image": "/projects/callagenthub.webp",
-    "link": "https://callagenthub-nqokzdgy.manus.space/",
-    "technologies": [
-      "Voice AI",
-      "Automation",
-      "Lead Handling"
-    ],
-    "featured": true
-  },
-  {
-    "id": 8,
-    "title": "NexaCRM",
-    "category": "CRM / Sales Platform",
-    "description": "A modern CRM platform for managing leads, customer relationships, and sales workflows.",
-    "image": "/projects/nexacrm.webp",
-    "link": "https://nexacrm-kyrryaxf.manus.space/",
-    "technologies": [
-      "CRM",
-      "Sales",
-      "Lead Management"
-    ],
-    "featured": true
-  },
-  {
-    "id": 9,
-    "title": "Money Map",
-    "category": "Landing Page",
-    "description": "A conversion-focused landing page for presenting a finance product and capturing qualified leads.",
-    "image": "/projects/moneymap.webp",
-    "link": "https://money-map-landing.vercel.app/",
-    "technologies": [
-      "Landing Page",
-      "Finance",
-      "Conversion"
-    ],
-    "featured": true
-  },
-  {
-    "id": 10,
-    "title": "RentAcar",
-    "category": "Car Rental Website",
-    "description": "A car rental website for browsing vehicles, checking availability, and reserving a ride online.",
-    "image": "/projects/rentacar.webp",
-    "link": "https://rentacar-souksudf.manus.space/",
-    "technologies": [
-      "Rental",
-      "Vehicles",
-      "Reservations"
-    ],
-    "featured": true
-  },
-  {
-    "id": 11,
-    "title": "Striving 4 Jannah",
-    "category": "Community Website",
-    "description": "A purpose-driven community website for sharing content, resources, and faith-focused engagement.",
-    "image": "/projects/striving4jannah.webp",
-    "link": "https://striving-for-jannah.lovable.app/",
-    "technologies": [
-      "Community",
-      "Content",
-      "Engagement"
-    ],
-    "featured": true
-  },
-  {
-    "id": 12,
-    "title": "Lumiere Spa",
-    "category": "Spa Website",
-    "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
-    "image": "/projects/lumierespa.webp",
-    "link": "https://lumierespa-q3fzzqy6.manus.space/",
-    "technologies": [
-      "Wellness",
-      "Booking",
-      "Luxury"
-    ],
-    "featured": true
-  },
-  {
-    "id": 13,
-    "title": "InvoiceSTD",
-    "category": "Invoicing Platform",
-    "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
-    "image": "/projects/invoicestd.webp",
-    "link": "https://invoicestd-chk9yekr.manus.space/",
-    "technologies": [
-      "Invoices",
-      "Billing",
-      "Workflow"
-    ],
-    "featured": true
-  },
-  {
-    "id": 14,
-    "title": "ClassiMarket",
-    "category": "Marketplace Website",
-    "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
-    "image": "/projects/classimarket.webp",
-    "link": "https://classimarket-qpgfp8tr.manus.space/",
-    "technologies": [
-      "Marketplace",
-      "Listings",
-      "Commerce"
-    ],
-    "featured": true
-  },
-  {
-    "id": 15,
-    "title": "PDF Editor",
-    "category": "Document Editing Tool",
-    "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
-    "image": "/projects/pdfeditor.webp",
-    "link": "https://pdfeditor-gowkpq4q.manus.space/",
-    "technologies": [
-      "Documents",
-      "Editing",
-      "Workflow"
-    ],
-    "featured": true
-  },
-  {
-    "id": 16,
-    "title": "PharmaFlow",
-    "category": "Pharmacy Management Platform",
-    "description": "A pharmacy management platform for organizing medicines, inventory, prescriptions, and daily shop operations.",
-    "image": "/projects/pharmaflow.webp",
-    "link": "https://pharmaflow-emaxcwfn.manus.space/",
-    "technologies": [
-      "Pharmacy",
-      "Inventory",
-      "Prescriptions"
-    ],
-    "featured": true
-  },
-  {
-    "id": 17,
-    "title": "SafaShop",
-    "category": "E-commerce Website",
-    "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
-    "image": "/projects/safashop.webp",
-    "link": "https://safashop-5ykemcjq.manus.space/",
-    "technologies": [
-      "E-commerce",
-      "Products",
-      "Shopping"
-    ],
-    "featured": true
+    "featured": true,
+    "kind": "live"
   },
   {
     "id": 18,
@@ -249,49 +26,8 @@
       "Products",
       "Shopping"
     ],
-    "featured": true
-  },
-  {
-    "id": 19,
-    "title": "Northstar School ERP",
-    "category": "School ERP / Management",
-    "description": "A comprehensive school management and ERP platform that unifies student records, admissions, attendance, fees, and campus operations.",
-    "image": "/projects/schoolerp.webp",
-    "link": "https://schoolerp-hgjlp7ss.manus.space/?code=LvrawnFpqRs4qnBfGKvz6j",
-    "technologies": [
-      "School ERP",
-      "Admissions",
-      "Student Management"
-    ],
-    "featured": true
-  },
-  {
-    "id": 20,
-    "title": "Dispatch 5 Services",
-    "category": "Freight Dispatching / Logistics",
-    "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
-    "image": "/projects/dispatch5.webp",
-    "link": "https://dispatch5-sx3pnxtg.manus.space/",
-    "technologies": [
-      "Freight Dispatch",
-      "Logistics",
-      "Carrier Support"
-    ],
-    "featured": true
-  },
-  {
-    "id": 21,
-    "title": "BloodBridge Pakistan",
-    "category": "Healthcare / Community Platform",
-    "description": "A privacy-first blood donation and donor matching platform connecting patients with verified, willing donors across Pakistan.",
-    "image": "/projects/bloodbridge.webp",
-    "link": "https://bloodbridge-gwlavune.manus.space/",
-    "technologies": [
-      "Healthcare",
-      "Community",
-      "Donor Matching"
-    ],
-    "featured": true
+    "featured": true,
+    "kind": "live"
   },
   {
     "id": 22,
@@ -305,7 +41,293 @@
       "Flooring",
       "Lead Capture"
     ],
-    "featured": true
+    "featured": true,
+    "kind": "live"
+  },
+  {
+    "id": 2,
+    "title": "Lux Barber Shop",
+    "category": "Barbershop Website",
+    "description": "A premium barbershop website for bookings, services, pricing, and brand presentation.",
+    "image": "/projects/luxbarbershop.webp",
+    "link": "",
+    "technologies": [
+      "Booking",
+      "Salon",
+      "Appointments"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 3,
+    "title": "Premium Wash",
+    "category": "Car Wash Website",
+    "description": "A polished car wash website for service listings, online booking, and brand trust.",
+    "image": "/projects/premiumwash.webp",
+    "link": "",
+    "technologies": [
+      "Booking",
+      "Auto Care",
+      "Service Listings"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 4,
+    "title": "Luxe Hair",
+    "category": "Salon Website",
+    "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
+    "image": "/projects/luxehair.webp",
+    "link": "",
+    "technologies": [
+      "Booking",
+      "Beauty",
+      "Appointments"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 5,
+    "title": "OmniPOS",
+    "category": "POS + Mobile App",
+    "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
+    "image": "/projects/omnipos.webp",
+    "link": "",
+    "technologies": [
+      "Mobile App",
+      "POS",
+      "Retail"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 6,
+    "title": "FoodPoint",
+    "category": "Restaurant / Food Ordering",
+    "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
+    "image": "/projects/foodpoint.webp",
+    "link": "",
+    "technologies": [
+      "Ordering",
+      "Restaurant",
+      "Menu"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 7,
+    "title": "CallAgentHub",
+    "category": "AI Calling Platform",
+    "description": "A call agent platform for managing automated calling workflows, lead handling, and live voice operations.",
+    "image": "/projects/callagenthub.webp",
+    "link": "",
+    "technologies": [
+      "Voice AI",
+      "Automation",
+      "Lead Handling"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 8,
+    "title": "NexaCRM",
+    "category": "CRM / Sales Platform",
+    "description": "A modern CRM platform for managing leads, customer relationships, and sales workflows.",
+    "image": "/projects/nexacrm.webp",
+    "link": "",
+    "technologies": [
+      "CRM",
+      "Sales",
+      "Lead Management"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 9,
+    "title": "Money Map",
+    "category": "Landing Page",
+    "description": "A conversion-focused landing page for presenting a finance product and capturing qualified leads.",
+    "image": "/projects/moneymap.webp",
+    "link": "",
+    "technologies": [
+      "Landing Page",
+      "Finance",
+      "Conversion"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 10,
+    "title": "RentAcar",
+    "category": "Car Rental Website",
+    "description": "A car rental website for browsing vehicles, checking availability, and reserving a ride online.",
+    "image": "/projects/rentacar.webp",
+    "link": "",
+    "technologies": [
+      "Rental",
+      "Vehicles",
+      "Reservations"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 11,
+    "title": "Striving 4 Jannah",
+    "category": "Community Website",
+    "description": "A purpose-driven community website for sharing content, resources, and faith-focused engagement.",
+    "image": "/projects/striving4jannah.webp",
+    "link": "",
+    "technologies": [
+      "Community",
+      "Content",
+      "Engagement"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 12,
+    "title": "Lumiere Spa",
+    "category": "Spa Website",
+    "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
+    "image": "/projects/lumierespa.webp",
+    "link": "",
+    "technologies": [
+      "Wellness",
+      "Booking",
+      "Luxury"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 13,
+    "title": "InvoiceSTD",
+    "category": "Invoicing Platform",
+    "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
+    "image": "/projects/invoicestd.webp",
+    "link": "",
+    "technologies": [
+      "Invoices",
+      "Billing",
+      "Workflow"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 14,
+    "title": "ClassiMarket",
+    "category": "Marketplace Website",
+    "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
+    "image": "/projects/classimarket.webp",
+    "link": "",
+    "technologies": [
+      "Marketplace",
+      "Listings",
+      "Commerce"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 15,
+    "title": "PDF Editor",
+    "category": "Document Editing Tool",
+    "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
+    "image": "/projects/pdfeditor.webp",
+    "link": "",
+    "technologies": [
+      "Documents",
+      "Editing",
+      "Workflow"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 16,
+    "title": "PharmaFlow",
+    "category": "Pharmacy Management Platform",
+    "description": "A pharmacy management platform for organizing medicines, inventory, prescriptions, and daily shop operations.",
+    "image": "/projects/pharmaflow.webp",
+    "link": "",
+    "technologies": [
+      "Pharmacy",
+      "Inventory",
+      "Prescriptions"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 17,
+    "title": "SafaShop",
+    "category": "E-commerce Website",
+    "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
+    "image": "/projects/safashop.webp",
+    "link": "",
+    "technologies": [
+      "E-commerce",
+      "Products",
+      "Shopping"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 19,
+    "title": "Northstar School ERP",
+    "category": "School ERP / Management",
+    "description": "A comprehensive school management and ERP platform that unifies student records, admissions, attendance, fees, and campus operations.",
+    "image": "/projects/schoolerp.webp",
+    "link": "",
+    "technologies": [
+      "School ERP",
+      "Admissions",
+      "Student Management"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 20,
+    "title": "Dispatch 5 Services",
+    "category": "Freight Dispatching / Logistics",
+    "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
+    "image": "/projects/dispatch5.webp",
+    "link": "",
+    "technologies": [
+      "Freight Dispatch",
+      "Logistics",
+      "Carrier Support"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 21,
+    "title": "BloodBridge Pakistan",
+    "category": "Healthcare / Community Platform",
+    "description": "A privacy-first blood donation and donor matching platform connecting patients with verified, willing donors across Pakistan.",
+    "image": "/projects/bloodbridge.webp",
+    "link": "",
+    "technologies": [
+      "Healthcare",
+      "Community",
+      "Donor Matching"
+    ],
+    "featured": true,
+    "kind": "concept"
   },
   {
     "id": 23,
@@ -313,13 +335,13 @@
     "category": "Tyre Shop Website",
     "description": "A premium tyre shop website with an interactive 3D tyre showcase for browsing car tyres and exploring replacement, wheel alignment, and balancing services.",
     "image": "/projects/gripforge.webp",
-    "link": "https://gripforge-n4qgnqtf.manus.space/",
+    "link": "",
     "technologies": [
       "Automotive",
       "3D Showcase",
       "Services"
     ],
-    "featured": true
+    "featured": true,
+    "kind": "concept"
   }
 ]
-
