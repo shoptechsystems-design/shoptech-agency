@@ -12,23 +12,24 @@ import { Link } from "wouter";
 import projectsData from "../data/projects.json";
 import appsData from "../data/apps.json";
 import { Project3DCard, Project } from "../components/Project3DCard";
+import { SiteFooter } from "../components/SiteFooter";
 
 /* ---------- Building Blocks ---------- */
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-700 via-teal-600 to-teal-500 p-0.5 shadow-[0_0_20px_rgba(15,118,110,0.5)]">
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-700 via-teal-600 to-teal-500 p-0.5 shadow-sm">
         <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-50">
           <img src="/shoptech-mark.png" alt="ShopTech Systems logo" className="h-6 w-6 object-contain" />
         </div>
       </div>
       <span className="flex flex-col leading-none">
-        <span className="text-xl font-extrabold tracking-tight text-slate-900">
+        <span className="text-xl font-semibold tracking-tight text-slate-900">
           Shop<span className="text-teal-700">Tech</span> Systems
         </span>
         <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-slate-600">
-          Enterprise Digital Systems
+          Software Agency
         </span>
       </span>
     </div>
@@ -60,10 +61,9 @@ export function TikTokIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-export function Eyebrow({ children }: { children: React.ReactNode }) {
+export function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-teal-600/40 bg-teal-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-700 backdrop-blur-md shadow-[0_0_15px_rgba(15,118,110,0.15)]">
-      <span className="h-1.5 w-1.5 rounded-full bg-teal-600 animate-pulse shadow-[0_0_8px_#22d3ee]" />
+    <div className={`font-mono text-xs font-semibold uppercase tracking-[0.16em] ${dark ? "text-teal-300" : "text-teal-700"}`}>
       {children}
     </div>
   );
@@ -71,10 +71,10 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
 
 export const NAV_LINKS = [
   { href: "#home", label: "Home" },
-  { href: "#portfolio", label: "Showcase" },
+  { href: "#portfolio", label: "Work" },
   { href: "#apps", label: "Apps" },
-  { href: "#services", label: "Solutions" },
-  { href: "#process", label: "Architecture" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -196,20 +196,6 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800 selection:bg-teal-50 selection:text-slate-900 antialiased overflow-x-hidden">
-      {/* ============ Ambient Tech Background (GPU Compositor Layer) ============ */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{ transform: "translateZ(0)", willChange: "transform" }}
-      >
-        {/* Subtle Cyber Grid */}
-        <div className="cyber-grid absolute inset-0 opacity-60" />
-        
-        {/* Glowing Ambient Light Orbs */}
-        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full glow-orb-blue blur-[140px] opacity-70" />
-        <div className="absolute top-[30%] -right-40 h-[650px] w-[650px] rounded-full glow-orb-purple blur-[160px] opacity-60" />
-        <div className="absolute top-[65%] left-1/3 h-[700px] w-[700px] rounded-full glow-orb-cyan blur-[180px] opacity-50" />
-      </div>
-
       {/* ============ Navigation ============ */}
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -250,7 +236,7 @@ export default function Home() {
             </a>
             <a
               href="#contact"
-              className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white tracking-wide"
+              className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold text-white tracking-wide"
             >
               Get Consultation <ArrowRight className="h-3.5 w-3.5" />
             </a>
@@ -305,151 +291,73 @@ export default function Home() {
       </nav>
 
       {/* ============ Hero Section ============ */}
-      <section id="home" className="relative pt-32 pb-20 md:pt-44 md:pb-32">
+      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container relative z-10">
-          <div className="grid items-center gap-16 lg:grid-cols-12">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <Eyebrow>Next-Gen Software & Digital Systems</Eyebrow>
-
-              <h1 className="mt-6 text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-5xl sm:leading-[1.08] lg:text-6xl xl:text-7xl">
-                Engineering <br className="hidden sm:block" />
-                <span className="text-gradient-tech">technology</span> that <br className="hidden sm:block" />
-                <span className="text-gradient-cyan">powers modern business</span>.
+          <div className="grid items-center gap-14 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <Eyebrow>Software agency</Eyebrow>
+              <h1 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">
+                Custom software, web and mobile apps for <span className="text-teal-700">growing businesses</span>.
               </h1>
-
               <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                We design and build mission-critical enterprise web apps, custom ERPs, dispatch & fleet
-                systems, and intelligent platforms engineered for speed, scale, and uncompromising reliability.
+                ShopTech Systems designs and builds web platforms, ERPs, dispatch tools and Android apps.
+                A small senior team, a clear scope and direct communication from first call to launch.
               </p>
-
-              {/* CTAs */}
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                  href="#portfolio"
-                  className="btn-tech-glow inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-xl"
-                >
-                  Explore Portfolio ({projectsData.length}) <ArrowRight className="h-4 w-4" />
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#portfolio" className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-white">
+                  View our work <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-card inline-flex items-center gap-2.5 rounded-full border border-emerald-600/40 bg-emerald-50 px-6 py-3.5 text-sm font-semibold text-emerald-700 hover:border-emerald-600/40 hover:bg-emerald-50 transition-all shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition-colors hover:border-slate-400 hover:bg-slate-50"
                 >
-                  <WhatsAppIcon className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4 text-emerald-600" />
                   Chat on WhatsApp
                 </a>
               </div>
 
-              {/* Portfolio facts (computed from real data) */}
-              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-slate-200 pt-8 max-w-sm">
+              <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-slate-200 pt-8">
                 <div>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-slate-900">{(projectsData as Project[]).filter((p) => p.kind === "live").length}</div>
-                  <div className="mt-1 text-xs font-medium text-slate-600 uppercase tracking-wider">Live client sites</div>
+                  <dd className="text-2xl font-semibold text-slate-900">{(projectsData as Project[]).filter((p) => p.kind === "live").length}</dd>
+                  <dt className="mt-1 text-xs text-slate-500">Live client sites</dt>
                 </div>
                 <div>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold text-teal-700">{(projectsData as Project[]).filter((p) => p.kind !== "live").length}</div>
-                  <div className="mt-1 text-xs font-medium text-slate-600 uppercase tracking-wider">Concept builds</div>
+                  <dd className="text-2xl font-semibold text-slate-900">{(projectsData as Project[]).filter((p) => p.kind !== "live").length}</dd>
+                  <dt className="mt-1 text-xs text-slate-500">Concept builds</dt>
                 </div>
-              </div>
+                <div>
+                  <dd className="text-2xl font-semibold text-slate-900">{appsData.length}</dd>
+                  <dt className="mt-1 text-xs text-slate-500">Android apps</dt>
+                </div>
+              </dl>
             </div>
 
-            {/* Right: 3D Floating Interactive Stage */}
-            <div className="lg:col-span-5 relative">
-              <div
-                className="relative mx-auto w-full max-w-md lg:max-w-none"
-                style={{ perspective: "1000px" }}
-              >
-                {/* Main 3D System Telemetry Card */}
-                <div
-                  className="relative rounded-3xl border border-slate-300 bg-white p-6 backdrop-blur-2xl shadow-[0_25px_60px_-20px_rgba(15,23,42,0.25)] transition-transform duration-500 hover:rotate-1"
-                  style={{
-                    transform: "rotateY(-6deg) rotateX(4deg)",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Card Header */}
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="h-3 w-3 rounded-full bg-rose-500/80" />
-                      <span className="h-3 w-3 rounded-full bg-amber-500/80" />
-                      <span className="h-3 w-3 rounded-full bg-emerald-50" />
-                      <span className="ml-2 font-mono text-xs font-semibold text-slate-600">
-                        shoptech.core::v2.4
-                      </span>
+            {/* Real work, not a mock-up */}
+            <div className="lg:col-span-6">
+              <div className="grid grid-cols-2 gap-4">
+                {(projectsData as Project[]).filter((p) => p.kind === "live").slice(0, 3).map((p, i) => (
+                  <a
+                    key={p.id}
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-lg ${i === 0 ? "col-span-2" : ""}`}
+                  >
+                    <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2">
+                      <span className="h-2 w-2 rounded-full bg-slate-300" />
+                      <span className="h-2 w-2 rounded-full bg-slate-300" />
+                      <span className="h-2 w-2 rounded-full bg-slate-300" />
+                      <span className="ml-2 truncate text-[11px] text-slate-500">{p.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                     </div>
-                    <span className="flex items-center gap-1.5 rounded-md border border-teal-600/40 bg-teal-50 px-2 py-0.5 font-mono text-[10px] text-teal-700">
-                      <Activity className="h-3 w-3 animate-spin" /> LIVE
-                    </span>
-                  </div>
-
-                  {/* System Metrics Showcase */}
-                  <div className="mt-5 space-y-4">
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <div className="flex items-center justify-between text-xs font-medium text-slate-600">
-                        <span>Core stack</span>
-                        <span className="font-mono text-teal-700 font-bold">React + TypeScript</span>
-                      </div>
+                    <img src={p.image} alt={p.title} width={1200} height={630} loading={i === 0 ? "eager" : "lazy"} className="aspect-[1200/630] w-full object-cover object-top" />
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-sm font-semibold text-slate-900">{p.title}</span>
+                      <span className="text-xs text-slate-500">{p.category}</span>
                     </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5">
-                        <div className="flex items-center gap-2 text-xs text-slate-600">
-                          <Cpu className="h-3.5 w-3.5 text-teal-700" /> Architecture
-                        </div>
-                        <div className="mt-1 font-mono text-sm font-bold text-slate-900">Full-Stack SSR</div>
-                      </div>
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5">
-                        <div className="flex items-center gap-2 text-xs text-slate-600">
-                          <Zap className="h-3.5 w-3.5 text-amber-500" /> Delivery
-                        </div>
-                        <div className="mt-1 font-mono text-sm font-bold text-emerald-700">Web + Android</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-600">Security basics</span>
-                        <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
-                          <Shield className="h-3.5 w-3.5" /> HTTPS &amp; hashed passwords
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating 3D Badge 1: Top Right (visible sm+) */}
-                <div
-                  className="animate-float-slow absolute -top-8 -right-4 lg:-right-6 hidden sm:flex rounded-2xl border border-teal-600/40 bg-white p-4 backdrop-blur-xl shadow-2xl"
-                  style={{ transform: "translateZ(60px)" }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
-                      <Layers className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900">Multi-Tenant ERP</div>
-                      <div className="text-[11px] text-slate-600">Built to launch</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating 3D Badge 2: Bottom Left (visible sm+) */}
-                <div
-                  className="animate-float-reverse absolute -bottom-6 -left-4 lg:-left-6 hidden sm:flex rounded-2xl border border-purple-500/30 bg-white p-4 backdrop-blur-xl shadow-2xl"
-                  style={{ transform: "translateZ(70px)" }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/20 text-teal-700">
-                      <Server className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900">Freight & Fleet Engine</div>
-                      <div className="text-[11px] text-slate-600">24/7 Live Dispatch</div>
-                    </div>
-                  </div>
-                </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -459,10 +367,10 @@ export default function Home() {
       {/* ============ Interactive 3D Showcase (Portfolio) ============ */}
       <section id="portfolio" className="relative section-py border-t border-slate-200 bg-slate-50">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="max-w-3xl">
             <Eyebrow>Selected Work</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Our work, <span className="text-gradient-cyan">live and in concept</span>.
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Our work, <span className="text-teal-700">live and in concept</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
               Live sites we have delivered for clients appear first. The rest are concept builds: working prototypes we created to show what we can build for ERP, logistics, retail, AI voice systems and web apps.
@@ -542,7 +450,7 @@ export default function Home() {
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setVisibleCount((prev) => Math.min(prev + 6, filteredProjects.length))}
-                className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-xl cursor-pointer active:scale-95"
+                className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-7 py-3 text-xs font-bold text-white shadow-xl cursor-pointer active:scale-95"
               >
                 <span>Load More Platforms ({filteredProjects.length - visibleCount} remaining)</span>
                 <ArrowRight className="h-4 w-4" />
@@ -577,10 +485,10 @@ export default function Home() {
       {/* ============ Our Applications ============ */}
       <section id="apps" className="relative section-py border-t border-slate-200">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="max-w-3xl">
             <Eyebrow>Our Applications</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Mobile apps <span className="text-gradient-cyan">by ShopTech Systems</span>.
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Mobile apps <span className="text-teal-700">by ShopTech Systems</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
               Our own Android apps, built for everyday productivity.
@@ -624,7 +532,7 @@ export default function Home() {
                         href={app.playUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-tech-glow inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white"
+                        className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold text-white"
                       >
                         Get it on Google Play <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
@@ -645,13 +553,13 @@ export default function Home() {
       {/* ============ Solutions / Capabilities ============ */}
       <section id="services" className="relative section-py border-t border-slate-200">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="max-w-3xl">
             <Eyebrow>Capabilities</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              End-to-end solutions for <span className="text-gradient-tech">exponential growth</span>.
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              What we <span className="text-teal-700">build</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              We cover the full spectrum of software development—from custom web portals to automated business tools and high-converting marketing engines.
+              From custom web portals and business systems to mobile apps and automation, we cover the full cycle: planning, design, development and support.
             </p>
           </div>
 
@@ -669,28 +577,28 @@ export default function Home() {
                 title: "POS & Retail Systems",
                 desc: "Integrated point-of-sale platforms, inventory sync, multi-store support, and companion mobile apps for shop owners.",
                 tags: ["POS", "Inventory", "Mobile", "Billing"],
-                color: "from-cyan-500 to-teal-600",
+                color: "from-teal-700 to-teal-600",
               },
               {
                 icon: Rocket,
                 title: "Logistics & Fleet Dispatch",
                 desc: "Real-time dispatch consoles, driver routing, live load boards, rate calculators, and carrier support operations.",
                 tags: ["Dispatch", "Routing", "Fleet", "Live Ops"],
-                color: "from-amber-500 to-rose-600",
+                color: "from-teal-700 to-teal-600",
               },
               {
                 icon: MessageSquare,
                 title: "AI Voice & Workflow Agents",
                 desc: "Automated calling systems, AI voice agents, smart lead routing, and hands-free intake for busy service businesses.",
                 tags: ["Voice AI", "Automation", "Lead Routing", "Workflows"],
-                color: "from-purple-500 to-pink-600",
+                color: "from-teal-700 to-teal-600",
               },
               {
                 icon: Layers,
                 title: "Enterprise ERP & Portals",
                 desc: "Unified platforms for schools, pharmacies, healthcare, and marketplaces with role-based access and reporting.",
                 tags: ["Multi-tenant", "RBAC", "Reports", "Billing"],
-                color: "from-emerald-500 to-teal-600",
+                color: "from-teal-700 to-teal-600",
               },
               {
                 icon: TrendingUp,
@@ -735,15 +643,15 @@ export default function Home() {
       </section>
 
       {/* ============ Architecture / Process ============ */}
-      <section id="process" className="relative section-py border-t border-slate-200 bg-slate-50">
+      <section id="process" className="relative section-py bg-slate-900">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Execution Pipeline</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              From whiteboard to <span className="text-gradient-cyan">bulletproof production</span>.
+          <div className="max-w-3xl">
+            <Eyebrow dark>How we work</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+              From first call to <span className="text-teal-300">launch</span>.
             </h2>
-            <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              Our structured 4-phase agile engineering cycle ensures fast time-to-market without compromising code quality or scalability.
+            <p className="mt-4 text-base text-slate-300 sm:text-lg">
+              A simple four-step process keeps projects on scope, on schedule and easy to follow.
             </p>
           </div>
 
@@ -751,26 +659,26 @@ export default function Home() {
             {[
               {
                 num: "01",
-                title: "Deep Discovery & Audit",
-                desc: "We analyze your business workflows, define technical requirements, and architect the optimal software stack.",
+                title: "Discovery",
+                desc: "We learn how your business works, agree on requirements and choose the right technology.",
                 icon: Search,
               },
               {
                 num: "02",
-                title: "System Architecture & UI",
-                desc: "Interactive high-fidelity prototypes, database schema modeling, and seamless user experience flows.",
+                title: "Design & planning",
+                desc: "Clickable prototypes, data models and user flows, reviewed with you before we build.",
                 icon: Palette,
               },
               {
                 num: "03",
-                title: "Sprint Development",
-                desc: "Rapid iterative engineering with automated testing, CI/CD pipelines, and weekly transparent milestone demos.",
+                title: "Build in sprints",
+                desc: "Short development cycles with automated tests and regular demos so you always see progress.",
                 icon: Terminal,
               },
               {
                 num: "04",
-                title: "Zero-Downtime Launch & Ops",
-                desc: "Global edge deployment, uptime telemetry, continuous optimization, and dedicated ongoing technical support.",
+                title: "Launch & support",
+                desc: "We deploy, monitor and keep improving the product, with support after launch.",
                 icon: Shield,
               },
             ].map((step) => {
@@ -778,18 +686,18 @@ export default function Home() {
               return (
                 <div
                   key={step.num}
-                  className="glass-card relative rounded-2xl border border-slate-200 bg-white p-7 backdrop-blur-xl"
+                  className="relative rounded-xl border border-white/10 bg-white/5 p-7"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-3xl font-black text-slate-900/10">
+                    <span className="font-mono text-3xl font-semibold text-white/20">
                       {step.num}
                     </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-600/40 bg-teal-50 text-teal-700">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-teal-300">
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
-                  <h3 className="mt-6 text-lg font-bold text-slate-900">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.desc}</p>
+                  <h3 className="mt-6 text-lg font-semibold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-300">{step.desc}</p>
                 </div>
               );
             })}
@@ -800,9 +708,9 @@ export default function Home() {
       {/* ============ FAQ Section ============ */}
       <section id="faq" className="relative section-py border-t border-slate-200 bg-slate-50">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="max-w-2xl">
             <Eyebrow>Questions & Answers</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
               Frequently asked questions
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
@@ -853,17 +761,17 @@ export default function Home() {
       </section>
 
       {/* ============ Contact / Consultation CTA ============ */}
-      <section id="contact" className="relative section-py border-t border-slate-200">
+      <section id="contact" className="relative py-16 md:py-20 border-t border-slate-200">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-teal-600/40 bg-gradient-to-b from-slate-900/90 to-white p-8 md:p-14 backdrop-blur-2xl shadow-[0_0_80px_rgba(15,118,110,0.2)]">
+          <div className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-14">
             <div className="grid items-center gap-10 md:grid-cols-12">
               <div className="md:col-span-7">
                 <Eyebrow>Start Your Project</Eyebrow>
-                <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                  Ready to engineer your <span className="text-gradient-cyan">next breakthrough</span>?
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl text-balance">
+                  Tell us what you <span className="text-teal-700">want to build</span>.
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  Tell us about your project goals. We'll schedule a discovery session within 24 hours and map out an execution blueprint.
+                  Tell us about your project goals. We will reply within one business day to arrange a short discovery call.
                 </p>
 
                 <div className="mt-8 space-y-3.5">
@@ -897,14 +805,14 @@ export default function Home() {
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
                       <Clock className="h-4 w-4" />
                     </div>
-                    <span>Guaranteed Response within 24 Hours</span>
+                    <span>Reply within one business day</span>
                   </div>
                 </div>
               </div>
 
               {/* Consultation Form */}
               <div className="md:col-span-5">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-2xl">
+                <div className="rounded-xl border border-slate-200 bg-white p-6">
                   {contactSubmitted ? (
                     <div className="py-8 text-center">
                       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
@@ -974,68 +882,7 @@ export default function Home() {
       </section>
 
       {/* ============ Footer ============ */}
-      <footer className="border-t border-slate-200 bg-slate-50 py-14">
-        <div className="container">
-          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-            <Logo />
-
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
-              {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="hover:text-slate-900 transition-colors">
-                  {l.label}
-                </a>
-              ))}
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-emerald-700 hover:text-emerald-700 transition-colors font-medium"
-              >
-                <WhatsAppIcon className="h-3.5 w-3.5" />
-                <span>+92 316 4091654</span>
-              </a>
-            </div>
-
-            <nav aria-label="Social media" className="flex items-center gap-3">
-              {[
-                { label: "LinkedIn", href: "https://www.linkedin.com/company/shoptech-systems", Icon: Linkedin },
-                { label: "Facebook", href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/", Icon: Facebook },
-                { label: "Instagram", href: "https://www.instagram.com/shoptechsystems/", Icon: Instagram },
-                { label: "X", href: "https://x.com/ShopTechSystems", Icon: Twitter },
-                { label: "TikTok", href: "https://www.tiktok.com/@shoptechsystems", Icon: TikTokIcon },
-              ].map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`ShopTech Systems on ${label}`}
-                  title={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-teal-600/40 hover:bg-teal-50 hover:text-slate-900"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              <span>All Systems Operational</span>
-            </div>
-          </div>
-
-          <div className="mt-10 border-t border-slate-100 pt-8 text-center text-xs text-slate-500">
-            © {new Date().getFullYear()} ShopTech Systems. All rights reserved. Enterprise Business Software Solutions.
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-              <a href="/blog" className="hover:text-slate-900 transition-colors">Blog</a>
-              <a href="/about" className="hover:text-slate-900 transition-colors">About</a>
-              <a href="/contact" className="hover:text-slate-900 transition-colors">Contact</a>
-              <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {/* Floating WhatsApp Quick Action Button */}
       <a

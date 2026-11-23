@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X, Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
+import { SiteFooter } from "@/components/SiteFooter";
 import { Logo, NAV_LINKS, TikTokIcon, WHATSAPP_LINK, WhatsAppIcon } from "@/pages/Home";
 
 export const SUPPORT_EMAIL = "contact@shoptechsystems.online";
@@ -95,59 +96,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
       <main className="relative z-10 pt-28 md:pt-32">{children}</main>
 
-      <footer className="relative z-10 mt-20 border-t border-slate-200 bg-slate-50 py-14">
-        <div className="container">
-          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-            <Logo />
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
-              {NAV_LINKS.map((l) => (
-                <a key={l.href} href={siteHref(l.href)} className="hover:text-slate-900 transition-colors">{l.label}</a>
-              ))}
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-emerald-700 hover:text-emerald-700 transition-colors font-medium"
-              >
-                <WhatsAppIcon className="h-3.5 w-3.5" />
-                <span>+92 316 4091654</span>
-              </a>
-            </div>
-            <nav aria-label="Social media" className="flex items-center gap-3">
-              {[
-                { label: "LinkedIn", href: "https://www.linkedin.com/company/shoptech-systems", Icon: Linkedin },
-                { label: "Facebook", href: "https://www.facebook.com/people/ShopTech-Systems/61591023865889/", Icon: Facebook },
-                { label: "Instagram", href: "https://www.instagram.com/shoptechsystems/", Icon: Instagram },
-                { label: "X", href: "https://x.com/ShopTechSystems", Icon: Twitter },
-                { label: "TikTok", href: "https://www.tiktok.com/@shoptechsystems", Icon: TikTokIcon },
-              ].map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`ShopTech Systems on ${label}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-teal-600/40 hover:bg-teal-50 hover:text-slate-900"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              <span>All Systems Operational</span>
-            </div>
-          </div>
-          <div className="mt-10 border-t border-slate-100 pt-8 text-center text-xs text-slate-500">
-            © {new Date().getFullYear()} ShopTech Systems. All rights reserved. Enterprise Business Software Solutions.
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-              {INFO_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="hover:text-slate-900 transition-colors">{l.label}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div className="mt-20"><SiteFooter /></div>
     </div>
   );
 }
