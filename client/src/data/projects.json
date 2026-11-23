@@ -178,20 +178,5 @@
     ],
     "featured": true,
     "kind": "concept"
-  },
-  {
-    "id": 20,
-    "title": "Dispatch 5 Services",
-    "category": "Freight Dispatching / Logistics",
-    "description": "A high-performance freight dispatch platform offering 24/7 carrier support, smart load matching, route optimization, and back-office management for owner-operators.",
-    "image": "/projects/dispatch5.webp",
-    "link": "",
-    "technologies": [
-      "Freight Dispatch",
-      "Logistics",
-      "Carrier Support"
-    ],
-    "featured": true,
-    "kind": "concept"
   }
 ]
