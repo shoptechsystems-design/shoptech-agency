@@ -45,6 +45,21 @@
     "kind": "live"
   },
   {
+    "id": 24,
+    "title": "Karyano",
+    "category": "POS + Inventory Platform",
+    "description": "A multi-tenant point of sale for shops, combining checkout, inventory with low-stock alerts, customers and sales reporting, with role-based access and PKR support.",
+    "image": "/projects/karyano.webp",
+    "link": "https://omnipos-hjcb6uyk.manus.space/",
+    "technologies": [
+      "POS",
+      "Inventory",
+      "Multi-tenant"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
     "id": 2,
     "title": "Lux Barber Shop",
     "category": "Barbershop Website",
@@ -150,21 +165,6 @@
     "kind": "concept"
   },
   {
-    "id": 12,
-    "title": "Lumiere Spa",
-    "category": "Spa Website",
-    "description": "A calming spa website for booking treatments, presenting services, and building a premium wellness brand.",
-    "image": "/projects/lumierespa.webp",
-    "link": "",
-    "technologies": [
-      "Wellness",
-      "Booking",
-      "Luxury"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
     "id": 16,
     "title": "PharmaFlow",
     "category": "Pharmacy Management Platform",
@@ -190,6 +190,51 @@
       "School ERP",
       "Admissions",
       "Student Management"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 25,
+    "title": "Inklyne",
+    "category": "Document Editing Tool",
+    "description": "A browser-based PDF editor for annotating, signing, whiting out, organising and exporting documents, with local-first editing and no account needed for guests.",
+    "image": "/projects/inklyne.webp",
+    "link": "https://pdfeditor-gowkpq4q.manus.space/",
+    "technologies": [
+      "PDF Editing",
+      "E-signature",
+      "Annotation"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 26,
+    "title": "QuillBill",
+    "category": "Invoicing Platform",
+    "description": "An invoice studio for freelancers and small businesses to create invoices, estimates and quotes with live totals, scan-to-pay QR codes, saved clients and PDF export, with no signup required.",
+    "image": "/projects/quillbill.webp",
+    "link": "https://invoicestd-chk9yekr.manus.space/",
+    "technologies": [
+      "Invoicing",
+      "PDF Export",
+      "QR Payments"
+    ],
+    "featured": true,
+    "kind": "concept"
+  },
+  {
+    "id": 27,
+    "title": "Penvita",
+    "category": "Resume & CV Builder",
+    "description": "A free web resume and CV builder with refined templates, a guided editor, live preview and PDF export, with no watermarks. It pairs with our Penvita Android app.",
+    "image": "/projects/penvita.webp",
+    "link": "https://cvbuilder-2ad3qnae.manus.space/",
+    "technologies": [
+      "CV Builder",
+      "Templates",
+      "PDF Export"
     ],
     "featured": true,
     "kind": "concept"
