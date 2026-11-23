@@ -15,21 +15,6 @@
     "kind": "live"
   },
   {
-    "id": 18,
-    "title": "Janaab Store",
-    "category": "E-commerce Website",
-    "description": "A polished online store designed to showcase products, guide customers through browsing, and support a smooth shopping experience.",
-    "image": "/projects/janaabstore.webp",
-    "link": "http://janaab.store/",
-    "technologies": [
-      "E-commerce",
-      "Products",
-      "Shopping"
-    ],
-    "featured": true,
-    "kind": "live"
-  },
-  {
     "id": 22,
     "title": "Lil Man Big Van & Flooring For All",
     "category": "Freight / Flooring Services",
@@ -70,51 +55,6 @@
       "Booking",
       "Auto Care",
       "Service Listings"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 4,
-    "title": "Luxe Hair",
-    "category": "Salon Website",
-    "description": "A luxury hair salon website for appointments, services, and premium brand presentation.",
-    "image": "/projects/luxehair.webp",
-    "link": "",
-    "technologies": [
-      "Booking",
-      "Beauty",
-      "Appointments"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 5,
-    "title": "OmniPOS",
-    "category": "POS + Mobile App",
-    "description": "An omni-channel point of sale platform with a mobile app for live shop access and secure sign-in.",
-    "image": "/projects/omnipos.webp",
-    "link": "",
-    "technologies": [
-      "Mobile App",
-      "POS",
-      "Retail"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 6,
-    "title": "FoodPoint",
-    "category": "Restaurant / Food Ordering",
-    "description": "A food ordering website built for fast browsing, menu discovery, and online ordering.",
-    "image": "/projects/foodpoint.webp",
-    "link": "",
-    "technologies": [
-      "Ordering",
-      "Restaurant",
-      "Menu"
     ],
     "featured": true,
     "kind": "concept"
@@ -210,51 +150,6 @@
     "kind": "concept"
   },
   {
-    "id": 13,
-    "title": "InvoiceSTD",
-    "category": "Invoicing Platform",
-    "description": "A streamlined invoicing platform for creating, tracking, and managing client bills with less friction.",
-    "image": "/projects/invoicestd.webp",
-    "link": "",
-    "technologies": [
-      "Invoices",
-      "Billing",
-      "Workflow"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 14,
-    "title": "ClassiMarket",
-    "category": "Marketplace Website",
-    "description": "A modern marketplace platform for browsing listings, discovering products, and connecting buyers with sellers.",
-    "image": "/projects/classimarket.webp",
-    "link": "",
-    "technologies": [
-      "Marketplace",
-      "Listings",
-      "Commerce"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 15,
-    "title": "PDF Editor",
-    "category": "Document Editing Tool",
-    "description": "A web-based PDF editing tool for viewing, modifying, and managing documents more efficiently.",
-    "image": "/projects/pdfeditor.webp",
-    "link": "",
-    "technologies": [
-      "Documents",
-      "Editing",
-      "Workflow"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
     "id": 16,
     "title": "PharmaFlow",
     "category": "Pharmacy Management Platform",
@@ -265,21 +160,6 @@
       "Pharmacy",
       "Inventory",
       "Prescriptions"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 17,
-    "title": "SafaShop",
-    "category": "E-commerce Website",
-    "description": "A modern online shop for showcasing products, helping customers browse easily, and supporting a smooth shopping experience.",
-    "image": "/projects/safashop.webp",
-    "link": "",
-    "technologies": [
-      "E-commerce",
-      "Products",
-      "Shopping"
     ],
     "featured": true,
     "kind": "concept"
@@ -310,36 +190,6 @@
       "Freight Dispatch",
       "Logistics",
       "Carrier Support"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 21,
-    "title": "BloodBridge Pakistan",
-    "category": "Healthcare / Community Platform",
-    "description": "A privacy-first blood donation and donor matching platform connecting patients with verified, willing donors across Pakistan.",
-    "image": "/projects/bloodbridge.webp",
-    "link": "",
-    "technologies": [
-      "Healthcare",
-      "Community",
-      "Donor Matching"
-    ],
-    "featured": true,
-    "kind": "concept"
-  },
-  {
-    "id": 23,
-    "title": "GripForge",
-    "category": "Tyre Shop Website",
-    "description": "A premium tyre shop website with an interactive 3D tyre showcase for browsing car tyres and exploring replacement, wheel alignment, and balancing services.",
-    "image": "/projects/gripforge.webp",
-    "link": "",
-    "technologies": [
-      "Automotive",
-      "3D Showcase",
-      "Services"
     ],
     "featured": true,
     "kind": "concept"

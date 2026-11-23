@@ -120,9 +120,6 @@ export default function Home() {
         "/projects/dispatchflow.webp",
         "/projects/luxbarbershop.webp",
         "/projects/premiumwash.webp",
-        "/projects/luxehair.webp",
-        "/projects/omnipos.webp",
-        "/projects/foodpoint.webp",
       ];
       const preload = () => {
         topImages.forEach((src) => {
