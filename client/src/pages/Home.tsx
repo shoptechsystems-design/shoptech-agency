@@ -536,25 +536,38 @@ export default function Home() {
           ))}
 
           {/* Other apps */}
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {appsData.filter((a) => !("features" in a)).map((app) => {
               const Icon = APP_ICONS[app.icon] ?? Smartphone;
               return (
-                <div key={app.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-6">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-white`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-slate-900">{app.name}</h3>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-teal-700">{app.tagline}</p>
-                  {app.description && <p className="mt-3 text-sm leading-relaxed text-slate-600">{app.description}</p>}
-                  <div className="mt-5 pt-4 border-t border-slate-100">
-                    {app.playUrl ? (
-                      <a href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800">
-                        Google Play <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
-                    ) : (
-                      <span className="text-xs font-medium text-slate-500">Google Play: coming soon</span>
-                    )}
+                <div key={app.id} className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
+                  {"image" in app && app.image ? (
+                    <img src={app.image as string} alt={`${app.name} preview`} width={1200} height={630} loading="lazy" className="aspect-[1200/630] w-full border-b border-slate-100 object-cover object-top" />
+                  ) : (
+                    <div className={`flex aspect-[1200/630] w-full items-center justify-center bg-gradient-to-tr ${app.color}`}>
+                      <Icon className="h-14 w-14 text-white/90" />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center gap-3">
+                      <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr ${app.color} text-white`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold leading-tight text-slate-900">{app.name}</h3>
+                        <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wider text-teal-700">{app.tagline}</p>
+                      </div>
+                    </div>
+                    {app.description && <p className="mt-3 text-sm leading-relaxed text-slate-600">{app.description}</p>}
+                    <div className="mt-auto border-t border-slate-100 pt-4 mt-5">
+                      {app.playUrl ? (
+                        <a href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800">
+                          Google Play <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      ) : (
+                        <span className="text-xs font-medium text-slate-500">Google Play: coming soon</span>
+                      )}
+                    </div>
                   </div>
                 </div>
               );

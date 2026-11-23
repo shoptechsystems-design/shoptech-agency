@@ -43,22 +43,24 @@
     ]
   },
   {
-    "id": "invoice-maker",
-    "name": "Invoice Maker",
+    "id": "quillbill",
+    "name": "QuillBill",
     "tagline": "Mobile App",
     "description": "",
     "icon": "Receipt",
     "color": "from-cyan-500 to-blue-600",
-    "playUrl": ""
+    "playUrl": "",
+    "image": "/projects/quillbill.webp"
   },
   {
-    "id": "pdf-editor",
-    "name": "PDF Editor",
+    "id": "inklyne",
+    "name": "Inklyne",
     "tagline": "Mobile App",
     "description": "",
     "icon": "FileEdit",
     "color": "from-purple-500 to-pink-600",
-    "playUrl": ""
+    "playUrl": "",
+    "image": "/projects/inklyne.webp"
   },
   {
     "id": "expense-tracker",
@@ -67,15 +69,6 @@
     "description": "",
     "icon": "Wallet",
     "color": "from-emerald-500 to-teal-600",
-    "playUrl": ""
-  },
-  {
-    "id": "blood-donation",
-    "name": "Blood Donation",
-    "tagline": "Mobile App",
-    "description": "",
-    "icon": "Droplets",
-    "color": "from-rose-500 to-red-600",
     "playUrl": ""
   }
 ]
