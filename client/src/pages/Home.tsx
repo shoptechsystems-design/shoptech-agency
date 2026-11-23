@@ -368,11 +368,11 @@ export default function Home() {
       </section>
 
       {/* ============ Interactive 3D Showcase (Portfolio) ============ */}
-      <section id="portfolio" className="relative section-py border-t border-slate-200 bg-slate-50">
+      <section id="portfolio" className="relative border-t border-slate-200 bg-slate-50 py-16 md:py-24">
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <Eyebrow>Selected Work</Eyebrow>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-4xl">
               Our work, <span className="text-teal-700">live and in concept</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
@@ -486,64 +486,74 @@ export default function Home() {
       </section>
 
       {/* ============ Our Applications ============ */}
-      <section id="apps" className="relative section-py border-t border-slate-200">
+      <section id="apps" className="relative border-t border-slate-200 py-16 md:py-24">
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <Eyebrow>Our Applications</Eyebrow>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Mobile apps <span className="text-teal-700">by ShopTech Systems</span>.
+            <Eyebrow>Our applications</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              Android apps <span className="text-teal-700">we have built</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              Our own Android apps, built for everyday productivity.
+              Our own apps, designed for everyday productivity.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {appsData.map((app) => {
+          {/* Featured app */}
+          {appsData.filter((a) => "features" in a).slice(0, 1).map((app) => (
+            <div key={app.id} className="mt-12 grid overflow-hidden rounded-2xl border border-slate-200 bg-white lg:grid-cols-5">
+              <div className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-2">
+                <div className="flex items-center gap-4">
+                  {"iconImage" in app && app.iconImage && (
+                    <img src={app.iconImage} alt={`${app.name} app icon`} width={56} height={56} className="h-14 w-14 rounded-xl object-cover shadow-sm" />
+                  )}
+                  <div>
+                    <h3 className="text-2xl font-semibold text-slate-900">{app.name}</h3>
+                    <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wider text-teal-700">{app.tagline}</p>
+                  </div>
+                </div>
+                <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">{app.description}</p>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <Link href={`/apps/${app.id}`} className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white">
+                    Learn more <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  {app.playUrl ? (
+                    <a href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">
+                      Get it on Google Play <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-600">
+                      <Smartphone className="h-4 w-4" /> Google Play: coming soon
+                    </span>
+                  )}
+                </div>
+              </div>
+              {"banner" in app && app.banner && (
+                <div className="min-h-[220px] bg-slate-100 lg:col-span-3">
+                  <img src={app.banner as string} alt={`${app.name} app preview`} loading="lazy" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Other apps */}
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {appsData.filter((a) => !("features" in a)).map((app) => {
               const Icon = APP_ICONS[app.icon] ?? Smartphone;
               return (
-                <div
-                  key={app.id}
-                  className="glass-card group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-600/40"
-                >
-                  <div>
-                    {"iconImage" in app && app.iconImage ? (
-                      <img src={app.iconImage} alt={`${app.name} app icon`} className="h-12 w-12 rounded-xl object-cover shadow-lg" />
-                    ) : (
-                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-slate-900 shadow-lg`}>
-                        <Icon className="h-6 w-6" />
-                      </div>
-                    )}
-                    <h3 className="mt-6 text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                      {"features" in app ? <Link href={`/apps/${app.id}`}>{app.name}</Link> : app.name}
-                    </h3>
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-teal-700">
-                      {app.tagline}
-                    </p>
-                    {app.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{app.description}</p>
-                    )}
+                <div key={app.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-6">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${app.color} text-white`}>
+                    <Icon className="h-6 w-6" />
                   </div>
-                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
-                    {"features" in app && (
-                      <Link href={`/apps/${app.id}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-700">
-                        Learn more <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                    )}
+                  <h3 className="mt-5 text-lg font-semibold text-slate-900">{app.name}</h3>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-teal-700">{app.tagline}</p>
+                  {app.description && <p className="mt-3 text-sm leading-relaxed text-slate-600">{app.description}</p>}
+                  <div className="mt-5 pt-4 border-t border-slate-100">
                     {app.playUrl ? (
-                      <a
-                        href={app.playUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-tech-glow inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold text-white"
-                      >
-                        Get it on Google Play <ArrowUpRight className="h-3.5 w-3.5" />
+                      <a href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800">
+                        Google Play <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     ) : (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700">
-                        <Smartphone className="h-3.5 w-3.5" />
-                        Google Play: Coming Soon
-                      </span>
+                      <span className="text-xs font-medium text-slate-500">Google Play: coming soon</span>
                     )}
                   </div>
                 </div>
@@ -554,11 +564,11 @@ export default function Home() {
       </section>
 
       {/* ============ Solutions / Capabilities ============ */}
-      <section id="services" className="relative section-py border-t border-slate-200">
+      <section id="services" className="relative border-t border-slate-200 py-16 md:py-24">
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <Eyebrow>Capabilities</Eyebrow>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-4xl">
               What we <span className="text-teal-700">build</span>.
             </h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
@@ -566,7 +576,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 icon: Code2,
@@ -593,7 +603,7 @@ export default function Home() {
                 icon: MessageSquare,
                 title: "AI Voice & Workflow Agents",
                 desc: "Automated calling systems, AI voice agents, smart lead routing, and hands-free intake for busy service businesses.",
-                tags: ["Voice AI", "Automation", "Lead Routing", "Workflows"],
+                tags: ["Voice AI", "Automation", "Lead Routing"],
                 color: "from-teal-700 to-teal-600",
               },
               {
@@ -615,13 +625,13 @@ export default function Home() {
               return (
                 <div
                   key={service.title}
-                  className="glass-card group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-600/40"
+                  className="glass-card group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-7"
                 >
                   <div>
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${service.color} text-slate-900 shadow-lg`}>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="mt-6 text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                    <h3 className="mt-5 text-lg font-semibold text-slate-900">
                       {service.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -646,11 +656,11 @@ export default function Home() {
       </section>
 
       {/* ============ Architecture / Process ============ */}
-      <section id="process" className="relative section-py bg-slate-900">
+      <section id="process" className="relative bg-slate-900 py-16 md:py-24">
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <Eyebrow dark>How we work</Eyebrow>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-4xl">
               From first call to <span className="text-teal-300">launch</span>.
             </h2>
             <p className="mt-4 text-base text-slate-300 sm:text-lg">
@@ -658,7 +668,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 num: "01",
@@ -714,7 +724,7 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
               <Eyebrow>From the blog</Eyebrow>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-4xl">
                 Insights &amp; <span className="text-teal-700">guides</span>.
               </h2>
               <p className="mt-4 text-base text-slate-600 sm:text-lg">Practical advice on software, apps and automation for business owners.</p>
@@ -740,9 +750,9 @@ export default function Home() {
       </section>
 
       {/* ============ FAQ Section ============ */}
-      <section id="faq" className="relative section-py border-t border-slate-200 bg-slate-50">
-        <div className="container relative z-10">
-          <div className="max-w-2xl">
+      <section id="faq" className="relative border-t border-slate-200 bg-slate-50 py-16 md:py-24">
+        <div className="container relative z-10 grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
             <Eyebrow>Questions & Answers</Eyebrow>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
               Frequently asked questions
@@ -752,7 +762,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 max-w-3xl">
+          <div className="lg:col-span-8">
             <Accordion type="single" collapsible className="space-y-3">
               {[
                 {
@@ -765,11 +775,11 @@ export default function Home() {
                 },
                 {
                   q: "Do you provide hosting, domain setup, and ongoing maintenance?",
-                  a: "Yes. We handle end-to-end deployment on modern cloud platforms with automated SSL, CDN edge delivery, and 24/7 technical monitoring.",
+                  a: "Yes. We handle end-to-end deployment on modern cloud platforms with automated SSL, CDN edge delivery, and ongoing monitoring.",
                 },
                 {
                   q: "Can you upgrade or modernize an existing legacy software system?",
-                  a: "Absolutely. We routinely refactor, modernize, and migrate outdated web applications into modern, ultra-fast architectures with zero downtime.",
+                  a: "Absolutely. We routinely refactor, modernize, and migrate outdated web applications into modern architectures with minimal downtime.",
                 },
                 {
                   q: "How do we get started?",
@@ -779,7 +789,7 @@ export default function Home() {
                 <AccordionItem
                   key={idx}
                   value={`item-${idx}`}
-                  className="rounded-xl border border-slate-200 bg-white px-6 backdrop-blur-xl data-[state=open]:border-teal-600/40"
+                  className="rounded-xl border border-slate-200 last:border-b bg-white px-6 data-[state=open]:border-teal-600/40"
                 >
                   <AccordionTrigger className="text-left text-base font-semibold text-slate-900 hover:text-teal-700 py-4">
                     {item.q}
@@ -795,120 +805,108 @@ export default function Home() {
       </section>
 
       {/* ============ Contact / Consultation CTA ============ */}
-      <section id="contact" className="relative py-16 md:py-20 border-t border-slate-200">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-14">
-            <div className="grid items-center gap-10 md:grid-cols-12">
-              <div className="md:col-span-7">
-                <Eyebrow>Start Your Project</Eyebrow>
-                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl text-balance">
-                  Tell us what you <span className="text-teal-700">want to build</span>.
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  Tell us about your project goals. We will reply within one business day to arrange a short discovery call.
-                </p>
+      <section id="contact" className="relative border-t border-slate-200 bg-slate-50 py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <Eyebrow>Start your project</Eyebrow>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-4xl text-balance">
+                Tell us what you <span className="text-teal-700">want to build</span>.
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Share a few details and we will get back to you within one business day to arrange a short discovery call.
+              </p>
 
-                <div className="mt-8 space-y-3.5">
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3.5 text-sm text-slate-700 hover:text-emerald-700 transition-colors group rounded-xl border border-emerald-600/40 bg-emerald-50 p-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+              <ol className="mt-10 space-y-6">
+                {[
+                  { t: "You send the details", d: "A few lines about the problem and what you have in mind." },
+                  { t: "We reply and ask questions", d: "A short call to understand your workflow and goals." },
+                  { t: "You get a clear proposal", d: "Scope, timeline and cost, so you can decide with confidence." },
+                ].map((step, i) => (
+                  <li key={step.t} className="flex gap-4">
+                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-teal-700/30 bg-white font-mono text-xs font-semibold text-teal-700">{i + 1}</span>
+                    <div>
+                      <div className="text-sm font-semibold text-slate-900">{step.t}</div>
+                      <div className="mt-0.5 text-sm text-slate-600">{step.d}</div>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <a href="mailto:contact@shoptechsystems.online" className="mt-10 inline-flex items-center gap-3 text-sm font-medium text-slate-700 hover:text-teal-700">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-teal-700"><Mail className="h-4 w-4" /></span>
+                contact@shoptechsystems.online
+              </a>
+            </div>
+
+            {/* Consultation form */}
+            <div className="lg:col-span-7">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10">
+                {contactSubmitted ? (
+                  <div className="py-16 text-center">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                      <Check className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold text-slate-900">Almost done</h3>
+                    <p className="mx-auto mt-2 max-w-sm text-sm text-slate-600">
+                      Your request is ready in WhatsApp. Tap Send there and we will reply within one business day.
+                    </p>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      // No backend: hand the request to WhatsApp so it actually reaches us
+                      const f = new FormData(e.currentTarget);
+                      const text = `Hello ShopTech Systems, I would like a free consultation.\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nProject type: ${f.get("project")}\nBudget: ${f.get("budget")}\nDetails: ${f.get("message")}`;
+                      window.open(`https://wa.me/923164091654?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+                      setContactSubmitted(true);
+                    }}
+                    className="grid gap-5 sm:grid-cols-2"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 group-hover:scale-110 transition-transform shadow-[0_0_12px_rgba(16,185,129,0.3)]">
-                      <WhatsAppIcon className="h-5 w-5" />
+                    <div>
+                      <label htmlFor="c-name" className="text-sm font-medium text-slate-800">Full name</label>
+                      <input id="c-name" required type="text" name="name" autoComplete="name" placeholder="Your name" className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" />
                     </div>
                     <div>
-                      <div className="font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-2">
-                        +92 316 4091654
-                        <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                          Instant Response
-                        </span>
-                      </div>
-                      <div className="text-xs text-slate-600">Click to chat directly on WhatsApp</div>
+                      <label htmlFor="c-email" className="text-sm font-medium text-slate-800">Work email</label>
+                      <input id="c-email" required type="email" name="email" autoComplete="email" placeholder="you@company.com" className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" />
                     </div>
-                  </a>
-
-                  <div className="flex items-center gap-3 text-sm text-slate-700 px-1">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
-                      <Mail className="h-4 w-4" />
+                    <div>
+                      <label htmlFor="c-project" className="text-sm font-medium text-slate-800">Project type</label>
+                      <select id="c-project" name="project" className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20">
+                        <option>Custom web application</option>
+                        <option>Mobile app</option>
+                        <option>ERP / business management</option>
+                        <option>Logistics &amp; dispatch software</option>
+                        <option>POS / retail system</option>
+                        <option>AI &amp; automation</option>
+                        <option>Website or landing page</option>
+                        <option>Something else</option>
+                      </select>
                     </div>
-                    <span>contact@shoptechsystems.online</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-slate-700 px-1">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
-                      <Clock className="h-4 w-4" />
+                    <div>
+                      <label htmlFor="c-budget" className="text-sm font-medium text-slate-800">Budget <span className="font-normal text-slate-500">(optional)</span></label>
+                      <select id="c-budget" name="budget" className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20">
+                        <option>Not sure yet</option>
+                        <option>Under $1,000</option>
+                        <option>$1,000 – $5,000</option>
+                        <option>$5,000 – $15,000</option>
+                        <option>$15,000+</option>
+                      </select>
                     </div>
-                    <span>Reply within one business day</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Consultation Form */}
-              <div className="md:col-span-5">
-                <div className="rounded-xl border border-slate-200 bg-white p-6">
-                  {contactSubmitted ? (
-                    <div className="py-8 text-center">
-                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
-                        <Check className="h-6 w-6" />
-                      </div>
-                      <h4 className="mt-4 text-lg font-bold text-slate-900">Consultation Requested!</h4>
-                      <p className="mt-2 text-xs text-slate-600">
-                        Your request is ready in WhatsApp. Tap Send there and we will reply within 24 hours.
-                      </p>
+                    <div className="sm:col-span-2">
+                      <label htmlFor="c-message" className="text-sm font-medium text-slate-800">Project details</label>
+                      <textarea id="c-message" required name="message" rows={5} placeholder="What do you want to build, and what problem should it solve?" className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20 resize-y" />
                     </div>
-                  ) : (
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        // No backend: hand the request to WhatsApp so it actually reaches us
-                        const f = new FormData(e.currentTarget);
-                        const text = `Hello ShopTech Systems, I would like a free consultation.\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nProject type: ${f.get("project")}`;
-                        window.open(`https://wa.me/923164091654?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
-                        setContactSubmitted(true);
-                      }}
-                      className="space-y-3.5"
-                    >
-                      <div>
-                        <label className="text-xs font-semibold text-slate-700">Your Name</label>
-                        <input
-                          required
-                          type="text"
-                          name="name"
-                          placeholder="Alex Morgan"
-                          className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 placeholder-slate-500 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-xs font-semibold text-slate-700">Email Address</label>
-                        <input
-                          required
-                          type="email"
-                          name="email"
-                          placeholder="alex@company.com"
-                          className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 placeholder-slate-500 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-xs font-semibold text-slate-700">Project Type</label>
-                        <select name="project" className="mt-1 min-h-[44px] w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-xs text-slate-900 outline-none focus:border-teal-600/40 focus:ring-1 focus:ring-teal-600/30">
-                          <option>Custom Web Application</option>
-                          <option>ERP / Enterprise Management</option>
-                          <option>Logistics & Dispatch Software</option>
-                          <option>POS / Retail System</option>
-                          <option>AI Voice & Automation</option>
-                          <option>Other Digital Project</option>
-                        </select>
-                      </div>
-                      <button
-                        type="submit"
-                        className="btn-tech-glow mt-4 min-h-[44px] w-full rounded-xl py-3 text-xs sm:text-sm font-bold text-white tracking-wide cursor-pointer active:scale-[0.99]"
-                      >
-                        Request Free Consultation
+                    <div className="sm:col-span-2">
+                      <button type="submit" className="btn-tech-glow inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-white cursor-pointer">
+                        Request free consultation <ArrowRight className="h-4 w-4" />
                       </button>
-                    </form>
-                  )}
-                </div>
+                      <p className="mt-3 text-center text-xs text-slate-500">We only use your details to reply to this request.</p>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
           </div>
