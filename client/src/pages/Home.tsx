@@ -13,6 +13,8 @@ import projectsData from "../data/projects.json";
 import appsData from "../data/apps.json";
 import { Project3DCard, Project } from "../components/Project3DCard";
 import { SiteFooter } from "../components/SiteFooter";
+import { PostCover } from "../components/PostCover";
+import { POSTS } from "../data/posts";
 
 /* ---------- Building Blocks ---------- */
 
@@ -75,6 +77,7 @@ export const NAV_LINKS = [
   { href: "#apps", label: "Apps" },
   { href: "#services", label: "Services" },
   { href: "#process", label: "Process" },
+  { href: "#blog", label: "Blog" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -701,6 +704,37 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ Latest from the blog ============ */}
+      <section id="blog" className="relative py-16 md:py-24 border-t border-slate-200">
+        <div className="container">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <Eyebrow>From the blog</Eyebrow>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+                Insights &amp; <span className="text-teal-700">guides</span>.
+              </h2>
+              <p className="mt-4 text-base text-slate-600 sm:text-lg">Practical advice on software, apps and automation for business owners.</p>
+            </div>
+            <a href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-800">
+              View all articles <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {POSTS.slice(0, 3).map((p) => (
+              <a key={p.slug} href={`/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg">
+                <PostCover slug={p.slug} width={640} />
+                <div className="flex flex-1 flex-col p-5">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-teal-700">{p.category}</span>
+                  <h3 className="mt-2 text-lg font-semibold leading-snug text-slate-900 text-balance">{p.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600 line-clamp-3">{p.description}</p>
+                  <span className="mt-4 text-xs text-slate-500">{p.readMins} min read</span>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
