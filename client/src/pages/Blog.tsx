@@ -35,9 +35,9 @@ export function BlogIndex() {
             <a
               key={p.slug}
               href={`/blog/${p.slug}`}
-              className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg"
+              className={`group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg ${i >= 6 ? "[content-visibility:auto] [contain-intrinsic-size:auto_440px]" : ""}`}
             >
-              <PostCover slug={p.slug} sizes={CARD_SIZES} eager={i < 3} priority={i === 0} />
+              <PostCover slug={p.slug} sizes={CARD_SIZES} priority={i === 0} />
               <div className="flex flex-1 flex-col p-5">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-teal-700">{p.category}</span>
                 <h2 className="mt-2 text-lg font-semibold leading-snug text-slate-900 text-balance">{p.title}</h2>

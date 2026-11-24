@@ -111,14 +111,16 @@ function headFor(route, meta, is404) {
   h.push(`<meta name="twitter:description" content="${esc(meta.description)}" />`);
   h.push(`<meta name="twitter:image" content="${esc(image)}" />`);
 
-  // performance hints
-  if (fontFile) h.push(`<link rel="preload" href="/assets/${fontFile}" as="font" type="font/woff2" crossorigin />`);
-  for (const f of chunkFilesFor(pageChunkKey(route))) h.push(`<link rel="modulepreload" crossorigin href="/${f}" />`);
+  // performance hints. Order matters: the LCP image goes first so it is not queued behind other preloads.
   if (meta.preload) {
     const p = meta.preload;
-    if (p.src.startsWith("https://images.unsplash.com")) h.push(`<link rel="preconnect" href="https://images.unsplash.com" crossorigin />`);
+    if (p.src.startsWith("https://")) h.push(`<link rel="preconnect" href="${new URL(p.src).origin}" crossorigin />`);
     h.push(`<link rel="preload" as="image" href="${esc(p.src)}"${p.srcSet ? ` imagesrcset="${esc(p.srcSet)}"` : ""}${p.sizes ? ` imagesizes="${esc(p.sizes)}"` : ""} fetchpriority="high" />`);
   }
+  if (fontFile) h.push(`<link rel="preload" href="/assets/${fontFile}" as="font" type="font/woff2" crossorigin />`);
+  // Only the page's own chunk is preloaded; small shared helpers are fetched alongside it by the browser.
+  const pageKey = pageChunkKey(route);
+  if (manifest[pageKey]) h.push(`<link rel="modulepreload" crossorigin href="/${manifest[pageKey].file}" />`);
 
   // structured data
   h.push(ld(ORG), ld(WEBSITE));
