@@ -1,5 +1,85 @@
 [
   {
+    "slug": "what-to-include-in-a-software-requirements-document",
+    "title": "What to Include in a Software Requirements Document",
+    "description": "A plain-English guide to writing a software requirements document: structure, user stories, non-functional needs, scope limits and a pre-quote checklist.",
+    "date": "2026-11-24",
+    "category": "Software Development",
+    "readMins": 9
+  },
+  {
+    "slug": "mvp-development-launch-without-overbuilding",
+    "title": "MVP Development: How to Launch Without Overbuilding",
+    "description": "Learn what a minimum viable product really is, how to choose features, test your riskiest assumption and launch faster without wasting budget.",
+    "date": "2026-11-23",
+    "category": "Software Development",
+    "readMins": 9
+  },
+  {
+    "slug": "website-accessibility-basics-for-business-owners",
+    "title": "Website Accessibility Basics for Business Owners",
+    "description": "Make your website usable for everyone: practical accessibility fixes, WCAG 2.2 in plain English, free testing tools and a checklist for small businesses.",
+    "date": "2026-11-22",
+    "category": "Web Design & SEO",
+    "readMins": 9
+  },
+  {
+    "slug": "core-web-vitals-explained-for-business-owners",
+    "title": "Core Web Vitals Explained in Plain English",
+    "description": "Understand LCP, INP and CLS, what good scores look like, how to measure them with free tools and how to fix the most common causes of slow pages.",
+    "date": "2026-11-21",
+    "category": "Web Design & SEO",
+    "readMins": 9
+  },
+  {
+    "slug": "progressive-web-apps-vs-native-apps",
+    "title": "Progressive Web Apps vs Native Apps for Small Business",
+    "description": "Compare progressive web apps with native mobile apps on cost, features, offline use, store presence and maintenance, with a simple way to choose.",
+    "date": "2026-11-20",
+    "category": "Mobile Apps",
+    "readMins": 9
+  },
+  {
+    "slug": "how-to-plan-a-legacy-software-migration",
+    "title": "How to Plan a Legacy Software Migration",
+    "description": "A practical guide to replacing an old business system without losing data or stopping operations: options, data mapping, cutover and rollback.",
+    "date": "2026-11-19",
+    "category": "Software Development",
+    "readMins": 9
+  },
+  {
+    "slug": "multi-tenant-saas-architecture-explained",
+    "title": "Multi-Tenant SaaS Architecture Explained for Founders",
+    "description": "How multi-tenant software keeps each customer's data separate, the three common database models, and how to choose without overbuilding.",
+    "date": "2026-11-18",
+    "category": "Software Development",
+    "readMins": 8
+  },
+  {
+    "slug": "prompt-injection-and-ai-agent-security",
+    "title": "Prompt Injection: Securing Your AI Chatbot and Agents",
+    "description": "What prompt injection is, why it threatens chatbots and AI agents, and the practical controls that limit the damage: least privilege and human approval.",
+    "date": "2026-11-17",
+    "category": "Security",
+    "readMins": 8
+  },
+  {
+    "slug": "offline-first-mobile-apps-for-retail-and-field-teams",
+    "title": "Offline-First Mobile Apps for Retail and Field Teams",
+    "description": "Why apps for shops and field staff should keep working without internet, and how local storage, sync queues and conflict rules make that reliable.",
+    "date": "2026-11-16",
+    "category": "Mobile Apps",
+    "readMins": 8
+  },
+  {
+    "slug": "online-booking-system-features-for-service-businesses",
+    "title": "Online Booking Systems: Features Service Businesses Need",
+    "description": "The features that make an online booking system work for salons, clinics and service teams: availability rules, buffers, reminders, deposits and more.",
+    "date": "2026-11-15",
+    "category": "Business Software",
+    "readMins": 8
+  },
+  {
     "slug": "agentic-ai-for-small-business-what-it-is-and-where-to-start",
     "title": "Agentic AI for Small Business: What It Is and Where to Start",
     "description": "AI agents do more than answer questions: they carry out multi-step tasks. Here is what that means for a small business, which tasks suit agents, and how to pilot one safely.",

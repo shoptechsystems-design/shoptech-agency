@@ -13,6 +13,8 @@ export type Post = {
 import { TRENDING_POSTS } from "./posts-trending";
 import { EXTRA_A } from "./posts-extra-a";
 import { EXTRA_B } from "./posts-extra-b";
+import { NEW_POSTS_A } from "./posts-new-a";
+import { NEW_POSTS_B } from "./posts-new-b";
 
 const BASE_POSTS: Post[] = [
   {
@@ -406,7 +408,7 @@ const BASE_POSTS: Post[] = [
 
 const EXTRAS: Record<string, PostSection[]> = { ...EXTRA_A, ...EXTRA_B };
 
-export const POSTS: Post[] = [...TRENDING_POSTS, ...BASE_POSTS].map((p) => {
+export const POSTS: Post[] = [...NEW_POSTS_A, ...NEW_POSTS_B, ...TRENDING_POSTS, ...BASE_POSTS].map((p) => {
   const sections = [...p.sections, ...(EXTRAS[p.slug] ?? [])];
   const words = JSON.stringify(sections).split(/\s+/).length;
   return { ...p, sections, readMins: Math.max(p.readMins, Math.round(words / 200)) };

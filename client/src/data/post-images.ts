@@ -2,6 +2,16 @@
 // optimised, self-hosted copies to public/blog/<slug>-{400,800,1280}.webp (+ -og.jpg for social sharing), so pages
 // never wait on a third-party image server.
 const IMAGES: Record<string, { id: string; alt: string }> = {
+  "what-to-include-in-a-software-requirements-document": { id: "1484480974693-6ca0a78fb36b", alt: "Hand ticking items off a handwritten checklist in a notebook" },
+  "mvp-development-launch-without-overbuilding": { id: "1581291518857-4e27b48ff24e", alt: "Hand sketching an app wireframe on paper" },
+  "website-accessibility-basics-for-business-owners": { id: "1515378791036-0648a3ef77b2", alt: "Person working at a laptop on a website" },
+  "core-web-vitals-explained-for-business-owners": { id: "1547658719-da2b51169166", alt: "Monitor showing a landing page design next to code" },
+  "progressive-web-apps-vs-native-apps": { id: "1555774698-0b77e0d5fac6", alt: "Hand holding a smartphone with a grid of app icons" },
+  "how-to-plan-a-legacy-software-migration": { id: "1488229297570-58520851e868", alt: "Streams of light representing data moving between systems" },
+  "multi-tenant-saas-architecture-explained": { id: "1504384308090-c894fdcc538d", alt: "Large open office where many people work at separate desks" },
+  "prompt-injection-and-ai-agent-security": { id: "1614064641938-3bbee52942c7", alt: "Red padlock resting on a glowing keyboard" },
+  "offline-first-mobile-apps-for-retail-and-field-teams": { id: "1556740738-b6a63e27c4df", alt: "Shop assistant taking a payment on a tablet point-of-sale" },
+  "online-booking-system-features-for-service-businesses": { id: "1506784365847-bbad939e9335", alt: "Monthly calendar with dates marked by a highlighter" },
   "agentic-ai-for-small-business-what-it-is-and-where-to-start": { id: "1677442136019-21780ecad995", alt: "Blue AI lettering over an abstract network pattern" },
   "vibe-coding-and-ai-coding-assistants-risks-for-business": { id: "1555949963-ff9fe0c870eb", alt: "Colourful source code on a screen" },
   "small-business-cybersecurity-checklist": { id: "1526374965328-7f61d4dc18c5", alt: "Green digital code falling down a dark screen" },
